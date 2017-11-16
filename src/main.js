@@ -6,6 +6,8 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+window.jQuery = require('jquery')
+require('materialize-css')
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

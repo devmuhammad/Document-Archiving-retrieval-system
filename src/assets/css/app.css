@@ -1,0 +1,21 @@
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.appSection{
+   margin-top:50px;
+}
+
+.offCanvas{
+  padding-left: 300px;
+}
+
+.logo-container{
+  padding-left:20px;
+}
+
+.app-container{
+  padding: 20px 50px 20px 50px;
+}

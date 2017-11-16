@@ -1,23 +1,39 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <navbar :offCanvas="offCanvas" :toggle="toggleSideNav"></navbar>
+    <side-bar :fixed="fixed"></side-bar>
+    <div :class="{'offCanvas': offCanvas,'section':true}">
+      <div class="app-container">
+        <router-view></router-view>
+      </div>  
+    </div>
   </div>
 </template>
 
 <script>
+import navbar from "@/components/navbar/navbar"
+import sideBar from "@/components/sidebar/sidebar"
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      fixed:true,
+      offCanvas:true
+    }
+  },
+  components:{
+    navbar,
+    sideBar
+  },
+  methods: {
+    toggleSideNav(){
+      this.fixed = !this.fixed
+      this.offCanvas = !this.offCanvas
+    },
+  },
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style rel="stylesheet" src="./assets/css/font-awesome.min.css"></style>
+<style src="./assets/css/app.css"></style>
+<style src="./assets/css/materialize.css"></style>

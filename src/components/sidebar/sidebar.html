@@ -1,0 +1,28 @@
+<ul id="slide-out" :class="{'side-nav':true,'fixed':fixed}">
+  <router-link tag="li" to="/">
+    <a><i class="material-icons">dashboard</i>Dashboard</a>
+  </router-link>
+
+  <router-link tag="li" to="/useraccount">
+    <a><i class="material-icons">supervisor_account</i>Accounts</a>
+  </router-link>
+
+  <router-link tag="li" to="/documents">
+    <a><i class="material-icons">note</i>Documents</a>
+  </router-link>
+
+  <router-link tag="li" to="/settings">
+    <a><i class="material-icons">settings_applications</i>Settings</a>
+  </router-link>
+
+  <router-link tag="li" to="/archive">
+    <a><i class="material-icons">archive</i>Archive</a>
+  </router-link>
+  <router-link tag="li" to="/">
+    <a><i class="material-icons">create_new_folder</i>New folder</a>
+  </router-link>
+
+  <router-link tag="li" to="/">
+    <a><i class="material-icons">file_upload</i>Upload document</a>
+  </router-link>
+</ul>
