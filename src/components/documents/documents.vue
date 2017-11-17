@@ -4,10 +4,12 @@
 
 <script>
 import documentTable from "../documentTable/documentTable"
+import searchBar from "../searchBar/searchBar"
 export default {
   name:"Documents",
   components:{
-    documentTable
+    documentTable,
+    searchBar
   }
 }
 </script>
