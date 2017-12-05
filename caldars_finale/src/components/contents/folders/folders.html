@@ -1,9 +1,9 @@
 <div class="tile is-ancestor">
-  <div class="columns is-centered"  style="display:inline-flex">
-    <div class="column" v-for="(document, index) in documents" style="display:inline-flex">
-      <div> 
-        <div><i class="fa fa-folder fa-5x"></i></div>
-        <div><small>My document</small></div>
+  <div class="columns is-centered is-multiline">
+    <div class="column" v-for="(document, index) in documents">
+      <div class="folders"> 
+        <div style="display:inline-flex"><input type="checkbox"><i class="fa fa-folder fa-5x"></i></div>
+        <div><small>Document category</small></div>
       </div>
     </div>
   </div>

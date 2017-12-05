@@ -7,7 +7,7 @@ export default {
   name:"folders",
   data () {
     return {
-      documents:4
+      documents:18
     }
   }
 }

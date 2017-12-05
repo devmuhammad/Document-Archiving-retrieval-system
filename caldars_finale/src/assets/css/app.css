@@ -1,14 +1,14 @@
 .sidenav {
   height: 100%;
-  width: 250px;
+  width: 15%;
   position: fixed;
   z-index: 1;
   top: 0px;
   left: 0;
-  background-color: #42526e;
+  background-color: #3273dc;
   overflow-x: hidden;
   padding-top: 85px;
-  box-shadow:  0px 0px 2px #888888;
+  box-shadow:  0px 0px 10px #888888;
 }
 
 .sidenav a {
@@ -17,7 +17,8 @@
   font-size: 17px;
   color: #ffffff;
   display: block;
-  transition: 0.3s;
+  transition: 0.5s;
+  transition-delay: 0.3ms;
   font-weight: 600;
 }
 
@@ -38,17 +39,29 @@
 
 .toolBar{
   border-bottom: 1px solid #f1f1f1;
-  padding: 20px 20px 20px 35px;
+  padding: 20px 20px 20px 30px;
   box-shadow:  0px 0px 5px #888888;
   top:0;
   width: 85%;
   background-color: #fff;
   position: fixed;
+  z-index: 999999;
 }
 
 .view > div{
-  padding-left: 20px;
+  padding-left: 30px;
   margin-top: 100px;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+  from {top: 0px;}
+  to {bottom: 0px;}
+}
+
+@keyframes mymove {
+  from {top: 0px;}
+  to {bottom: 0px;}
 }
 
 .document_footer{
@@ -59,6 +72,8 @@
   background-color: #fff;
   box-shadow:  0px 0px 5px #888888;
   padding: 5px;
+  transition: 0.3s;
+  transition-delay: 0.3ms;
 }
 
 .subFooter{
@@ -71,4 +86,31 @@
 
 .breadCrumbIcon{
   padding: 5px;
+}
+
+.folders{
+  padding: 35px;
+  cursor: pointer;
+}
+
+.filter{
+  padding: 7px;
+}
+
+.documentAction{
+  padding: 5px;
+  color:#42526e;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pagntn{
+  padding-right: 35px;
+  padding-left: 35px;
+}
+
+div.documentAction:hover{
+  width: 90%;
+  background-color: #daebfd;
+  color:#3273dc;
 }
