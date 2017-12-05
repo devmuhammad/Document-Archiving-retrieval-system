@@ -1,4 +1,4 @@
-<template src="./sidebar.html">
+<template src="./sideBar.html">
   
 </template>
 
@@ -6,18 +6,17 @@
 <script>
 export default {
   name:"Sidebar",
-  props:["fixed"],
-  mounted:function () { 
-    return this.changeActiveRoute() 
-  },
+  mounted:function () { return this.changeActiveRoute() },
   data () {
     return {
       activeRoute:{
         dashActive:false,
         accountActive:false,
         settingsActive:false,
-        documentsActive:false,
-        archiveActive:false
+        budgetActive:false,
+        transactActive:false,
+        usersActive:false,
+        reportActive:false
       }
     }
   },
@@ -25,20 +24,16 @@ export default {
     $route:"changeActiveRoute"
   },
   methods:{
-    show(){
-      $('.button-collapse').sideNav('show');
-    },
     changeActiveRoute(){
-      let newState = {dashActive:false, accountActive:false, settingsActive:false, documentsActive:false, archiveActive:false}
+      let newState = {dashActive:false, accountActive:false, settingsActive:false, budgetActive:false, transactActive:false, usersActive:false, reportActive:false}
       let curPath = window.location.pathname.split("/",4)[1]
 
       switch("/"+curPath){
         case "/":
           newState.dashActive = true
           this.activeRoute = newState
-          console.log(newState)
           break;
-        case "/useraccount":  
+        case "/documents":  
           newState.accountActive = true
           this.activeRoute = newState
           break;
@@ -46,14 +41,22 @@ export default {
           newState.settingsActive = true
           this.activeRoute = newState
           break  
-        case "/documents":
+        case "/users":
           newState.budgetActive = true
           this.activeRoute = newState
           break;
-        case "/archive":
+        case "/transactions":
           newState.transactActive = true
           this.activeRoute = newState
-          break;  
+          break;
+        case "/users":
+          newState.usersActive = true
+          this.activeRoute = newState
+          break;
+        case "/reports":
+          newState.reportActive = true
+          this.activeRoute = newState
+          break      
       }
     }
   }

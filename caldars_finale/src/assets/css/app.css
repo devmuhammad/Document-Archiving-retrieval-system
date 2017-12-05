@@ -1,0 +1,74 @@
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0px;
+  left: 0;
+  background-color: #42526e;
+  overflow-x: hidden;
+  padding-top: 85px;
+  box-shadow:  0px 0px 2px #888888;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 20px;
+  text-decoration: none;
+  font-size: 17px;
+  color: #ffffff;
+  display: block;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+  font-weight: 600;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.sidenav>.routeIsActive{
+  color:#333333;
+  background-color: #daebfd;
+  margin-left:10px
+}
+
+.toolBar{
+  border-bottom: 1px solid #f1f1f1;
+  padding: 20px 20px 20px 35px;
+  box-shadow:  0px 0px 5px #888888;
+  top:0;
+  width: 85%;
+  background-color: #fff;
+  position: fixed;
+}
+
+.view > div{
+  padding-left: 20px;
+  margin-top: 100px;
+}
+
+.document_footer{
+  bottom: 0;
+  width: 85%;
+  height: 50px;
+  position: fixed;
+  background-color: #fff;
+  box-shadow:  0px 0px 5px #888888;
+  padding: 5px;
+}
+
+.subFooter{
+  background-color: transparent;
+}
+
+.tab{
+  background-color: ghostwhite;
+}
+
+.breadCrumbIcon{
+  padding: 5px;
+}

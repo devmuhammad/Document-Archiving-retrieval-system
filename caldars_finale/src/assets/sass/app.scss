@@ -1,0 +1,19 @@
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+
+$blue: #42526e;
+$pink: #42526e;
+$pink-invert: #daebfd;
+
+$primary: $pink;
+$success:#005744;
+$primary-invert: $pink-invert;
+$danger: #7f0a25;
+$warning: #fff500;
+$tabs-boxed-link-active-background-color: $primary;
+$navbar-item-hover-background-color:transparent;
+$tabs-toggle-link-border-width:1.5px;
+$modal-card-title-color:$primary;
+$modal-card-head-padding:5px;
+$navbar-height:3.25rem;
+$navbar-item-img-max-height:6.00rem;
+@import "../node_modules/bulma/bulma.sass";
