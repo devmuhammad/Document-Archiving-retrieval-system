@@ -8,7 +8,7 @@
   background-color: #3273dc;
   overflow-x: hidden;
   padding-top: 85px;
-  box-shadow:  0px 0px 10px #888888;
+  box-shadow:  0px 0px 20px #888888;
 }
 
 .sidenav a {
@@ -53,21 +53,10 @@
   margin-top: 100px;
 }
 
-/* Safari 4.0 - 8.0 */
-@-webkit-keyframes mymove {
-  from {top: 0px;}
-  to {bottom: 0px;}
-}
-
-@keyframes mymove {
-  from {top: 0px;}
-  to {bottom: 0px;}
-}
-
 .document_footer{
   bottom: 0;
   width: 85%;
-  height: 50px;
+  height:50px;
   position: fixed;
   background-color: #fff;
   box-shadow:  0px 0px 5px #888888;
@@ -89,8 +78,17 @@
 }
 
 .folders{
-  padding: 35px;
+  width: 200px;
+  height: 150px;
+  padding: 15px;
   cursor: pointer;
+  text-align: center;
+}
+
+.folders:hover{
+  transition: 0.5px;
+  cursor: pointer;
+  color: grey;
 }
 
 .filter{
@@ -105,12 +103,16 @@
 }
 
 .pagntn{
-  padding-right: 35px;
-  padding-left: 35px;
+  margin-right: 35px;
+  margin-left: 35px;
 }
 
 div.documentAction:hover{
-  width: 90%;
+  width: 99%;
   background-color: #daebfd;
   color:#3273dc;
+}
+
+.foldersDiv{
+  margin-top:20px;
 }

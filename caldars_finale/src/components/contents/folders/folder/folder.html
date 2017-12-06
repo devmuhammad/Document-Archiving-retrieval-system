@@ -1,0 +1,15 @@
+<div class="folders" @mouseover="showAttr" @mouseleave="hideAttr">
+  <div style="display:inline-flex">
+    <div style="margin:2px" v-show="isAttr == true">
+      <input type="checkbox" v-model="selected">
+    </div>
+    <img src="../../../../assets/img/folder3.png" />
+    <div style="margin:2px;margin-top:-10px" v-show="isAttr == true">
+      <span class="tag is-success is-rounded">{{document.amt}}</span>
+    </div>
+  </div>
+  <div>
+    <small>{{document.name}}</small>
+    <span class="tag is-danger is-rounded" v-show="selected == true"><i class="fa fa-check"></i></span>
+  </div>
+</div>
