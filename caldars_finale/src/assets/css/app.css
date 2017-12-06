@@ -41,6 +41,7 @@
   margin-left: 10px;
 }
 
+
 .toolBar{
   border-bottom: 1px solid #f1f1f1;
   padding: 15px 15px 15px 30px;
@@ -67,14 +68,22 @@
   padding: 5px;
   transition: 0.3s;
   transition-delay: 0.3ms;
+  overflow:auto
 }
 
 .subFooter{
   background-color: transparent;
+  padding-top:50px;
+  
 }
 
 .tab{
   background-color: ghostwhite;
+}
+
+.tabsCom{
+  position:fixed;
+  padding-top:40px;
 }
 
 .breadCrumbIcon{
@@ -219,3 +228,26 @@ div.documentAction:hover{
 .cmpny-name{
   font-weight: 500;
 }
+
+
+.commentImg{
+  border-radius: 50%;
+}
+
+.commentBox{
+  padding-left:100px;
+  padding-right:100px;
+  margin-left: 50px;
+  margin-right:50px;
+  border:1px;
+
+}
+
+.newact{
+  background-color : rgb(243, 247, 250);
+  height :auto;
+  padding-left:10px;
+  padding-top:5px;
+  text-align: left
+}
+
