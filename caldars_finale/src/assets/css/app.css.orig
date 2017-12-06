@@ -53,17 +53,6 @@
   margin-top: 100px;
 }
 
-/* Safari 4.0 - 8.0 */
-@-webkit-keyframes mymove {
-  from {top: 0px;}
-  to {bottom: 0px;}
-}
-
-@keyframes mymove {
-  from {top: 0px;}
-  to {bottom: 0px;}
-}
-
 .document_footer{
   bottom: 0;
   width: 85%;
@@ -74,12 +63,11 @@
   padding: 5px;
   transition: 0.3s;
   transition-delay: 0.3ms;
-  overflow:auto
+  overflow: scroll
 }
 
 .subFooter{
   background-color: transparent;
-  padding-top:50px;
   
 }
 
@@ -87,16 +75,15 @@
   background-color: ghostwhite;
   
 }
-.tabsCom{
-  position:fixed;
-  padding-top:40px;
-}
+
 .breadCrumbIcon{
   padding: 5px;
 }
 
 .folders{
-  padding: 35px;
+  width: 200px;
+  height: 150px;
+  padding: 15px;
   cursor: pointer;
   text-align: center;
 }
@@ -128,26 +115,10 @@ div.documentAction:hover{
   background-color: #daebfd;
   color:#3273dc;
 }
+<<<<<<< HEAD
+=======
 
 .foldersDiv{
   margin-top:20px;
 }
-.commentImg{
-  border-radius: 50%;
-}
-.commentBox{
-  padding-left:100px;
-  padding-right:100px;
-  margin-left: 50px;
-  margin-right:50px;
-  border:1px;
-
-}
-.newact{
-  background-color : rgb(243, 247, 250);
-  height :auto;
-  padding-left:10px;
-  padding-top:5px;
-  text-align: left
-}
-
+>>>>>>> bab1847d1754d6519cf759de441e85be4e3981b7
