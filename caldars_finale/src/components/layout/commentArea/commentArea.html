@@ -1,12 +1,41 @@
-<div class="document_footer">
+<div class="document_footer"  :style="{'height': +document_Footer+'px'}" >
   <nav class="level">
     <div class="level-item has-text-centered"></div>
     <div class="level-item has-text-centered">
-      <commentTab></commentTab>
+      <div class="tabs is-toggle is-small">
+        <ul>
+            
+          <li class="tab" @click="checkActive" :class="{'is-active':iscomActive}" >
+            <a @click="activeTab = 'comments' ">
+            <span class="icon is-small"><i class="fa fa-comment"></i></span>
+              <span>Comments <span class="tag is-rounded is-primary">132</span></span>
+              
+            </a>
+            </li>
+          <li class="tab" @click="checkActive " :class="{'is-active':isActive}">
+            <a @click="activeTab = 'activities'"> 
+              <span class="icon is-small"><i class="fa fa-clone"></i></span>
+              <span>Activities <span class="tag is-rounded is-primary">12</span></span>
+            </a>
+          </li>
+        </ul>
+        
+      </div>
+      
     </div>
-    <div class="level-item has-text-centered"></div>
+    <div class="level-item has-text-centered">   </div>
   </nav>
-  <div class="subFooter">
-
+  <div class="subFooter" >
+    <div id="comments" v-if=" activeTab == 'comments' " >
+      
+      <comments></comments>
+      
+  </div>
+  <div id="activities" v-else-if="activeTab == 'activities'">
+      
+    <activities></activities>
+      
+    </div>
+    
   </div>
 </div>

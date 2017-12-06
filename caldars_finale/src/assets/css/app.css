@@ -74,14 +74,17 @@
   padding: 5px;
   transition: 0.3s;
   transition-delay: 0.3ms;
+  overflow: scroll
 }
 
 .subFooter{
   background-color: transparent;
+  
 }
 
 .tab{
   background-color: ghostwhite;
+  
 }
 
 .breadCrumbIcon{
