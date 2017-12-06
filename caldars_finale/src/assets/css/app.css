@@ -12,7 +12,7 @@
 }
 
 .sidenav a {
-  padding: 8px 8px 8px 20px;
+  padding: 15px 15px 15px 20px;
   text-decoration: none;
   font-size: 17px;
   color: #ffffff;
@@ -24,6 +24,7 @@
 
 .sidenav a:hover, .offcanvas a:focus{
   font-weight: 600;
+  background-color: #004ac1;
 }
 
 @media screen and (max-height: 450px) {
@@ -31,15 +32,18 @@
   .sidenav a {font-size: 18px;}
 }
 
-.sidenav>.routeIsActive{
+.sidenav >.routeIsActive{
   color:#333333;
   background-color: #daebfd;
-  margin-left:10px
+}
+
+.sidenav >.routeIsActive>.route-name{
+  margin-left: 10px;
 }
 
 .toolBar{
   border-bottom: 1px solid #f1f1f1;
-  padding: 20px 20px 20px 30px;
+  padding: 15px 15px 15px 30px;
   box-shadow:  0px 0px 5px #888888;
   top:0;
   width: 85%;
@@ -78,7 +82,7 @@
 }
 
 .folders{
-  width: 200px;
+  width: 160px;
   height: 150px;
   padding: 15px;
   cursor: pointer;
@@ -115,4 +119,103 @@ div.documentAction:hover{
 
 .foldersDiv{
   margin-top:20px;
+}
+
+.notify-img{
+  width: 25px;
+  height:25px; 
+  border-radius: 50%;
+  background-color: #ffafa2;
+}
+
+.notifications{
+  width:300px;
+  height: 400px;
+  z-index:999999999;
+  border-radius: 5px;
+  background-color: #fff;
+  position: fixed;
+  box-shadow:0px 0px 5px #888888;
+  top:70px;
+  transition: 0.6s;
+  overflow: hidden;
+}
+
+.notebox{
+  border-radius: 0px;
+  padding: 5px;
+  border-bottom: 1.5px solid #fff;
+  cursor: pointer;
+}
+
+.notificationHeader{
+  background-color: #fff;
+  padding: 5px;
+  position: fixed;
+  width: 300px;
+  font-weight: 500;
+}
+
+.newNote{
+  background-color: ghostwhite;
+}
+
+.noteboxcontent{
+  font-size: 14.5px;
+}
+
+.style-1::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.style-1::-webkit-scrollbar-thumb
+{
+  box-shadow: 0 0 4px #888888;
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 4px #888888;
+  background-color: #ccc;
+}
+
+.style-1{
+  overflow-y: auto;
+}
+
+.toolBar-item{
+  cursor: pointer;
+}
+
+.caret2:before{
+  margin-left: 250px;
+  margin-top:-12px;
+  content: "";
+  position: fixed;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid grey;
+}
+
+.noteTemplate{
+  margin-top: 40px;
+}
+
+.cpyryt{
+  bottom:0;
+  position: fixed;
+  color: #fff;
+  padding: 5px;
+  font-weight: 600;
+  background-color: #004ac1;
+  width: inherit;
+}
+
+.doc-name{
+  font-weight: 500;
+}
+
+.cmpny-name{
+  font-weight: 500;
 }

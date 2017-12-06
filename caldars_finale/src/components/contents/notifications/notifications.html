@@ -1,0 +1,14 @@
+<div 
+  :class="{'notifications':true,'style-1':showScroll}"
+   @mouseover="showScroll=true" 
+   @mouseleave="showScroll=false"
+   v-show="showNote"
+> 
+  <div class="caret2"></div>
+  <div class="notificationHeader">
+    <span class="tag is-white">Notifications</span>
+  </div>
+  <div class="noteTemplate">
+    <notification v-for="(note,index) in notes" :key="index"/>
+  </div>
+</div>

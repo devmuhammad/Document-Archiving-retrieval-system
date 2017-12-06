@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import notifications from "@/components/contents/notifications/notifications"
+
 export default {
   name:"toolBar",
   mounted(){ return this.checkRoute() },
@@ -13,7 +15,8 @@ export default {
         settings:false,
         users:false,
         documents:false
-      }
+      },
+      showNote:false
     }
   },
   watch:{
@@ -38,6 +41,7 @@ export default {
         this.routes = newRoutes
       }
     }
-  }
+  },
+  components:{notifications}
 }
 </script>
