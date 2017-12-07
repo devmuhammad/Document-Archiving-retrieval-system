@@ -68,13 +68,13 @@
   padding: 5px;
   transition: 0.3s;
   transition-delay: 0.3ms;
-  overflow:auto
 }
 
 .subFooter{
   background-color: transparent;
-  padding-top:50px;
-  
+  padding-top:50px;  
+  overflow: auto;
+  height: 250px;
 }
 
 .tab{
@@ -83,7 +83,6 @@
 
 .tabsCom{
   position:fixed;
-  padding-top:40px;
 }
 
 .breadCrumbIcon{
@@ -153,7 +152,7 @@ div.documentAction:hover{
 .notebox{
   border-radius: 0px;
   padding: 5px;
-  border-bottom: 1.5px solid #fff;
+  border-bottom: 2.0px solid #fff;
   cursor: pointer;
 }
 
@@ -235,19 +234,42 @@ div.documentAction:hover{
 }
 
 .commentBox{
-  padding-left:100px;
-  padding-right:100px;
-  margin-left: 50px;
-  margin-right:50px;
   border:1px;
-
+  margin-right: 300px;
+  margin-left: 300px;
 }
 
 .newact{
-  background-color : rgb(243, 247, 250);
   height :auto;
   padding-left:10px;
   padding-top:5px;
   text-align: left
 }
 
+.commentField{
+  background-color:ghostwhite;
+  border:2px solid #ccc;
+  width: 500px;
+}
+
+.commentCtrls{
+  margin-bottom: 30px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div>nav.commentHeader.level{
+  background-color: #fff;
+  z-index: 999999999;
+  position: fixed;
+  width:80%;
+  margin-top: -5px;
+  padding: 5px;
+  margin-bottom: 30px;
+}
+
+.textarea:focus{
+  border:1px solid #fff;
+}
