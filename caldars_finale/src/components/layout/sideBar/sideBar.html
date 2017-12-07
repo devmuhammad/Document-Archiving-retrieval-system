@@ -1,19 +1,27 @@
 <div id="mySidenav" class="sidenav">
   <router-link to="/" :class="{'routeIsActive':activeRoute.dashActive}">
-    <span><i class="fa fa-tachometer"></i></span>
-    <span>Dashboard</span>
+    <div class="route-name">
+      <span><i class="fa fa-tachometer"></i></span>
+      <span>Dashboard</span>
+    </div>
   </router-link>
   <router-link to="/documents" :class="{'routeIsActive':activeRoute.accountActive}">
-    <span><i class="fa fa-folder-open"></i></span>
-    <span>Documents</span>
+    <div class="route-name">
+      <span><i class="fa fa-folder-open"></i></span>
+      <span>Documents</span>
+    </div>
   </router-link>
   <router-link to="/users" :class="{'routeIsActive':activeRoute.budgetActive}">
-    <span><i class="fa fa-user"></i></span>
-    <span>Users</span>
+    <div class="route-name">
+      <span><i class="fa fa-user"></i></span>
+      <span>Users</span>
+    </div>
   </router-link>
   <router-link to="/settings" :class="{'routeIsActive':activeRoute.settingsActive}">
-    <span><i class="fa fa-gear"></i></span>
-    <span>Settings</span>
+    <div class="route-name">
+      <span><i class="fa fa-gear"></i></span>
+      <span>Settings</span>
+    </div>
   </router-link>
   <!--router-link to="/transactions" :class="{'routeIsActive':activeRoute.transactActive}">
       <span><i class="fa fa-exchange"></i></span>
@@ -27,4 +35,7 @@
       <span><i class="fa fa-clone"></i></span>
       <span>Reports</span>
   </router-link-->
+  <div class="cpyryt">
+    <small>&copy; 2017 COMSOFT Acuity Limited</small>
+  </div>
 </div>

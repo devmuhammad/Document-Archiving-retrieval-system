@@ -12,7 +12,7 @@
 }
 
 .sidenav a {
-  padding: 8px 8px 8px 20px;
+  padding: 15px 15px 15px 20px;
   text-decoration: none;
   font-size: 17px;
   color: #ffffff;
@@ -24,6 +24,7 @@
 
 .sidenav a:hover, .offcanvas a:focus{
   font-weight: 600;
+  background-color: #004ac1;
 }
 
 @media screen and (max-height: 450px) {
@@ -31,15 +32,20 @@
   .sidenav a {font-size: 18px;}
 }
 
-.sidenav>.routeIsActive{
+.sidenav >.routeIsActive{
   color:#333333;
   background-color: #daebfd;
-  margin-left:10px
+
 }
+
+.sidenav >.routeIsActive>.route-name{
+  margin-left: 10px;
+}
+
 
 .toolBar{
   border-bottom: 1px solid #f1f1f1;
-  padding: 20px 20px 20px 30px;
+  padding: 15px 15px 15px 30px;
   box-shadow:  0px 0px 5px #888888;
   top:0;
   width: 85%;
@@ -53,16 +59,7 @@
   margin-top: 100px;
 }
 
-/* Safari 4.0 - 8.0 */
-@-webkit-keyframes mymove {
-  from {top: 0px;}
-  to {bottom: 0px;}
-}
 
-@keyframes mymove {
-  from {top: 0px;}
-  to {bottom: 0px;}
-}
 
 .document_footer{
   bottom: 0;
@@ -74,29 +71,32 @@
   padding: 5px;
   transition: 0.3s;
   transition-delay: 0.3ms;
-  overflow:auto
+  
 }
 
 .subFooter{
   background-color: transparent;
-  padding-top:50px;
-  
+  padding-top:50px;  
+  overflow: auto;
+  height: 250px;
 }
 
 .tab{
   background-color: ghostwhite;
-  
 }
+
 .tabsCom{
   position:fixed;
-  padding-top:40px;
 }
+
 .breadCrumbIcon{
   padding: 5px;
 }
 
 .folders{
-  padding: 35px;
+  width: 160px;
+  height: 150px;
+  padding: 15px;
   cursor: pointer;
   text-align: center;
 }
@@ -132,16 +132,116 @@ div.documentAction:hover{
 .foldersDiv{
   margin-top:20px;
 }
+
+.notify-img{
+  width: 25px;
+  height:25px; 
+  border-radius: 50%;
+  background-color: #ffafa2;
+}
+
+.notifications{
+  width:300px;
+  height: 400px;
+  z-index:999999999;
+  border-radius: 5px;
+  background-color: #fff;
+  position: fixed;
+  box-shadow:0px 0px 5px #888888;
+  top:70px;
+  transition: 0.6s;
+  overflow: hidden;
+}
+
+.notebox{
+  border-radius: 0px;
+  padding: 5px;
+  border-bottom: 2.0px solid #fff;
+  cursor: pointer;
+}
+
+.notificationHeader{
+  background-color: #fff;
+  padding: 5px;
+  position: fixed;
+  width: 300px;
+  font-weight: 500;
+}
+
+.newNote{
+  background-color: ghostwhite;
+}
+
+.noteboxcontent{
+  font-size: 14.5px;
+}
+
+.style-1::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.style-1::-webkit-scrollbar-thumb
+{
+  box-shadow: 0 0 4px #888888;
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 4px #888888;
+  background-color: #ccc;
+}
+
+.style-1{
+  overflow-y: auto;
+}
+
+.toolBar-item{
+  cursor: pointer;
+}
+
+.caret2:before{
+  margin-left: 250px;
+  margin-top:-12px;
+  content: "";
+  position: fixed;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid grey;
+}
+
+.noteTemplate{
+  margin-top: 40px;
+}
+
+.cpyryt{
+  bottom:0;
+  position: fixed;
+  color: #fff;
+  padding: 5px;
+  font-weight: 600;
+  background-color: #004ac1;
+  width: inherit;
+}
+
+.doc-name{
+  font-weight: 500;
+}
+
+.cmpny-name{
+  font-weight: 500;
+}
+
+
 .commentImg{
   border-radius: 50%;
 }
 .commentBox{
-  padding-left:100px;
-  padding-right:100px;
-  margin-left: 50px;
-  margin-right:50px;
-
+  border:1px;
+  margin-right: 300px;
+  margin-left: 300px;
 }
+
 .newact{
   background-color : rgb(243, 247, 250);
   height :auto;
@@ -150,3 +250,30 @@ div.documentAction:hover{
   text-align: left
 }
 
+.commentField{
+  background-color:ghostwhite;
+  border:2px solid #ccc;
+  width: 500px;
+}
+
+.commentCtrls{
+  margin-bottom: 30px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div>nav.commentHeader.level{
+  background-color: #fff;
+  z-index: 999999999;
+  position: fixed;
+  width:80%;
+  margin-top: -5px;
+  padding: 5px;
+  margin-bottom: 30px;
+}
+
+.textarea:focus{
+  border:1px solid #fff;
+}

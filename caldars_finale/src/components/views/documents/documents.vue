@@ -15,6 +15,22 @@ export default {
       documents:14
     }
   },
+  methods:{
+    Delete(){
+      new Toast({
+        message: 'Are you sure you want to delete "Proposal and 3 other documents"?',
+        type: 'danger',
+        customButtons:[
+          {
+            text:"Yes",
+            onClick:function confirmDelete(){
+              return true;
+            }
+          }
+        ]
+      })
+    }
+  },
   components:{commentArea, folders, search,pagination}
 }
 </script>
