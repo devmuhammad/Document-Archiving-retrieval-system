@@ -14,7 +14,8 @@ export default {
         dashboard: false,
         settings:false,
         users:false,
-        documents:false
+        documents:false,
+        help:false
       },
       showNote:false
     }
@@ -24,7 +25,7 @@ export default {
   },
   methods:{
     checkRoute () {
-      let newRoutes = {dashboard: false,settings:false, users:false, documents:false}
+      let newRoutes = {dashboard: false,settings:false, users:false, documents:false, help:false}
       let curRoute = this.$route.path
       
       if(curRoute === '/documents'){
@@ -38,6 +39,9 @@ export default {
         this.routes = newRoutes
       }else if(curRoute === '/settings'){
         newRoutes.settings = true
+        this.routes = newRoutes
+      }else if(curRoute === '/help'){
+        newRoutes.help = true
         this.routes = newRoutes
       }
     }

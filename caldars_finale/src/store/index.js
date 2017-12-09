@@ -5,6 +5,7 @@ import * as mutations from './mutations'
 import Activities from './modules/Activities'
 import Comments from './modules/Comments'
 import Usermanagement from './modules/usermanagement'
+import documentCategory from "./modules/documentCategory"
 
 Vue.use(Vuex)
 
@@ -15,5 +16,6 @@ export default new Vuex.Store({
     Activities,
     Comments,
     Usermanagement
+    documentCategory
   }
 })  

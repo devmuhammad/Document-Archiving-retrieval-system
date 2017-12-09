@@ -11,12 +11,10 @@ export default {
     return {
       activeRoute:{
         dashActive:false,
-        accountActive:false,
+        documentActive:false,
         settingsActive:false,
-        budgetActive:false,
-        transactActive:false,
         usersActive:false,
-        reportActive:false
+        helpActive:false
       }
     }
   },
@@ -25,7 +23,7 @@ export default {
   },
   methods:{
     changeActiveRoute(){
-      let newState = {dashActive:false, accountActive:false, settingsActive:false, budgetActive:false, transactActive:false, usersActive:false, reportActive:false}
+      let newState = {dashActive:false, documentActive:false, settingsActive:false, usersActive:false, helpActive:false}
       let curPath = window.location.pathname.split("/",4)[1]
 
       switch("/"+curPath){
@@ -34,7 +32,7 @@ export default {
           this.activeRoute = newState
           break;
         case "/documents":  
-          newState.accountActive = true
+          newState.documentActive = true
           this.activeRoute = newState
           break;
         case "/settings":
@@ -42,21 +40,13 @@ export default {
           this.activeRoute = newState
           break  
         case "/users":
-          newState.budgetActive = true
-          this.activeRoute = newState
-          break;
-        case "/transactions":
-          newState.transactActive = true
-          this.activeRoute = newState
-          break;
-        case "/users":
           newState.usersActive = true
           this.activeRoute = newState
           break;
-        case "/reports":
-          newState.reportActive = true
+        case "/help":
+          newState.helpActive = true
           this.activeRoute = newState
-          break      
+          break;   
       }
     }
   }

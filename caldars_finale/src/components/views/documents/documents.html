@@ -1,4 +1,12 @@
 <div class="view">
+    <uploadModal :isUploadActive="setUploadActive" :closeModal = "closeModal"/>
+    <categoryModal 
+      v-if="isNewCategoryActive === true"
+      :isNewCategoryActive="isNewCategoryActive" 
+      :closeNewCategory="closeCategoryModal" 
+      :addCategory="create_new_category"
+      :newCategory="new_category"
+    />
   <div class="columns">
 
     <div class="column">
@@ -16,14 +24,19 @@
           <span>Select all</span>
         </div>
 
-        <div class="documentAction">
+        <div class="documentAction" @click="displayUploadModal">
           <span><i class="fa fa-upload"></i></span>
           <span>Upload files</span>
         </div>
 
-        <div class="documentAction">
-          <span><i class="fa fa-plus"></i></span>
+        <div class="documentAction" @click="openCategoryModal">
+          <span><i class="fa fa-folder"></i></span>
           <span>Create category</span>
+        </div>
+
+        <div class="documentAction">
+          <span><i class="fa fa-plus-square"></i></span>
+          <span>New project</span>
         </div>
 
         <div class="documentAction" @click="Delete">
@@ -32,11 +45,12 @@
         </div>
 
         <div class="documentAction">
-          <span><i class="fa fa-external-link-square"></i></span>
+          <span><i class="fa fa-share"></i></span>
           <span>Share</span>
         </div>
       </p>
     </div>
   </div>
+  
   <commentArea></commentArea>
 </div>

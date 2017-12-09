@@ -4,6 +4,7 @@ import Dashboard from '@/components/views/dashboard/dashboard'
 import Documents from '@/components/views/documents/documents'
 import Settings from '@/components/views/settings/settings'
 import Users from '@/components/views/users/users'
+import Help from "@/components/views/help/help"
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/users',
       name: 'Users',
       component: Users
+    },
+    {
+      path: '/help',
+      name: 'Help',
+      component: Help
     }
   ]
 })

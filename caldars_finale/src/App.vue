@@ -11,10 +11,12 @@
 <script>
 import sideBar from "@/components/layout/sideBar/sideBar"
 import toolBar from "@/components/layout/toolBar/toolBar"
+import {LoadDocuments} from "@/mixins/fetchDocuments"
 
 export default {
   name: 'app',
-  components:{sideBar,toolBar}
+  components:{sideBar,toolBar},
+  mixins:[LoadDocuments]
 }
 </script>
 
