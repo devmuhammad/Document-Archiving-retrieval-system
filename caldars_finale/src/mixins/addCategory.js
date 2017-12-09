@@ -5,7 +5,7 @@ export const addCategory = {
   data(){
     return {
       new_category:{
-        documentType: "Type Category name",
+        documentType: "New Category",
         dateCreated: new Date().toUTCString(),
         parentid: 0,
         haschild: 0,
@@ -24,8 +24,8 @@ export const addCategory = {
     },
 
     notify(data,status){
-      let success_msg = "has been created successfully, you can start uploading your files now!"
-      let error_msg = "oPpps!"
+      let success_msg = " "+"has been created successfully, you can start uploading your files now!"
+      let error_msg = " "+"oOPps!"
 
       new Toast({
         message: (status === "success") ? data + success_msg : error_msg + data,
@@ -35,7 +35,7 @@ export const addCategory = {
 
     create_new_category(){
       if(this.new_category.documentType != ""){
-
+console.log("adding...")
         const addCategory = (category) => {
           return new Promise ((resolve, reject) => {
             API.addCategory(category)

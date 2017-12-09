@@ -5,7 +5,7 @@ export default {
     const res = () => {
       return new Promise((resolve, reject) => {
         HTTP.get('list/documenttypes?page=1&size=100')
-        .then(response => { console.log(response.data); resolve(response.data) })
+        .then(response => { resolve(response.data) })
         .catch(e => { reject(e) })
       })
     }
@@ -29,8 +29,8 @@ export default {
     const res = (parentId) => {
       return new Promise((resolve, reject) => {
         HTTP.get('documenttypes/add')
-        .then(response => {resolve(response.data) })
-        .catch(e => { reject(e) })
+        .then(response => {console.log(response.data); resolve(response.data) })
+        .catch(e => { console.log(e); reject(e) })
       })
     }
 

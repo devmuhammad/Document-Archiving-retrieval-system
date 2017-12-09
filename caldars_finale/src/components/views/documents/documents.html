@@ -1,6 +1,7 @@
 <div class="view">
     <uploadModal :isUploadActive="setUploadActive" :closeModal = "closeModal"/>
     <categoryModal 
+      v-if="isNewCategoryActive === true"
       :isNewCategoryActive="isNewCategoryActive" 
       :closeNewCategory="closeCategoryModal" 
       :addCategory="create_new_category"

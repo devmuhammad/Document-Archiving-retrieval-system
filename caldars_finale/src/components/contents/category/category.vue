@@ -6,6 +6,9 @@
 <script>
 export default {
   name:"new_category",
-  props:['isNewCategoryActive','closeNewCategory','addCategory', 'newCategory']
+  props:['isNewCategoryActive','closeNewCategory','addCategory', 'newCategory'],
+  mounted(){
+    return this.$refs.category.focus()
+  }
 }
 </script>
