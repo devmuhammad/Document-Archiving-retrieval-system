@@ -5,13 +5,13 @@
       <span>Dashboard</span>
     </div>
   </router-link>
-  <router-link to="/documents" :class="{'routeIsActive':activeRoute.accountActive}">
+  <router-link to="/documents" :class="{'routeIsActive':activeRoute.documentActive}">
     <div class="route-name">
       <span><i class="fa fa-folder-open"></i></span>
       <span>Documents</span>
     </div>
   </router-link>
-  <router-link to="/users" :class="{'routeIsActive':activeRoute.budgetActive}">
+  <router-link to="/users" :class="{'routeIsActive':activeRoute.usersActive}">
     <div class="route-name">
       <span><i class="fa fa-user"></i></span>
       <span>Users</span>
@@ -21,6 +21,12 @@
     <div class="route-name">
       <span><i class="fa fa-gear"></i></span>
       <span>Settings</span>
+    </div>
+  </router-link>
+  <router-link to="/help" :class="{'routeIsActive':activeRoute.helpActive}">
+    <div class="route-name">
+      <span><i class="fa fa-question-circle"></i></span>
+      <span>Help</span>
     </div>
   </router-link>
   <!--router-link to="/transactions" :class="{'routeIsActive':activeRoute.transactActive}">

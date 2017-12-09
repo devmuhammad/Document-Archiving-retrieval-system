@@ -1,9 +1,11 @@
 <div class="tile is-ancestor">
-  <div class="columns is-centered is-multiline">
-    <div class="column" v-for="(document, index) in documents">
-      <folder 
-        :document="document" 
-      />
+  <div class="columns  is-multiline is-centered">
+    <div class="column" v-for="(document, index) in listOfDocuments" v-if="isDocument > 0">
+        <folder :document="document" />
+    </div>
+    <div v-else>
+      <img src="../../../assets/img/empty-document.png" />
+      <p>No documents found!</p>
     </div>
   </div>
 </div>

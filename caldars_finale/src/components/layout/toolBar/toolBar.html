@@ -2,7 +2,7 @@
   <!-- Left side -->
   <div class="level-left">
     <div class="level-item">
-      <span class="tag is-medium cmpny-name">PAYANT TECH</span>
+      <span class="tag is-medium cmpny-name">FACTORY INC.</span>
     </div>
 
     <div class="level-item" v-if="routes.documents == true">
@@ -61,6 +61,19 @@
         <ul>
           <li class="is-active">
             <a href="#" aria-current="page">Settings</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="level-item" v-else-if="routes.help == true">
+      <span class="breadCrumbIcon">
+        <i class="fa fa-question-circle"></i>
+      </span>
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+          <li class="is-active">
+            <a href="#" aria-current="page">Help</a>
           </li>
         </ul>
       </nav>

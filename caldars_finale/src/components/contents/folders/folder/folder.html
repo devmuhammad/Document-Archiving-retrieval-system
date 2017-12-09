@@ -1,15 +1,18 @@
 <div class="folders" @mouseover="showAttr" @mouseleave="hideAttr">
   <div style="display:inline-flex">
-    <div style="margin:2px" v-show="isAttr == true">
+    <div style="margin:2px" v-if="isAttr == true">
       <input type="checkbox" v-model="selected">
     </div>
-    <img src="../../../../assets/img/folder3.png" />
-    <div style="margin:2px;margin-top:-10px" v-show="isAttr == true">
-      <span class="tag is-success is-rounded">{{document.amt}}</span>
+    <img src="../../../../assets/img/folder4.png" />
+    <div v-if="isAttr == true" class=" tooltip">
+      <i class="fa fa-ellipsis-h"></i>
+      <span class="tooltiptext">
+        <div><small>{{document.documentType}}</small></div>
+      </span>
     </div>
   </div>
   <div>
-    <small class="doc-name">{{document.name}}</small>
-    <span style="color:#42526e" v-show="selected == true"><i class="fa fa-check"></i></span>
+    <small class="doc-name">{{document.documentType}}</small>
+    <span style="color:#7f0a25" v-show="selected == true"><i class="fa fa-check"></i></span>
   </div>
 </div>
