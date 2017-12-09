@@ -31,21 +31,36 @@
         </ul>
     </div>
 
-    <div class="notification newact" v-for="(actvty,index) in activities" :key="index">
+    <div class="notification newact" 
+    v-for="(actvty,index) in activitylist" 
+    :key="index"
+    :activitylist="activitylist"
+    :id="actvty.id"
+    :flowcolor="actvty.workflowid.colors"
+    >
+    <button class="delete" @click="deleteActvty('{{id}}')"></button>
         <nav class="level">
             <div class="level-left ">
                 <div class="level-item ">
-                    <i class="fa fa-circle" style="color:lightseagreen"></i>
-                </div>
-                <div class="level-item has-text-centered ">
+                    <i class="fa fa-circle" style="color:'flowcolor'"></i>
+                </div> 
+                    
+                <div class="level-item has-text-centered "> 
                     <p>
-                        A new document
-                        <a>
-                            <small>Acuity proposal</small>
-                        </a> has been added by @codebyomar
-                        <small> 1hr ago</small>
+                        <strong style="float:left"> {{actvty.documentid.receivedfrom}}   </strong><br>
+                        <small class="wrap" style="text-align: left" >  {{actvty.comments}}</small>
+                        <small style="text-align: left;float:left">{{actvty.documentid.description}}</small>
                     </p>
                 </div>
+            </div>
+            <div class="level-right ">
+             <div class="level-item has-text-centered ">
+            <p class="heading">
+              Workflow:  {{actvty.workflowid.workflowname}}
+             <br>
+             <small> Date: {{actvty.activitydate}} </small>
+            </p>
+            </div>
             </div>
         </nav>
     </div>

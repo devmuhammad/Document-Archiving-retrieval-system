@@ -35,7 +35,6 @@
 .sidenav >.routeIsActive{
   color:#333333;
   background-color: #daebfd;
-
 }
 
 .sidenav >.routeIsActive>.route-name{
@@ -59,8 +58,6 @@
   margin-top: 100px;
 }
 
-
-
 .document_footer{
   bottom: 0;
   width: 85%;
@@ -71,7 +68,6 @@
   padding: 5px;
   transition: 0.3s;
   transition-delay: 0.3ms;
-  
 }
 
 .subFooter{
@@ -236,14 +232,22 @@ div.documentAction:hover{
 .commentImg{
   border-radius: 50%;
 }
+
 .commentBox{
+<<<<<<< HEAD
+  padding-left:100px;
+  padding-right:100px;
+  margin-left: 50px;
+  margin-right:50px;
+
+=======
   border:1px;
   margin-right: 300px;
   margin-left: 300px;
+>>>>>>> eb69c436942a0ad2786e92b8a2321d54428fedda
 }
 
 .newact{
-  background-color : rgb(243, 247, 250);
   height :auto;
   padding-left:10px;
   padding-top:5px;
@@ -254,7 +258,6 @@ div.documentAction:hover{
   background-color:ghostwhite;
   border:2px solid #ccc;
   width: 500px;
-  word-wrap:break-word;
 }
 
 .commentCtrls{
@@ -277,10 +280,4 @@ div>nav.commentHeader.level{
 
 .textarea:focus{
   border:1px solid #fff;
-}
-
-.wrap{
-  display:block;
-  width:400px;
-  word-wrap:break-word;
 }
