@@ -4,20 +4,29 @@
 
 <script>
 import folder from "./folder/folder"
+import list from "./list/list"
 import {mapGetters, mapActions} from "vuex"
+
 export default {
   name:"folders",
+  props:["isListType", "isFolderType"],
+
   data () {
     return {
-      isAttr:false
+      isAttr:false,
+      folderType:false
     }
   },
+
   computed:{
-    ...mapGetters(["listOfDocuments"]),
-    isDocument(){
-      return this.listOfDocuments.length
-    }
+    ...mapGetters(["listOfDocuments", "categoryDetails"]),
+
+    /**isDocument(){
+      console.log(this.listOfDocuments)
+      return (this.listOfDocuments.length) ? 10:10
+    },*/
   },
-  components:{folder}
+
+  components:{folder,list}
 }
 </script>

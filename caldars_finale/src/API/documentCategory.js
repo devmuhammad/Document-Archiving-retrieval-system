@@ -4,7 +4,7 @@ export default {
   LIST: async () => {
     const res = () => {
       return new Promise((resolve, reject) => {
-        HTTP.get('list/documenttypes?page=1&size=100')
+        HTTP.get('list/categories?page=0&size=10')
         .then(response => { resolve(response.data) })
         .catch(e => { reject(e) })
       })
@@ -13,10 +13,11 @@ export default {
     return await res()
   },
 
-  getDocumentImage: async () => {
-    const res = (parentId) => {
+  getCategoryChild: async (parentId) => {
+    console.log("reaching..")
+    const res = () => {
       return new Promise((resolve, reject) => {
-        HTTP.get('documenttypes/'+parentId+'/detail')
+        HTTP.get('category/'+parentId+'/detail')
         .then(response => {resolve(response.data) })
         .catch(e => { reject(e) })
       })
@@ -25,11 +26,12 @@ export default {
     return await res()
   },
 
-  addCategory: async () => {
-    const res = (parentId) => {
+  addCategory: async (category) => {
+    console.log(category)
+    const res = () => {
       return new Promise((resolve, reject) => {
-        HTTP.get('documenttypes/add')
-        .then(response => {console.log(response.data); resolve(response.data) })
+        HTTP.post('documenttypes/add', category)
+        .then(response => {console.log(response); resolve(response.data) })
         .catch(e => { console.log(e); reject(e) })
       })
     }

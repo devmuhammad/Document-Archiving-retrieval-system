@@ -5,11 +5,13 @@
 <script>
 import commentArea from "@/components/layout/commentArea/commentArea"
 import folders from "@/components/contents/folders/folders"
+import subfolders from "@/components/contents/subFolders/subFolders"
 import search from "@/components/contents/search/search"
 import pagination from "@/components/contents/pagination/pagination"
 import uploadModal from "@/components/contents/upload/upload"
 import categoryModal from "@/components/contents/category/category"
 import {addCategory} from "../../../mixins/addCategory"
+import {DocumentActions} from "../../../mixins/documentActions"
 
 export default {
   name:"documents",
@@ -47,8 +49,9 @@ export default {
     search,
     pagination,
     uploadModal,
-    categoryModal
+    categoryModal,
+    subfolders
   },
-  mixins:[addCategory]
+  mixins:[addCategory,DocumentActions]
 }
 </script>

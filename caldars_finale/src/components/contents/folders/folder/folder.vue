@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import {mapActions} from "vuex"
+
 export default {
   name:"folder",
   props:["document"],
@@ -13,8 +15,12 @@ export default {
     }
   },
   methods:{
+    ...mapActions({"getCategoryChild":"getCategoryChild"}),
     showAttr(){ return this.isAttr = true},
-    hideAttr(){ return this.isAttr = false}
+    hideAttr(){ return this.isAttr = false},
+    getChild(){
+      return this.getCategoryChild(this.document.id)
+    }
   }
 }
 </script>

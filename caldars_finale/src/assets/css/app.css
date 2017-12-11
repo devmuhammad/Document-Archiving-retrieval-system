@@ -114,8 +114,11 @@
 }
 
 .pagntn{
-  margin-right: 35px;
-  margin-left: 35px;
+  margin-right: 0px;
+  margin-left: 0px;
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
 }
 
 div.documentAction:hover{
@@ -125,7 +128,7 @@ div.documentAction:hover{
 }
 
 .foldersDiv{
-  margin-top:20px;
+  margin-top:0px;
 }
 
 .notify-img{
@@ -420,4 +423,24 @@ div>nav.commentHeader.level{
   padding:30px;
   text-align: center;
   margin-top:10px;
+}
+
+.listType{
+  display: block;
+}
+
+.category-based-actions{
+  margin-right: 0px;
+  margin-left: 0px;
+  font-size: 15px;
+}
+
+.cba{
+  padding-right: 10px;
+  color: #42526e;
+  cursor: pointer;
+}
+
+.cba.is-active{
+  color:#3273dc;
 }
