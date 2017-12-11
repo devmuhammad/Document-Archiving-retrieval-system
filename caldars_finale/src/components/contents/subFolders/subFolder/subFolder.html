@@ -3,16 +3,16 @@
     <div style="margin:2px" v-if="isAttr == true">
       <input type="checkbox" v-model="selected">
     </div>
-    <img src="../../../../assets/img/folder4.png" />
+    <img src="../../../../assets/img/subFolders.png" />
     <div v-if="isAttr == true" class=" tooltip">
       <i class="fa fa-ellipsis-h"></i>
       <span class="tooltiptext">
-        <div><small>{{document.documentType}}</small></div>
+        <div><small>{{document.prvwname}}</small></div>
       </span>
     </div>
   </div>
   <div>
-    <small class="doc-name">{{document.documentType}}</small>
+    <small class="doc-name">{{document.prvwname}}</small>
     <span style="color:#7f0a25" v-show="selected == true"><i class="fa fa-check"></i></span>
   </div>
 </div>

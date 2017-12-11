@@ -4,20 +4,15 @@ let state = {
   listOfDocuments:[],
   get_error:{},
   addedCategory:{},
-  add_error:{}
+  add_error:{},
+  documentCategories:undefined,
+  categoryChildren: null
 }
 
 let getters = {
-  listOfDocuments:(state) => {
-    let allDocuments = state.listOfDocuments
-    let docs = []
-    for(let i =0;i<10;i++){
-      if(allDocuments.length > 0){
-        docs.push(allDocuments[i])
-      }
-    }
-    return docs
-  }
+  listOfDocuments:(state) => state.listOfDocuments,
+  categoryDetails: (state) => state.documentCategories,
+  categoryChildren: (state) => state.categoryChildren
 }
 
 let mutations = {
@@ -28,21 +23,38 @@ let mutations = {
           .then((res) => { resolve(res)})
           .catch((err) => { reject(err) })
       })
-      .then((res) => { state.listOfDocuments = res })
+      .then((res) => { 
+        state.categoryChildren = null
+        state.documentCategories = res
+        state.listOfDocuments = res.categories
+      })
       .catch((err) => {state.get_error.error = err.message; console.log(err)})
     }
 
     return getList()
   },
 
-  update_added_category: () => {
-    return true
+  getCategoryChild: (state, parentId) => {
+    const getChild = () => {
+      return new Promise ((resolve, reject) => {
+        API.getCategoryChild(parentId)
+          .then((res) => { resolve(res)})
+          .catch((err) => { reject(err) })
+      })
+      .then((res) => { 
+        //state.documentCategories = res
+        state.categoryChildren = res.documentimageList
+      })
+      .catch((err) => {state.get_error.error = err.message; console.log(err)})
+    }
+
+    return getChild()
   }
 }
 
 let actions = {
   getDocumentCategory: ({commit}) => commit("getDocumentCategory"),
-  update_added_category: ({commit}, new_category) => commit("update_added_category", new_category)
+  getCategoryChild: ({commit}, parentId) => commit("getCategoryChild", parentId)
 }
 
 export default {

@@ -1,11 +1,19 @@
-<div class="tile is-ancestor">
-  <div class="columns  is-multiline is-centered">
-    <div class="column" v-for="(document, index) in listOfDocuments" v-if="isDocument > 0">
+<div>
+  <div class="columns  is-multiline is-centered"  v-show="isFolderType == true">
+    <div class="column" v-for="(document, index) in listOfDocuments" :key="index">
         <folder :document="document" />
     </div>
-    <div v-else>
+    <!--div>
       <img src="../../../assets/img/empty-document.png" />
       <p>No documents found!</p>
-    </div>
+    </div-->
+  </div>
+
+  <div  v-show="isListType == true">
+    <table class="table is-fullwidth is-striped is-narrow">
+      <tbody>
+        <list :document="document" v-for="(document, index) in listOfDocuments" :key="index"></list>
+      </tbody>
+    </table>
   </div>
 </div>

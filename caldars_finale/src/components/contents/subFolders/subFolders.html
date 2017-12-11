@@ -1,0 +1,15 @@
+<div>
+  <div class="columns is-multiline is-centered">
+    <div class="column" v-for="(document, index) in categoryChildren" :key="index">
+        <subFolder :document="document" />
+    </div>
+  </div>
+
+  <!--div  v-show="isListType == true">
+    <table class="table is-fullwidth is-striped is-narrow">
+      <tbody>
+        <list :document="document" v-for="(document, index) in listOfDocuments" :key="index"></list>
+      </tbody>
+    </table>
+  </div-->
+</div>

@@ -35,7 +35,6 @@
 .sidenav >.routeIsActive{
   color:#333333;
   background-color: #daebfd;
-
 }
 
 .sidenav >.routeIsActive>.route-name{
@@ -59,8 +58,6 @@
   margin-top: 100px;
 }
 
-
-
 .document_footer{
   bottom: 0;
   width: 85%;
@@ -71,7 +68,6 @@
   padding: 5px;
   transition: 0.3s;
   transition-delay: 0.3ms;
-  
 }
 
 .subFooter{
@@ -118,8 +114,11 @@
 }
 
 .pagntn{
-  margin-right: 35px;
-  margin-left: 35px;
+  margin-right: 0px;
+  margin-left: 0px;
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
 }
 
 div.documentAction:hover{
@@ -129,7 +128,7 @@ div.documentAction:hover{
 }
 
 .foldersDiv{
-  margin-top:20px;
+  margin-top:0px;
 }
 
 .notify-img{
@@ -253,7 +252,6 @@ div.documentAction:hover{
   background-color:ghostwhite;
   border:2px solid #ccc;
   width: 500px;
-  word-wrap:break-word;
 }
 
 .commentCtrls{
@@ -278,13 +276,6 @@ div>nav.commentHeader.level{
   border:1px solid #fff;
 }
 
-<<<<<<< HEAD
-.wrap{
-  display:block;
-  width:400px;
-  word-wrap:break-word;
-}
-=======
 .help-area{
   position: absolute;
   background-image: url("../../assets/img/help-illust.png");
@@ -433,4 +424,31 @@ div>nav.commentHeader.level{
   text-align: center;
   margin-top:10px;
 }
->>>>>>> 305fe1b18ad9ef22f1cd27f22f35fb4aa6d01f8c
+
+<<<<<<< HEAD
+.wrap{
+  display:block;
+  width:400px;
+  word-wrap:break-word;
+}
+=======
+.listType{
+  display: block;
+}
+
+.category-based-actions{
+  margin-right: 0px;
+  margin-left: 0px;
+  font-size: 15px;
+}
+
+.cba{
+  padding-right: 10px;
+  color: #42526e;
+  cursor: pointer;
+}
+
+.cba.is-active{
+  color:#3273dc;
+}
+>>>>>>> 5bb80974ffcd2a555d5980b9f2cd25a967fee317
