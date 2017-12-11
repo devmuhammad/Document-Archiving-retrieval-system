@@ -4,24 +4,25 @@
 
 <script>
 import {mapActions, mapState, mapGetters} from "vuex"
+import {infiniteScroll} from '../../../../node_modules/vue-infinite-scroll'
 
 export default {
   name:"comments",
-  created: function () { return this.getComments([]) },
+  created: function () { return this.getComments(this.docId) },
   props:[
     
   ],
   data(){
     return {
-      
-      comment :{description: '',datelog:new Date().toDateString()}
+      id:2,
+      comment :{description: '',datelog:new Date().toDateString()},
+      docId:83,
+      data: [],
+      busy: false
     }
   },
   computed:{
-    ...mapGetters([
-      "commentlist"],
-     {response_status:"create_commentstatus"}
-    ),
+    ...mapGetters(["commentlist"]),
   },
   methods:{
     createNew(){ return this.addNewComment(this.comment) },
@@ -33,7 +34,18 @@ export default {
     "DeleteComment",
     "addNewComment"
 
-    ])
+    ]),
+    loadMore() {
+      let count =0;
+      this.busy = true;
+
+      setTimeout(() => {
+        for (let i = 0, j = 10; i < j; i++) {
+          this.data.push({ name: count++ });
+        }
+        this.busy = false;
+      }, 1000);
+    }
 }
 }
 </script>

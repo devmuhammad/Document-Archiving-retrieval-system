@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import {mapGetters, mapActions} from "vuex"
+
 export default {
   name:"folder",
   props:["document"],
@@ -14,7 +16,10 @@ export default {
   },
   methods:{
     showAttr(){ return this.isAttr = true},
-    hideAttr(){ return this.isAttr = false}
+    hideAttr(){ return this.isAttr = false},
+
+
+    
   }
 }
 </script>

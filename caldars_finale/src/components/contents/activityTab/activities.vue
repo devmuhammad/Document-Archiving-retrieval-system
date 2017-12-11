@@ -4,18 +4,21 @@
 
 <script>
 import {mapActions, mapState, mapGetters} from "vuex"
-import infiniteScroll from 'vue-infinite-scroll'
+import {infiniteScroll} from '../../../../node_modules/vue-infinite-scroll'
 
 export default {
   
   name:"activities",
-  created: function () { return this.getActivities([]) },
+  created: function () { return this.getActivities(this.docId) },
   props:[
     
   ],
   data(){
     return {
-      
+      id:2,
+      docId:83,
+      data: [],
+      busy: false
     }
   },
   computed:{
@@ -32,7 +35,19 @@ methods:{
     "getActivities",
     "DeleteActivity"
 
-    ])
+    ]),
+
+loadMore() {
+      let count =0;
+      this.busy = true;
+
+      setTimeout(() => {
+        for (let i = 0, j = 10; i < j; i++) {
+          this.data.push({ name: count++ });
+        }
+        this.busy = false;
+      }, 1000);
+    }
 }
 }
 </script>

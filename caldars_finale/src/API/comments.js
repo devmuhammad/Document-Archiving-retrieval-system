@@ -2,10 +2,10 @@ import {HTTP} from "./http"
 
 export default {
   
-  LIST_COMMENT: async () => {
+  LIST_COMMENT: async (docId) => {
     const res = () => {
       return new Promise((resolve, reject) => {
-        HTTP.get('list/documentactivitieslog')
+        HTTP.get('list/comments/filter?docid='+docId+'&userid=0&page=0&size=10')
         .then((response) => { resolve(response.data) })
         .catch(e => { reject(e) })
       })

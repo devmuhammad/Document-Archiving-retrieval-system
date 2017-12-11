@@ -13,8 +13,7 @@ export default {
       iscomActive: false,
       isActive: false,
       document_Footer: 50,
-      data: [],
-      busy: false
+      
     };
   },
 
@@ -36,17 +35,7 @@ export default {
         return this.document_Footer = 50;
       }
     },
-    loadMore() {
-      let count =0;
-      this.busy = true;
-
-      setTimeout(() => {
-        for (let i = 0, j = 10; i < j; i++) {
-          this.data.push({ name: count++ });
-        }
-        this.busy = false;
-      }, 1000);
-    }
+    
   },
   components: { comments, activities }
 };

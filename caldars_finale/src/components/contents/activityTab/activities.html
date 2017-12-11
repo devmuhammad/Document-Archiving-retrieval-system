@@ -1,4 +1,4 @@
-<div class="box is-shadowless commentBox">
+<div class="box is-shadowless commentBox" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="5">
     <div class="tabs is-centered is-small">
         <ul>
             <li class="is-active">
@@ -36,9 +36,9 @@
     :key="index"
     :activitylist="activitylist"
     :id="actvty.id"
-    :flowcolor="actvty.workflowid.colors"
+    
     >
-    <button class="delete" @click="deleteActvty('{{id}}')"></button>
+    <button class="delete" @click="deleteActvty()"></button>
         <nav class="level">
             <div class="level-left ">
                 <div class="level-item ">
@@ -47,18 +47,18 @@
                     
                 <div class="level-item has-text-centered "> 
                     <p>
-                        <strong style="float:left"> {{actvty.documentid.receivedfrom}}   </strong><br>
-                        <small class="wrap" style="text-align: left" >  {{actvty.comments}}</small>
-                        <small style="text-align: left;float:left">{{actvty.documentid.description}}</small>
+                        <strong style="float:left"> {{actvty.username}}   </strong><br>
+                        <small class="wrap" style="text-align: left" >  {{actvty.activity}}</small>
+                        <small style="text-align: left;float:left">{{actvty.description}}</small>
                     </p>
                 </div>
             </div>
             <div class="level-right ">
              <div class="level-item has-text-centered ">
             <p class="heading">
-              Workflow:  {{actvty.workflowid.workflowname}}
+              Workflow:  {{actvty.workflow}}
              <br>
-             <small> Date: {{actvty.activitydate}} </small>
+             <small>{{actvty.duration}} ago</small>
             </p>
             </div>
             </div>

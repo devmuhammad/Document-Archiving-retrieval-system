@@ -1,4 +1,4 @@
-<div class="commentBox">
+<div class="commentBox" >
   <div class="commentCtrls">
     <div class="field">
       <p class="control">
@@ -24,9 +24,9 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong> {{comment.userid.firstName}} {{comment.userid.lastName}} <small>commented on {{comment.documentactivitiesid.documentid.prvwname}} </small></strong> 
-          <small style="float:right">   3hrs ago</small>
-          <br> {{comment.description}}
+          <strong> {{comment.username}} <small> made a comment </small></strong> 
+          <small style="float:right">   {{comment.duration}} ago</small>
+          <br> {{comment.comments}}
           <br>
           <small> <a>Like</a> </small>
         </p>

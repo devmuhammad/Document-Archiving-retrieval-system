@@ -9,13 +9,13 @@ let state = {
     create_commentstatus:undefined,
 }
 
-const getters = {
+let getters = {
     commentlist : state => state.commentlist,
     get_comerror : state => state.get_comerror,
-    create_commentstatus: state => state.create_commentstatus,
+    
 }
 
-const mutations = {
+let mutations = {
     getComments:  async (state,commentlist) => {
       try {
       const fetchComments = () => {
@@ -56,7 +56,7 @@ const mutations = {
       },
 }
 
-const actions = {
+let actions = {
     getComments: ({commit}, commentlist) => commit('getComments', commentlist) ,
     DeleteComment: ({commit}, id) => commit('DeleteComment', id),
     addNewComment:({commit}, comment) => commit('addNewComment', comment)

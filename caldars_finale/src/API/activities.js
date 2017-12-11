@@ -1,10 +1,10 @@
 import {HTTP} from "./http"
 
 export default {
-  LIST_ACTIVITY: async () => {
+  LIST_ACTIVITY: async (docId) => {
     const res = () => {
       return new Promise((resolve, reject) => {
-        HTTP.get('list/documentactivitys')
+        HTTP.get('list/activities/filter?docid='+docId+'&userid=0&page=0&size=10')
         .then((response) => { resolve(response.data) })
         .catch(e => { reject(e) })
       })

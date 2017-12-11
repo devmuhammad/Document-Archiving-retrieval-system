@@ -3,16 +3,16 @@ import api from "../../API/activities"
 let state = {
     activitylist :[],
     activity: {},
-    get_error: {},
+    get_acterror: {},
     delete_error:{},
 }
 
-const getters = {
+let getters = {
     activitylist : state => state.activitylist,
-    get_error : state => state.get_error,
+    get_acterror : state => state.get_acterror,
 }
 
-const mutations = {
+let mutations = {
     getActivities:  async (state,activitylist) => {
       try {
       const fetchActivities = () => {
@@ -22,7 +22,7 @@ const mutations = {
           .catch((err) => {  reject(err) })
         })  
         .then((res) => {state.activitylist = res})
-        .catch((err) => { console.log({'error':err.message}); state.get_error.error = err.message})
+        .catch((err) => { console.log({'error':err.message}); state.get_acterror.error = err.message})
       }  
   
       return await fetchActivities()
@@ -37,7 +37,7 @@ const mutations = {
       },
 }
 
-const actions = {
+let actions = {
     getActivities: ({commit}, activitylist) => commit('getActivities', activitylist) ,
     DeleteActivity: ({commit}, id) => commit('DeleteActivity', id)
 }
