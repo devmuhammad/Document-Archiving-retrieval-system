@@ -4,6 +4,7 @@
 
 <script>
 import folder from "./folder/folder"
+import subfolders from "@/components/contents/subFolders/subFolders"
 import list from "./list/list"
 import {mapGetters, mapActions} from "vuex"
 
@@ -14,19 +15,37 @@ export default {
   data () {
     return {
       isAttr:false,
-      folderType:false
+      folderType:false,
+      children:undefined,
+      showChild:false
     }
   },
 
   computed:{
-    ...mapGetters(["listOfDocuments", "categoryDetails"]),
+    ...mapGetters([
+      "categoriesOfDocuments", 
+      "categoryDetails",
+      "listOfCategories"
+    ]),
 
-    /**isDocument(){
-      console.log(this.listOfDocuments)
-      return (this.listOfDocuments.length) ? 10:10
-    },*/
+    isDocument(){
+      return this.categoriesOfDocuments.length
+    },
   },
 
-  components:{folder,list}
+  methods:{
+    getChild(parentId){
+      console.log("no parent id")
+      for(let i=0;i>this.categoriesOfDocuments;i++){
+        const category = this.categoriesOfDocuments[i]
+        if(category.id == parentId){
+          this.children = category.documentimageList
+          this.showChildren = true
+        }
+      }
+    }
+  },
+
+  components:{folder,list,subfolders}
 }
 </script>

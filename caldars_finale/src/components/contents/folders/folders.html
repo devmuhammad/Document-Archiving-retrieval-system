@@ -1,8 +1,12 @@
 <div>
   <div class="columns  is-multiline is-centered"  v-show="isFolderType == true">
-    <div class="column" v-for="(document, index) in listOfDocuments" :key="index">
-        <folder :document="document" />
+    <div class="column" v-for="(document, index) in categoriesOfDocuments" :key="index">
+        <folder :document="document"/>
     </div>
+
+    <!--div class="column" v-show="showChild == true">
+        <subfolders :categoryChildren="children"></subfolders>
+    </div-->
     <!--div>
       <img src="../../../assets/img/empty-document.png" />
       <p>No documents found!</p>
@@ -10,9 +14,9 @@
   </div>
 
   <div  v-show="isListType == true">
-    <table class="table is-fullwidth is-striped is-narrow">
+    <table class="table is-fullwidth is-striped is-narrow is-hoverable">
       <tbody>
-        <list :document="document" v-for="(document, index) in listOfDocuments" :key="index"></list>
+        <list :document="document" v-for="(document, index) in listOfCategories" :key="index"></list>
       </tbody>
     </table>
   </div>

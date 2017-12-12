@@ -445,8 +445,18 @@ div>nav.commentHeader.level{
 .cba.is-active{
   color:#3273dc;
 }
+
 .wrap{
   display:block;
   width:400px;
   word-wrap:break-word;
+}
+
+.back-btn{
+  cursor:pointer;
+  color:#42526e;
+}
+
+.back-btn:hover{
+  color:#7f0a25;
 }

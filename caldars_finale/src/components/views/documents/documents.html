@@ -7,13 +7,15 @@
     <!--Left column-->
     <div class="column">
       <div class="pagntn columns">
-        <div class="column is-one-quarter" @click="setSubFoldersNull()" style="cursor:pointer">
-          <span>
-            <i class="fa fa-folder"></i>
-          </span>
-          <span>
-            <small>Document Categories</small>
-          </span>
+        <div class="column is-one-quarter back-btn" @click="setSubFoldersNull()">
+          <strong class="back-btn">
+            <span>
+              <i class="fa fa-arrow-circle-left"></i>
+            </span>
+            <span>
+              <small>Document Categories</small>
+            </span>
+          </strong>
         </div>
 
         <div class="column is-centered">
@@ -36,8 +38,8 @@
       <hr/>
       <!--Display folders-->
       <div class="foldersDiv">
-        <folders :isListType="isListType" :isFolderType="isFolderType" v-show="viewSubFolders == false"></folders>
-        <subfolders v-show="viewSubFolders == true"></subfolders>
+        <folders :isListType="isListType" :isFolderType="isFolderType" v-show="viewSubFolders == false"/>  
+        <subfolders :isListType="isListType" :isFolderType="isFolderType" v-show="viewSubFolders == true"/>
       </div>
       <!--End of Display folders-->
     </div>

@@ -1,54 +1,77 @@
 import API from "../../API/documentCategory"
 
 let state = {
-  listOfDocuments:[],
+  categoriesOfDocuments:[],
+  categoryList:[],
   get_error:{},
   addedCategory:{},
   add_error:{},
-  documentCategories:undefined,
-  categoryChildren: null
+  documentCategoryDetails:undefined,
+  categoryChildren: null,
+  selectedChildren:null
 }
 
 let getters = {
-  listOfDocuments:(state) => state.listOfDocuments,
-  categoryDetails: (state) => state.documentCategories,
-  categoryChildren: (state) => state.categoryChildren
+  categoriesOfDocuments:(state) => state.categoriesOfDocuments,
+  listOfCategories: (state) => state.categoryList,
+  categoryDetails: (state) => state.documentCategoryDetails,
+  categoryChildren: (state) => state.categoryChildren,
+  selectedChildren: (state) => state.selectedChildren
 }
 
 let mutations = {
   getDocumentCategory: (state) => {
     const getList = () => {
       return new Promise ((resolve, reject) => {
-        API.LIST()
+        API.getDocumentCategories()
           .then((res) => { resolve(res)})
           .catch((err) => { reject(err) })
       })
       .then((res) => { 
         state.categoryChildren = null
-        state.documentCategories = res
-        state.listOfDocuments = res.categories
+        state.documentCategoryDetails = res
+        state.categoriesOfDocuments = res.categories
       })
-      .catch((err) => {state.get_error.error = err.message; console.log(err)})
+      .catch((err) => {
+        state.get_error.error = err.message; 
+        console.log(err)
+      })
     }
 
     return getList()
   },
 
   getCategoryChild: (state, parentId) => {
-    const getChild = () => {
-      return new Promise ((resolve, reject) => {
-        API.getCategoryChild(parentId)
-          .then((res) => { resolve(res)})
+
+    for(let i=0;i<state.categoriesOfDocuments.length;i++){
+      console.log("this is the problem")
+      const category = state.categoriesOfDocuments[i]
+      if(category.id == parentId){
+        state.selectedChildren = category.documentimageList
+        state.categoryChildren = true
+        console.log("whats the problem")
+      }
+    }
+ 
+  },
+
+  getCategoryList: (state) => {
+    console.log("getting..")
+    const getList = () => {
+      return new Promise((resolve, reject) => {
+        API.getCategoryList()
+          .then((res) => { resolve(res) })
           .catch((err) => { reject(err) })
       })
-      .then((res) => { 
-        //state.documentCategories = res
-        state.categoryChildren = res.documentimageList
+      .then((res) => {
+        state.categoryList = res.documentslist
       })
-      .catch((err) => {state.get_error.error = err.message; console.log(err)})
+      .catch((err) => {
+        state.get_error.error = err.message;
+      })
     }
 
-    return getChild()
+    return getList()
   },
 
   setSubFoldersNull:(state) => {
@@ -59,7 +82,8 @@ let mutations = {
 let actions = {
   getDocumentCategory: ({commit}) => commit("getDocumentCategory"),
   getCategoryChild: ({commit}, parentId) => commit("getCategoryChild", parentId),
-  setSubFoldersNull: ({commit}) => commit("setSubFoldersNull")
+  setSubFoldersNull: ({commit}) => commit("setSubFoldersNull"),
+  getCategoryList: ({commit}) => commit("getCategoryList")
 }
 
 export default {

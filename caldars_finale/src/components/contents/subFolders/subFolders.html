@@ -1,15 +1,23 @@
 <div>
   <div class="columns is-multiline is-centered">
-    <div class="column" v-for="(document, index) in categoryChildren" :key="index">
+    <div class="column" v-for="(document, index) in selectedChildren" :key="index" v-show="isFolderType == true">
         <subFolder :document="document" />
     </div>
   </div>
 
-  <!--div  v-show="isListType == true">
+  <div v-if="selectedChildren == undefined" style="text-align:center">
+    <img src="../../../assets/img/emptystate3.png"/><br/>
+    <a class="button is-primary">
+      <span><i class="fa fa-plus"></i></span>
+      New Project
+    </a>
+  </div>
+
+  <div  v-show="isListType == true">
     <table class="table is-fullwidth is-striped is-narrow">
       <tbody>
-        <list :document="document" v-for="(document, index) in listOfDocuments" :key="index"></list>
+        <list :document="document" v-for="(document, index) in selectedChildren" :key="index"></list>
       </tbody>
     </table>
-  </div-->
+  </div>
 </div>

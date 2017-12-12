@@ -16,5 +16,6 @@ $modal-card-title-color:$primary;
 $modal-card-head-padding:5px;
 $navbar-height:3.25rem;
 $navbar-item-img-max-height:6.00rem;
+$table-row-hover-background-color:$pink-invert;
 @import "../node_modules/bulma/bulma.sass";
 @import "./uploadbox.scss"

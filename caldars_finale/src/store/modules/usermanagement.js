@@ -1,4 +1,4 @@
-import api from "../../api/UserManagementAPI"
+import api from "../../API/UserManagementAPI"
 
 let state = {
     users: [],
