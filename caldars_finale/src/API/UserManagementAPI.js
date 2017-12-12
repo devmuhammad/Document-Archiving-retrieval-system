@@ -1,4 +1,4 @@
-import { HTTP } from './http'
+import {HTTP} from './http'
 
 export default {
     CREATE_USER: async (user) => {
