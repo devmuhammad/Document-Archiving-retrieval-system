@@ -12,7 +12,8 @@ export default {
     return {
       iscomActive: false,
       isActive: false,
-      document_Footer: 50
+      document_Footer: 50,
+      
     };
   },
 
@@ -33,7 +34,8 @@ export default {
       } else if (this.iscomActive == false || this.iscomActive == false) {
         return this.document_Footer = 50;
       }
-    }
+    },
+    
   },
   components: { comments, activities }
 };

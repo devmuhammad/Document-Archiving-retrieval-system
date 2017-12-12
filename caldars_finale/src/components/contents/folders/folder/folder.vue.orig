@@ -1,0 +1,36 @@
+<template src="./folder.html">
+  
+</template>
+
+<script>
+<<<<<<< HEAD
+import {mapGetters, mapActions} from "vuex"
+=======
+import {mapActions} from "vuex"
+>>>>>>> 5bb80974ffcd2a555d5980b9f2cd25a967fee317
+
+export default {
+  name:"folder",
+  props:["document"],
+  data (){
+    return {
+      isAttr:false,
+      selected:false
+    }
+  },
+  methods:{
+    ...mapActions({"getCategoryChild":"getCategoryChild"}),
+    showAttr(){ return this.isAttr = true},
+    hideAttr(){ return this.isAttr = false},
+<<<<<<< HEAD
+
+
+    
+=======
+    getChild(){
+      return this.getCategoryChild(this.document.id)
+    }
+>>>>>>> 5bb80974ffcd2a555d5980b9f2cd25a967fee317
+  }
+}
+</script>

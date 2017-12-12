@@ -1,4 +1,4 @@
-<div class="box is-shadowless commentBox">
+<div class="box is-shadowless commentBox" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="5">
     <div class="tabs is-centered is-small">
         <ul>
             <li class="is-active">
@@ -31,21 +31,36 @@
         </ul>
     </div>
 
-    <div class="notification newact" v-for="(actvty,index) in activities" :key="index">
+    <div class="notification newact" 
+    v-for="(actvty,index) in activitylist" 
+    :key="index"
+    :activitylist="activitylist"
+    :id="actvty.id"
+    
+    >
+    <button class="delete" @click="deleteActvty()"></button>
         <nav class="level">
             <div class="level-left ">
                 <div class="level-item ">
-                    <i class="fa fa-circle" style="color:lightseagreen"></i>
-                </div>
-                <div class="level-item has-text-centered ">
+                    <i class="fa fa-circle" style="color:'flowcolor'"></i>
+                </div> 
+                    
+                <div class="level-item has-text-centered "> 
                     <p>
-                        A new document
-                        <a>
-                            <small>Acuity proposal</small>
-                        </a> has been added by @codebyomar
-                        <small> 1hr ago</small>
+                        <strong style="float:left"> {{actvty.username}}   </strong><br>
+                        <small class="wrap" style="text-align: left" >  {{actvty.activity}}</small>
+                        <small style="text-align: left;float:left">{{actvty.description}}</small>
                     </p>
                 </div>
+            </div>
+            <div class="level-right ">
+             <div class="level-item has-text-centered ">
+            <p class="heading">
+              Workflow:  {{actvty.workflow}}
+             <br>
+             <small>{{actvty.duration}} ago</small>
+            </p>
+            </div>
             </div>
         </nav>
     </div>

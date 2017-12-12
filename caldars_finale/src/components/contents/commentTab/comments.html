@@ -1,18 +1,21 @@
-<div class="commentBox">
+<div class="commentBox" >
   <div class="commentCtrls">
     <div class="field">
       <p class="control">
-        <textarea class="textarea commentField" placeholder="Add a comment..."></textarea>
+        <textarea class="textarea commentField" placeholder="Add a comment..." v-model="comment.description"></textarea>
       </p>
     </div>
-    <!--div class="field" style="float:right">
+    <div class="field" style="float:right;margin-left:20px">
       <p class="control">
-        <button class="button is-rounded is-outlined is-primary">Post Comment</button>
+        <button class="button is-rounded is-outlined is-primary" @click="createNew()">Post Comment</button>
       </p>
-    </div-->
+    </div>
   </div>
 <hr/>
-  <article class="media" v-for="(comment,index) in comments">
+  <article class="media" 
+  v-for="(comment,index) in commentlist" 
+  :key="index"
+  :commentlist="commentlist">
     <figure class="media-left">
       <p class="image is-64x64">
         <img src="https://bulma.io/images/placeholders/128x128.png" class="commentImg">
@@ -21,9 +24,9 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>Barbara Middleton</strong> <small> 3hrs ago</small>
-          <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit blandit non.
-          Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
+          <strong> {{comment.username}} <small> made a comment </small></strong> 
+          <small style="float:right">   {{comment.duration}} ago</small>
+          <br> {{comment.comments}}
           <br>
           <small> <a>Like</a> </small>
         </p>

@@ -19,6 +19,10 @@
     "vue-infinite-scroll": "^2.0.2",
     "vue-router": "^3.0.1",
     "vue-spinner": "^1.0.3",
+<<<<<<< HEAD
+    "vueloader": "0.0.1",
+=======
+>>>>>>> 305fe1b18ad9ef22f1cd27f22f35fb4aa6d01f8c
     "vuex": "^3.0.1"
   },
   "devDependencies": {
