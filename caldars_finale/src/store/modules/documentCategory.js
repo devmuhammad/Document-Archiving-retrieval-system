@@ -49,12 +49,17 @@ let mutations = {
     }
 
     return getChild()
+  },
+
+  setSubFoldersNull:(state) => {
+    return state.categoryChildren = null
   }
 }
 
 let actions = {
   getDocumentCategory: ({commit}) => commit("getDocumentCategory"),
-  getCategoryChild: ({commit}, parentId) => commit("getCategoryChild", parentId)
+  getCategoryChild: ({commit}, parentId) => commit("getCategoryChild", parentId),
+  setSubFoldersNull: ({commit}) => commit("setSubFoldersNull")
 }
 
 export default {

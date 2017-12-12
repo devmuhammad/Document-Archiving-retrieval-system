@@ -30,7 +30,7 @@ export default {
     console.log(category)
     const res = () => {
       return new Promise((resolve, reject) => {
-        HTTP.post('documenttypes/add', category)
+        HTTP.post('category/add', category)
         .then(response => {console.log(response); resolve(response.data) })
         .catch(e => { console.log(e); reject(e) })
       })

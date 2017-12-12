@@ -9,7 +9,7 @@ export const DocumentActions = {
   },
 
   methods: {
-    ...mapActions(["getDocumentCategory"]),
+    ...mapActions(["setSubFoldersNull"]),
 
     setListType() {
       this.isListType = true
