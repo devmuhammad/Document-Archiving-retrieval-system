@@ -9,14 +9,10 @@ import {infiniteScroll} from '../../../../node_modules/vue-infinite-scroll'
 export default {
   
   name:"activities",
-  created: function () { return this.getActivities(this.docId) },
-  props:[
-    
-  ],
+  
   data(){
     return {
       id:2,
-      docId:83,
       data: [],
       busy: false
     }
@@ -32,7 +28,7 @@ methods:{
   deleteActvty () { return this.DeleteActivity(this.id[0])},
 
 ...mapActions([
-    "getActivities",
+    
     "DeleteActivity"
 
     ]),

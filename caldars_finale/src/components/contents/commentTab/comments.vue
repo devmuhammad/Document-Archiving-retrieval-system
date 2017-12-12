@@ -8,7 +8,7 @@ import {infiniteScroll} from '../../../../node_modules/vue-infinite-scroll'
 
 export default {
   name:"comments",
-  created: function () { return this.getComments(this.docId) },
+  
   props:[
     
   ],
@@ -16,7 +16,7 @@ export default {
     return {
       id:2,
       comment :{description: '',datelog:new Date().toDateString()},
-      docId:83,
+      
       data: [],
       busy: false
     }
@@ -30,7 +30,6 @@ export default {
     deletecoment () { return this.DeleteComment(this.id[0])},
 
 ...mapActions([
-    "getComments",
     "DeleteComment",
     "addNewComment"
 

@@ -1,4 +1,8 @@
-<div class="folders" @mouseover="showAttr" @mouseleave="hideAttr" @dblclick="getChild()">
+<div class="folders" 
+@mouseover="showAttr" 
+@mouseleave="hideAttr" 
+@click="getComments(document.id) + getActivities(document.id)" 
+>
   <div style="display:inline-flex">
     <div style="margin:2px" v-if="isAttr == true">
       <input type="checkbox" v-model="selected">
