@@ -6,6 +6,6 @@ export const LoadDocuments = {
   },
   mounted(){
     this.getCategoryList()
-    this.getDocumentCategory()
+    this.getDocumentCategory(0)
   }
 }

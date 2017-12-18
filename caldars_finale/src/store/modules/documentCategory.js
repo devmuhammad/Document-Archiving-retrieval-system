@@ -14,16 +14,23 @@ let state = {
 let getters = {
   categoriesOfDocuments:(state) => state.categoriesOfDocuments,
   listOfCategories: (state) => state.categoryList,
-  categoryDetails: (state) => state.documentCategoryDetails,
   categoryChildren: (state) => state.categoryChildren,
-  selectedChildren: (state) => state.selectedChildren
+  selectedChildren: (state) => state.selectedChildren,
+  categoryDetails: (state) => {
+    return (state.documentCategoryDetails !== undefined) ?
+    {
+      last:state.documentCategoryDetails.last,
+      first:state.documentCategoryDetails.first,
+      page_num:state.documentCategoryDetails.page
+    } : undefined
+  }
 }
 
 let mutations = {
-  getDocumentCategory: (state) => {
+  getDocumentCategory: (state,page_num) => {
     const getList = () => {
       return new Promise ((resolve, reject) => {
-        API.getDocumentCategories()
+        API.getDocumentCategories(page_num)
           .then((res) => { resolve(res)})
           .catch((err) => { reject(err) })
       })
@@ -42,24 +49,19 @@ let mutations = {
   },
 
   getCategoryChild: (state, parentId) => {
-
     for(let i=0;i<state.categoriesOfDocuments.length;i++){
-      console.log("this is the problem")
       const category = state.categoriesOfDocuments[i]
       if(category.id == parentId){
         state.selectedChildren = category.documentimageList
         state.categoryChildren = true
-        console.log("whats the problem")
       }
     }
- 
   },
 
-  getCategoryList: (state) => {
-    console.log("getting..")
+  getCategoryList: (state, page_num) => {
     const getList = () => {
       return new Promise((resolve, reject) => {
-        API.getCategoryList()
+        API.getCategoryList(page_num)
           .then((res) => { resolve(res) })
           .catch((err) => { reject(err) })
       })
@@ -80,10 +82,10 @@ let mutations = {
 }
 
 let actions = {
-  getDocumentCategory: ({commit}) => commit("getDocumentCategory"),
+  getDocumentCategory: ({commit}, page_num) => commit("getDocumentCategory", page_num),
   getCategoryChild: ({commit}, parentId) => commit("getCategoryChild", parentId),
   setSubFoldersNull: ({commit}) => commit("setSubFoldersNull"),
-  getCategoryList: ({commit}) => commit("getCategoryList")
+  getCategoryList: ({commit}, page_num) => commit("getCategoryList", page_num)
 }
 
 export default {

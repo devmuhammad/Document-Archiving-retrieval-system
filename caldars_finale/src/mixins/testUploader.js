@@ -1,40 +1,87 @@
-function upload(formData) {
-  const photos = formData.getAll('dragbox');
-  const promises = photos.map((x) => getImage(x)
-      .then(img => ({
-          id: img,
-          originalName: x.name,
-          fileName: x.name,
-          url: img
-      })));
-  return Promise.all(promises);
+import API from "../API/documentCategory"
+
+/**
+ * acuitydrive uploader[uploads file to the cloud]
+ * @param {*} fileList 
+ */
+function upload(fileList) {
+  const filesIndex = Array.from(Array(fileList.length).keys())
+
+    const promises = filesIndex.map(index => {
+      const formData = new FormData();
+      formData.append("file", fileList[index], fileList[index].name);
+      const file = formData.getAll('file')[0]
+
+      return API.uploadFile(formData)
+        .then((res) => {
+            return (res.error === null)
+            ? {"code":res.code, "data":file, "error": res.error, "message":res.message, "formData":formData}
+            : {"code":503, "data":file, "debug": res, "formData":formData}
+        })
+        .catch(e => { 
+            return (e.error === true)
+            ? {"code":503,"data":file,"debug":e.debug, "formData":formData}
+            : {"code":200, "data":file, "debug": e, "formData":formData}
+        })
+    })
+
+    return Promise.all(promises)
+      .then((res) => res )
+      .catch((err) => err )
 }
 
-function getImage(file) {
-  return new Promise((resolve, reject) => {
-      const fReader = new FileReader();
-      const img = document.createElement('img');
+/**
+ * saving file details
+ * @param {*} imageProps
+ */
+function saveDocument(imageProps){
+  const saveFile = () => {
+    return API.saveFileDetails(imageProps)
+      .then(res => {
+          return {"code":200, "data":res}
+      })
+      .catch(err => {
+          return {"code":500, "debug":err}
+      })
+  }
 
-      fReader.onload = () => {
-          img.src = fReader.result;
-          resolve(getBase64Image(img));
-      }
-
-      fReader.readAsDataURL(file);
-  })
+  return saveFile()
 }
 
-function getBase64Image(img) {
-  const canvas = document.createElement('canvas');
-  canvas.width = img.width;
-  canvas.height = img.height;
 
-  const ctx = canvas.getContext('2d');
-  ctx.drawImage(img, 0, 0);
+/**
+ * Retrying failed uploads
+ * @param {*} failedUploads 
+ */
+function Retry(failedUploads) {
 
-  const dataURL = canvas.toDataURL('image/png');
+    const promises = failedUploads.map(failed => {
+        const formData = failed.formData
+        const file = formData.getAll('file')[0]
 
-  return dataURL;
+        return API.uploadFile(formData)
+            .then((res) => {
+                return (res.error === null)
+                ? {"code":res.code, "data":file, "error": res.error, "message":res.message, "formData":formData}
+                : {"code":503, "data":file, "debug": res, "formData":formData}
+            })
+            .catch(e => { 
+                return (e.error === true)
+                ? {"code":503,"data":file,"debug":e.debug, "formData":formData}
+                : {"code":200, "data":file, "debug": e, "formData":formData}
+            })
+    })  
+
+    return Promise.all(promises)
+        .then((res) => res )
+        .catch((err) => err )
 }
 
-export { upload }
+/**
+ * Export Acuity Drive 
+ */
+export const acuitydrive = {
+    "upload":upload,
+    "saveDocument":saveDocument,
+    "Retry":Retry 
+}

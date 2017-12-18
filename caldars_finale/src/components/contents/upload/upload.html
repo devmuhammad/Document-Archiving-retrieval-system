@@ -1,38 +1,184 @@
 <span :class="{'modal':true,'is-active':isUploadActive}">
   <div class="modal-content upload-modal">
-    <div class="close-btn" @click="closeModal();reset()"><i class="fa fa-close"></i></div>
+    <div class="close-btn" @click="closeModal();reset();displayForm = false">
+      <i class="fa fa-close"></i>
+    </div>
     <div>
       <div>
-        <span><i class="fa fa-upload"></i></span>
-        <span>Upload new file.<br/></span>
+        <span>
+          <i class="fa fa-upload"></i>
+        </span>
+        <span>Upload new file.
+          <br/>
+        </span>
       </div>
 
-      <form enctype="multipart/form-data" novalidate v-if="isInitial || isSaving">
+      <!--FIRST STEP-->
+      <form enctype="multipart/form-data" novalidate v-if="(isInitial && !isNext) || (isSaving && !isNext)">
         <div class="dropbox">
-          <input 
-            type="file" 
-            multiple 
-            :name="uploadFieldName" 
-            :disabled="isSaving" 
-            @change="filesChange($event.target.name, $event.target.files); fileCount = $event.target.files.length"
-            class="input-file"
-          >
-            <p v-if="isInitial">
-              Drag your file(s) here to begin<br> or click to browse
-            </p>
-            <p v-if="isSaving">
-              Uploading {{ fileCount }} file(s)...
-            </p>
+          <input type="file" multiple :name="uploadFieldName" :disabled="isSaving" @change="filesChange($event.target.name, $event.target.files); fileCount = $event.target.files.length"
+            class="input-file">
+          <p v-if="isInitial">
+            Drag your file(s) here to begin
+            <br> or click to browse
+          </p>
+          <p v-if="isSaving">
+            Uploading {{ fileCount }} file(s)...
+          </p>
         </div>
       </form>
-      
-      <div class="upload-btn-1">
-        <a class="button is-success is-outlined">
+
+
+      <!--IF FIRST STEP IS DONE-->
+      <div v-if="isDone && !isNext && !finishedSaving" class="upload-done">
+        <div v-if="notUploadedFiles.length > 0">
+          <small>Some files could not be uploaded,</small>
+          <a :class="{'button':true, 'is-small':true, 'is-danger':true, 'is-loading':retrying}" @click="RETRY_FAILED()">Retry</a>
+          <small>failed uploads.</small>
+        </div>
+
+        <br/>
+
+        <table class="table is-narrow" style="background-color:transparent">
+          <tbody>
+            <tr v-for="(f, index) in allFiles" :key="index">
+              <td v-if="f.status == 'success'"> 
+                <small> <i class="fa fa-check-circle"></i>  </small>
+              </td>
+              
+              <td v-else-if="f.status == 'failed'" style="color:red"> 
+                <small> <i class="fa fa-exclamation-circle"></i> </small>
+              </td>
+              
+              <td><small>{{f.data.name}}</small></td>
+
+              <td><small>{{f.data.size}}KB</small></td>
+
+              <td v-if="f.status == 'failed'">
+                <small>
+                  <span class="tag is-danger">Failed</span>
+                </small>
+              </td>
+
+              <td v-else-if="f.status == 'success'">
+                <small>
+                  <span class="tag">Done</span>
+                </small>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="upload-btn-1" v-if="!isNext">
+        <button class="button is-success next-btn" @click="uploadController();fetchCategories()" :disabled="!isDone && !isFailed">
           <span>Continue</span>
           <span class="icon is-small">
             <i class="fa fa-chevron-right"></i>
           </span>
-        </a>
+        </button>
+      </div>
+      <!--END FIRST STEP-->
+
+
+      <!--SECOND STEP-->
+      <div v-if="displayForm && !finishedSaving" class="upload-form">
+        <form v-on:submit.prevent="SAVE_FILE_PROP()">
+
+          <div class="field">
+            <label class="label is-small">Files </label>
+            <div class="control is-expanded has-icons-left">
+              <div class="select is-fullwidth">
+                <select required v-model="filesList">
+                  <option disabled :value="undefined"> Select uploaded file </option>
+                  <option v-for="(upload, index) in uploadedFiles" :key="index" :value="upload.data.name">
+                    {{upload.data.name}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="icon is-left is-small"><i class="fa fa-file"></i> </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label is-small">Category </label>
+            <div class="control is-expanded has-icons-left">
+              <div class="select is-fullwidth">
+                <select required :disabled="isLoading" v-model="categoryType">
+                  <option disabled :value="undefined"> Select category </option>
+                  <option v-for="(category, index) in allCategories" :key="index" :value="category.id">
+                    {{category.documentType}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="icon is-left is-small">
+                  <clip-loader 
+                    :loading="isLoading" 
+                    color="#999" height="1px" width="1px" size="20px"/>
+                  <i class="fa fa-folder" v-if="!isLoading"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label is-small">Project</label>
+            <div class="control is-expanded has-icons-left">
+              <div class="select is-fullwidth">
+                <select required :disabled="isLoading" v-model="projectType" name="projectType">
+                  <option disabled :value="undefined">Select project</option>
+                  <option v-for="(project, index) in projects" :key="index" :value="project.id">
+                    {{project.documenttitle}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="icon is-left is-small">
+                  <clip-loader 
+                    :loading="isLoading" 
+                    color="#999" height="1px" width="1px" size="20px"/>
+                  <i class="fa fa-archive" v-if="!isLoading"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label is-small">Description</label>
+            <div class="control">
+              <input v-model="desc" class="input is-small" type="text" placeholder="Write a sentence describing the file" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label is-small">Received from</label>
+            <div class="control">
+              <input v-model="createdBy" class="input is-small" type="text" placeholder="Who created this document?" required>
+            </div>
+          </div>
+
+          <div class="field is-grouped is-grouped-right">
+            <p class="control" v-if="isSavingProps == false">
+              <input class="button is-success" type="submit" value="Save"/>
+            </p>
+            <p class="control" v-else-if="isSavingProps == true">
+              <a class="button is-success is-loading ">Save</a>
+            </p>
+            <p class="control">
+              <a class="button is-light" @click="displayForm = false"> Back </a>
+            </p>
+          </div>
+
+        </form>
+      </div>
+      <!--end second step-->
+
+      <!--IF ALL STEPS ARE SUCCESSFULL-->
+      <div v-if="finishedSaving" class="success-message">
+          <div>
+            <span><i class="fa fa-check-circle fa-5x"></i></span>
+            <p><h1 class="title is-4">All files were successfully uploaded and saved!</h1></p>
+          </div>
       </div>
     </div>
   </div>

@@ -1,7 +1,29 @@
-<nav class="pagination is-small is-centered" role="navigation" aria-label="pagination">
-  <a class="pagination-previous" disabled>Previous</a>
-  <a class="pagination-next">Next page</a>
-  <!--ul class="pagination-list">
-    <li><a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a></li>
-  </ul-->
+<nav class="pagination is-small is-centered" role="navigation" aria-label="pagination" v-if="pageInfo !== undefined">
+  <a 
+    class="pagination-previous" 
+    @click="prev"
+    v-show="pageInfo.first == false">
+  Previous
+  </a>
+
+  <a 
+    class="pagination-previous" 
+    disabled 
+    v-show="pageInfo.first == true">
+  Previous
+  </a>
+
+  <a 
+    class="pagination-next" 
+    v-show="pageInfo.last == false" 
+    @click="next">
+  Next page
+  </a>
+
+  <a 
+    class="pagination-next" 
+    disabled 
+    v-show="pageInfo.last == true">
+  Next page
+  </a>
 </nav>
