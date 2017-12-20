@@ -1,10 +1,17 @@
 <div :class="{'modal':true,'is-active':isNewCategoryActive}">
   <div class="modal-content new-category-modal is-centered">
+    <div class="new-category-title">
+      <h1 class="subtitle is-6">
+        <small><i class="fa fa-folder"></i>
+          <span>Create new document category</span>
+        </small>
+      </h1>
+    </div>
     <div class="close-btn" @click="closeNewCategory()">
       <i class="fa fa-close"></i>
     </div>
 
-    <div class="new-category-content">
+    <div class="new-category-content" v-if="loading === false">
       <img src="../../../assets/img/newcategory.png" />
       <div class="field">
         <div class="control">
@@ -17,6 +24,14 @@
           />
         </div>
       </div>
+    </div>
+
+    <div v-else-if="loading === true" class="new-category-content">
+      <img src="../../../assets/img/saving.png" />
+      <p>
+        <strong>Saving</strong> 
+        <PulseLoader :loading="loading" color="purple"/>
+      </p>
     </div>
 
   </div>

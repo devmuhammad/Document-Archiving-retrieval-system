@@ -70,7 +70,7 @@
         </table>
       </div>
 
-      <div class="upload-btn-1" v-if="!isNext">
+      <div class="upload-btn-1" v-if="isDone && !isNext">
         <button class="button is-success next-btn" @click="uploadController();fetchCategories()" :disabled="!isDone && !isFailed">
           <span>Continue</span>
           <span class="icon is-small">

@@ -1,4 +1,4 @@
-import { acuitydrive } from './testUploader'
+import { acuitydrive } from './acuityUploader'
 import API from "../API/documentCategory"
 const STATUS_INITIAL = 0, STATUS_SAVING = 1, STATUS_SUCCESS = 2, STATUS_FAILED = 3;
 

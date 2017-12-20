@@ -17,6 +17,8 @@ export const addCategory = {
   },
   methods:{
     reset(){
+      this.isNewCategoryActive = false;
+      this.isLoading = false 
       this.new_category.documentType = "New Category"
     },
 
@@ -25,7 +27,7 @@ export const addCategory = {
     },
 
     closeCategoryModal(){
-      return this.isNewCategoryActive = false
+      return this.reset()
     },
 
     notify(data,status){
@@ -49,10 +51,13 @@ export const addCategory = {
               .catch((err) => { reject(err) })
           })
           .then((res) => { 
-            this.isNewCategoryActive = false; 
+            this.reset()
             return this.notify(res.documentType,"success") 
           })
-          .catch((err) => { return this.notify(err.message, "error") })
+          .catch((err) => { 
+            this.isLoading = false
+            return this.notify(err.message, "error") 
+          })
         }
     
         return addCategory()

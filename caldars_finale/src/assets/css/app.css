@@ -429,6 +429,16 @@ div>nav.commentHeader.level{
   margin-top:10px;
 }
 
+.new-category-title{
+  float:left;
+  font-weight:500;
+}
+
+.new-category-title>h1{
+  font-weight:500;
+  color: purple;  
+}
+
 .listType{
   display: block;
 }

@@ -1,5 +1,5 @@
 <div>
-  <div class="columns  is-multiline is-centered"  v-show="isFolderType == true">
+  <div class="columns  is-multiline is-centered"  v-show="isFolderType == true && paginating == false">
     <div class="column" v-for="(document, index) in categoriesOfDocuments" :key="index">
         <folder :document="document"/>
     </div>
@@ -13,11 +13,18 @@
     </div-->
   </div>
 
-  <div  v-show="isListType == true">
+  <div  v-show="isListType == true && paginating == false">
     <table class="table is-fullwidth is-striped is-narrow is-hoverable">
       <tbody>
         <list :document="document" v-for="(document, index) in listOfCategories" :key="index"></list>
       </tbody>
     </table>
+  </div>
+
+  <div v-if="isDocument == undefined || isPaginating == true" style="text-align:center;margin-top:10%" class="columns">
+    <div class="column is-one-quarter"></div>
+    <div class="column is-one-quarter"></div>
+    <div class="column"><BounceLoader :loading="true" color="#3273dc"/></div>
+    <div class="column is-one-quarter"></div>
   </div>
 </div>

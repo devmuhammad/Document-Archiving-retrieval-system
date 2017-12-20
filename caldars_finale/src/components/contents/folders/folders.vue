@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import BounceLoader from "../../../../node_modules/vue-spinner/src/BounceLoader"
 import folder from "./folder/folder"
 import subfolders from "@/components/contents/subFolders/subFolders"
 import list from "./list/list"
@@ -17,7 +18,8 @@ export default {
       isAttr:false,
       folderType:false,
       children:undefined,
-      showChild:false
+      showChild:false,
+      isFetching:false
     }
   },
 
@@ -25,17 +27,27 @@ export default {
     ...mapGetters([
       "categoriesOfDocuments", 
       "categoryDetails",
-      "listOfCategories"
+      "listOfCategories",
+      "paginating"
     ]),
 
     isDocument(){
-      return this.categoriesOfDocuments.length
+      if(this.categoriesOfDocuments.length > 0){
+        return this.categoriesOfDocuments.length
+      }else{
+        this.isFetching = true
+        return undefined;
+      }
+      
     },
+
+    isPaginating(){
+      return this.paginating
+    }
   },
 
   methods:{
     getChild(parentId){
-      console.log("no parent id")
       for(let i=0;i>this.categoriesOfDocuments;i++){
         const category = this.categoriesOfDocuments[i]
         if(category.id == parentId){
@@ -46,6 +58,6 @@ export default {
     }
   },
 
-  components:{folder,list,subfolders}
+  components:{folder,list,subfolders,BounceLoader}
 }
 </script>

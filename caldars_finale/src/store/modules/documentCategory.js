@@ -8,7 +8,8 @@ let state = {
   add_error:{},
   documentCategoryDetails:undefined,
   categoryChildren: null,
-  selectedChildren:null
+  selectedChildren:null,
+  paginating:false
 }
 
 let getters = {
@@ -23,13 +24,15 @@ let getters = {
       first:state.documentCategoryDetails.first,
       page_num:state.documentCategoryDetails.page
     } : undefined
-  }
+  },
+  paginating: (state) => state.paginating
 }
 
 let mutations = {
   getDocumentCategory: (state,page_num) => {
     const getList = () => {
       return new Promise ((resolve, reject) => {
+        if(page_num >= 0){ state.paginating = true}
         API.getDocumentCategories(page_num)
           .then((res) => { resolve(res)})
           .catch((err) => { reject(err) })
@@ -38,9 +41,11 @@ let mutations = {
         state.categoryChildren = null
         state.documentCategoryDetails = res
         state.categoriesOfDocuments = res.categories
+        state.paginating = false
       })
       .catch((err) => {
         state.get_error.error = err.message; 
+        state.paginating = false
         console.log(err)
       })
     }
@@ -61,15 +66,18 @@ let mutations = {
   getCategoryList: (state, page_num) => {
     const getList = () => {
       return new Promise((resolve, reject) => {
+        if(page_num >= 0){ state.paginating = true}
         API.getCategoryList(page_num)
           .then((res) => { resolve(res) })
           .catch((err) => { reject(err) })
       })
       .then((res) => {
         state.categoryList = res.documentslist
+        state.paginating = false
       })
       .catch((err) => {
         state.get_error.error = err.message;
+        state.paginating = false
       })
     }
 

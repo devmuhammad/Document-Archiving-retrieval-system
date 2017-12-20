@@ -4,7 +4,7 @@
 
 
 <script>
-import {FadeLoader} from "../../../../node_modules/vue-spinner/src/FadeLoader"
+import PulseLoader from "../../../../node_modules/vue-spinner/src/PulseLoader"
 
 export default {
   name:"new_category",
@@ -16,6 +16,9 @@ export default {
     'reset',
     'loading'
   ],
-  mounted(){ return this.$refs.category.focus() }
+
+  mounted(){ return this.$refs.category.focus() },
+  
+  components:{PulseLoader}
 }
 </script>
