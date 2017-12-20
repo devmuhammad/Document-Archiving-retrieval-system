@@ -1,21 +1,32 @@
 <template>
-  <div id="app" class="columns is-gapless">
+  <div id="app">
+    <span v-if="isLoggedIn === false"><signUp></signUp></span>  
+    <span v-else>
+       <div class="columns is-gapless">
     <div class="column is-one-quarter" style="width:15%"> <side-bar/> </div>
     <div class="column" style="width:85%">
       <tool-bar></tool-bar>
       <router-view/>
     </div>
+       </div>
+    </span>
   </div>
 </template>
 
 <script>
 import sideBar from "@/components/layout/sideBar/sideBar"
 import toolBar from "@/components/layout/toolBar/toolBar"
+import signUp from "@/components/signUp/signUp"
 import {LoadDocuments} from "@/mixins/fetchDocuments"
+import {mapGetters} from "vuex"
 
 export default {
   name: 'app',
-  components:{sideBar,toolBar},
+computed:{
+    ...mapGetters(["isLoggedIn"])
+  },
+
+  components:{sideBar,toolBar,signUp},
   mixins:[LoadDocuments]
 }
 </script>

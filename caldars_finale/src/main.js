@@ -5,9 +5,11 @@ import App from './App'
 import router from './router'
 import store from "./store"
 import InfiniteScroll from 'vue-infinite-scroll'
+import VeeValidate from 'vee-validate'
 
 
 Vue.use(InfiniteScroll)
+Vue.use(VeeValidate)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

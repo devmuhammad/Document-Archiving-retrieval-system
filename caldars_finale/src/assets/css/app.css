@@ -450,3 +450,56 @@ div>nav.commentHeader.level{
   width:400px;
   word-wrap:break-word;
 }
+.userManagementModal{
+  background-color:#fff;
+  height: 700px;
+  width: 700px;
+  padding: 15px;
+  border-radius:5px
+}
+.table_ctrl{
+  background-color: #da251c;
+  width:130px;
+  float:right;
+  height:25px;
+  border-radius: 3px;
+}
+.table_ctrl_small{
+  background-color: #da251c;
+  width:70px;
+  float:right;
+  height:25px;
+  border-radius: 3px;
+}
+
+.table_ctrl_item {
+  color:#fff;
+  padding:7px 7px 7px 7px;
+  cursor: pointer;
+}
+
+.table_ctrl_item:hover{
+  background-color: transparent;
+}
+.signbox {
+  background-color: rgb(243, 247, 250);
+  padding: 20px;
+  padding-top:0px;
+  border-radius: 5px;
+  width:800px;
+  margin: 100px auto;
+  
+}
+.infield{
+  margin: 0;
+  padding-left: 50px;
+  padding-right: 50px;
+  
+}
+.inputrad{
+  border-radius: 50px;
+}
+.signbackground{
+  background-image: url('../img/computicon.jpg');
+  width:100%
+}

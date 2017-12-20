@@ -10,6 +10,7 @@ let state = {
 let getters = {
     activitylist : state => state.activitylist,
     get_acterror : state => state.get_acterror,
+    actlength: (state) => state.actlength,
 }
 
 let mutations = {
@@ -21,7 +22,10 @@ let mutations = {
           .then((res) => { resolve(res) })
           .catch((err) => {  reject(err) })
         })  
-        .then((res) => {state.activitylist = res})
+        .then((res) => {state.activitylist = res
+          state.actlength= res.length
+          
+        })
         .catch((err) => { console.log({'error':err.message}); state.get_acterror.error = err.message})
       }  
   

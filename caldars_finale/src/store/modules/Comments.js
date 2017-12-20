@@ -3,6 +3,7 @@ import api from "../../API/comments"
 let state = {
     commentlist :[],
     comment: {},
+    comlength:{},
     get_comerror: {},
     delete_error:{},
     create_error:{},
@@ -12,7 +13,7 @@ let state = {
 let getters = {
     commentlist : state => state.commentlist,
     get_comerror : state => state.get_comerror,
-    
+    comlength: (state) => state.comlength
 }
 
 let mutations = {
@@ -24,7 +25,10 @@ let mutations = {
           .then((res) => { resolve(res) })
           .catch((err) => {  reject(err) })
         })  
-        .then((res) => {state.commentlist = res})
+        .then((res) => {
+          state.commentlist = res
+          state.comlength = res.length
+        })
         .catch((err) => { console.log({'error':err.message}); state.get_comerror.error = err.message})
       }  
   

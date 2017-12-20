@@ -8,18 +8,18 @@
               v-model = "checkbox"
             />
     </td>
-        <td class="updateUser" @click="isActive = true">{{fullname}}</td>
+        <td class="updateUser" @click="isActive = true">{{username}}</td>
         <td>{{emailaddress}}</td>
         <td>{{phonenumber}}</td>
         <td>{{datecreated}}</td>
         <td>{{lastlogin}}</td>
     
     <updateUser
-     :userid="userid"
-     :fullname="fullname"
+     :username="username"
+     :firstname="firstname"
      :emailaddress="emailaddress"
      :phonenumber="phonenumber"
-     :pissid="pissid"
+     :pissid="password"
      :confirmpassword="confirmpassword"
      :isActive="isActive"
      :closeModal= "closeModal"

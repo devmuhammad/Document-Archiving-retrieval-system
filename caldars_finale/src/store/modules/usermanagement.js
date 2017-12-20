@@ -1,4 +1,4 @@
-import api from "../../api/UserManagementAPI"
+import api from "../../API/UserManagementAPI"
 
 let state = {
     users: [],
@@ -7,6 +7,7 @@ let state = {
     get_usererror: {},
     create_usererror:{},
     create_userstatus:undefined,
+    create_inststatus:undefined,
     create_updatestatus:undefined,
     create_passwordstatus:undefined,
     delete_error:{},
@@ -16,6 +17,7 @@ let state = {
     userslist : state => state.userslist,
     get_usererror : state => state.get_usererror,
     create_userstatus: state => state.create_userstatus,
+    create_inststatus: state => state.create_inststatus,
     create_updatestatus: state => state.create_updatestatus,
     create_passwordstatus: state => state.create_passwordstatus
   }
@@ -53,6 +55,20 @@ let state = {
 
     return await create()
   },
+  createInstitution: async (state, institutionid) => {
+    const create = () => {
+      return new Promise ((resolve, reject) => {
+        state.create_inststatus = 0
+      api.CREATE_INSTITUTION(institutionid)
+      .then((res) => { resolve(res)})
+      .catch((err) => { reject(err) })
+    })
+    .then((res) => { state.create_inststatus = res.status; this.GET_INSTITUTION(0)})
+    .catch((err) => {state.create_usererror.error = err.message})
+  }
+
+  return await create()
+},
     
 
       updateoldUser: async (state, user) => {

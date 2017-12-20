@@ -9,12 +9,14 @@
 export default {
   name:"userManagementTableItem",
   props:[
-    'userid',
-    'fullname',
+    'username',
+    'firstname',
+    'middlename',
+    'lastname',
     'emailaddress',
     'phonenumber',
     'datecreated',
-    'pissid',
+    'password',
     'confirmpassword',
     'lastlogin', 
     'checkbox', 

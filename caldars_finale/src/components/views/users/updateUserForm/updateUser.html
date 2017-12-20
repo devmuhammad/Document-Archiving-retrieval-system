@@ -1,6 +1,6 @@
 <div :class="{modal:true, 'is-active':isActive}">
         <div class="modal-background"></div>
-        <div class="modal-content userManagementModal">
+        <div class="modal-content upload-modal">
           
     <div class="columns">
     <span class="column userManagerLogo">
@@ -13,27 +13,27 @@
           
               <div class="field">
               <p class="control ">
-                  Full Name:  {{fullname}}
-                  <input class="input" type="text" v-model="user.fullname">
+                  Full Name:  {{username}}
+                  <input class="input" type="text" v-model="user.username">
               </p>
               </div>
     
               <div class="field">
                 <p class="control ">
-                    E-mail:  {{emailaddress}}
-                    <input class="input" type="text" v-model="user.emailaddress">
+                    E-mail:  {{contactEmail}}
+                    <input class="input" type="text" v-model="user.contactEmail">
                 </p>
                 </div>
                 <div class="field">
                         <p class="control ">
-                            Phone Number:  {{phonenumber}}
-                            <input class="input" type="text" v-model="user.phonenumber">
+                            Phone Number:  {{contactPhone}}
+                            <input class="input" type="text" v-model="user.contactPhone">
                 </p>
                 </div>
                 <div class="field">
                 <p class="control ">
                     Password:
-                    <input class="input" type="password" placeholder="*******" v-model="user.pissid">
+                    <input class="input" type="password" placeholder="*******" v-model="user.password">
                 </p>
                 </div>
     
@@ -44,38 +44,7 @@
                 </p>
                 </div>
                 <div class="box">
-                        <div class="control is-grouped">
-                            <p v-model="user.adminusersGroupsList"><strong>
-                                User Groups:</strong></p>
-            
-                            <p class="control">
-                            <label class="checkbox ">
-                            <input type="checkbox" id="adminconsultant" value="Admin-Consultant" v-model="checked"/>
-                                Admin-Consultant
-                            </label>
-                            </p>
-                        <p class="control">
-                        <label class="checkbox">
-                         <input type="checkbox" id="adminschool" value="Admin-School" v-model="checked"/>
-                            Admin-School
-                        </label>
-                        </p>
-                    <p class="control">
-                        <label class="checkbox">
-                         <input type="checkbox" id="userconsultant" value="User-Consultant" v-model="checked"/>
-                         User-Consultant
-                        </label>
-                        </p>
-                    <p class="control">
-                        <label class="checkbox">
-                        <input type="checkbox" id="userschool" value="User-School" v-model="checked"/>
-                         User-School
-                        </label>
-                         </p>
-            
-                         
-            
-            </div>
+                        
              </div>
                     
      <div class="field column">

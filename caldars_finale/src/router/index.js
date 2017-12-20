@@ -5,12 +5,14 @@ import Documents from '@/components/views/documents/documents'
 import Settings from '@/components/views/settings/settings'
 import Users from '@/components/views/users/users'
 import Help from "@/components/views/help/help"
+import SignUp from "@/components/signUp/signUp"
 
 Vue.use(Router)
 
 export default new Router({
   mode:"history",
   routes: [
+   
     {
       path: '/',
       name: 'Dashboard',

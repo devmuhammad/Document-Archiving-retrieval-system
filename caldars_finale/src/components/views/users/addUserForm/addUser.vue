@@ -15,8 +15,8 @@ export default {
   data () {
     return {
 
-        user: {fullname: '', pissid:'', confirmpassword:'', emailaddress: '', phonenumber:'',
-          adminusersGroupsList:[], profiletype:'', datecreated:new Date().toDateString()},
+        user: {username:'', password:'', confirmpassword:'', contactEmail: '', contactMobile:'',
+          adminusersGroupsList:[], datecreated:new Date().toDateString()},
         loading:true,
         adminusersGroups: {emailaddress:'',groupname:''},
         checked:[]
