@@ -1,13 +1,13 @@
 <div class="user_management_table">
   <span class="columns">
             <span class="column is-one-quarter"></span>
-  <span class="column"><h2 class="title is-4">User Management</h2></span>
+  <span class="column"><h2 class="title is-4" style="text-align:center">User Management</h2></span>
   <span class="column is-one-quarter">
             </span>
   </span>
 
   <span v-if="userslist">
-                <div class="table_ctrl_small">
+                <div class="table_ctrl_small" >
                     
                     <a 
                         @click = "setAddModalActive"
@@ -29,7 +29,7 @@
                         <thead>
                           <tr>
                             <th><input type="checkbox" v-model="selectAll"/></th>
-                            <th>Full Name</th>
+                            <th>User Name</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Date Created</th>
@@ -40,10 +40,13 @@
                                 <userManagementTableItem 
                                   v-for="(user, index) in userslist" 
                                   :key="index"
-                                  :fullname="user.fullname"
-                                  :emailaddress = "user.emailaddress"
-                                  :phonenumber = "user.phonenumber"
-                                  :datecreated = "user.datecreated"
+                                  :username="user.userName"
+                                  :firstname="user.firstName"
+                                  :middlename="user.middleName"
+                                  :lastname="user.lastName"
+                                  :emailaddress = "user.contactEmail"
+                                  :phonenumber = "user.contactMobile"
+                                  :datecreated = "user.dateCreated"
                                   :lastlogin = "user.lastlogin"
                                   :checkbox = "ec_checkboxes"
                                   :userid = "user.userid"

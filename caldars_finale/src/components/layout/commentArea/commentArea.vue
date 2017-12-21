@@ -5,6 +5,7 @@
 <script>
 import comments from "@/components/contents/commentTab/comments";
 import activities from "@/components/contents/activityTab/activities";
+import {mapGetters} from 'vuex'
 
 export default {
   name: "commentArea",
@@ -13,10 +14,18 @@ export default {
       iscomActive: false,
       isActive: false,
       document_Footer: 50,
-      
+      comtag:0,
+      acttag:0,
     };
   },
 
+  computed:{
+    ...mapGetters([
+      "actlength",
+      "comlength"
+    ]),
+  },
+  
   methods: {
     setActive() {
       this.iscomActive = false;

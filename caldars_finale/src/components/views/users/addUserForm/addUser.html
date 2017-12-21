@@ -1,6 +1,6 @@
 <div :class="{modal:true, 'is-active':isActive}">
     <div class="modal-background"></div>
-    <div class="modal-content userManagementModal">
+    <div class="modal-content upload-modal">
       
 <div class="columns">
 <span class="column userManagerLogo">
@@ -10,12 +10,12 @@
 <span class="column">    
         <h2 class="title is-6">Add New User</h2>
         
-      <div class="centerForm" v-if="response_status == undefined"  >
+      <div class="centerForm" v-if="response_status == undefined" @submit.prevent="validateBeforeSubmit()"  >
       
           <div class="field">
           <p class="control ">
               Full Name:
-              <input class="input"  data-vv-delay="100" v-validate="'required'" type="text" placeholder="John Mark" v-model="user.fullname">
+              <input class="input"  data-vv-delay="100" v-validate="'required'" type="text" placeholder="John Mark" v-model="user.username">
           </p>
           </div>
 
@@ -23,14 +23,14 @@
             <p class="control" >
                 E-mail:
                 <input :class="{'input': true, 'is-danger': errors.has('email') }" type="text" placeholder="john12@gmail.com" 
-                v-model="user.emailaddress" v-validate="'required|email'" >
+                v-model="user.contactEmail" v-validate="'required|email'" >
                 <span v-show="errors.has('email')" class="help is-danger">{{ errors.first('email') }}</span>
             </p>
             </div>
             <div class="field">
                 <p class="control ">
                     Phone Number:
-                    <input class="input"  data-vv-delay="100" v-validate="'required'" type="text" placeholder="0819000320" v-model="user.phonenumber">
+                    <input class="input"  data-vv-delay="100" v-validate="'required'" type="text" placeholder="0819000320" v-model="user.contactPhone">
                 </p>
                 </div>
             
@@ -38,7 +38,7 @@
             <p class="control ">
                 Password:
                 <input v-validate="'required|min:6'" class="input" type="password" placeholder="*******" 
-                v-model="user.pissid" >
+                v-model="user.password" >
                
             </p>
             </div>
@@ -47,7 +47,7 @@
             <p class="control ">
                 Confirm Password:
                 <input class="input" v-validate="'required|confirmed:password'" type="password" placeholder="*******" 
-                v-model="user.confirmpassword" data-vv-as="pissid">
+                v-model="user.confirmpassword" data-vv-as="password">
                 
             </p>
             </div>
@@ -60,44 +60,12 @@
                     </div>
                   </div>
 
-            <div class="box">
-            <div class="control is-grouped">
-                <p v-model="user.adminusersGroupsList"><strong>
-                    User Groups:</strong></p>
+            
 
-                <p class="control">
-                <label class="checkbox ">
-                <input type="checkbox" id="adminconsultant" value="Admin-Consultant" v-model="checked"/>
-                    Admin-Consultant
-                </label>
-                </p>
-            <p class="control">
-            <label class="checkbox">
-             <input type="checkbox" id="adminschool" value="Admin-School" v-model="checked"/>
-                Admin-School
-            </label>
-            </p>
-        <p class="control">
-            <label class="checkbox">
-             <input type="checkbox" id="userconsultant" value="User-Consultant" v-model="checked"/>
-             User-Consultant
-            </label>
-            </p>
-        <p class="control">
-            <label class="checkbox">
-            <input type="checkbox" id="userschool" value="User-School" v-model="checked"/>
-             User-School
-            </label>
-             </p>
-
-             
-
-</div>
- </div>
 
  <div class="field column">
     <p class="control" style="float:right">
-    <button class="button is-primary" type="submit" @click="validateBeforeSubmit() + profilecheck() + createNew()">
+    <button class="button is-primary" type="submit" @click=" createNew()">
             Add User
     </button>
     </p>

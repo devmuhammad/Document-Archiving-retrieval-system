@@ -12,6 +12,17 @@ export default {
 
       return await res()
     },
+    CREATE_INSTITUTION: async (institutionid) => {
+      const res = () => {
+        return new Promise((resolve, reject) => {
+          HTTP.post('institution/add', institutionid)
+          .then(response => { resolve(response) })
+          .catch(e => { reject(e) })
+        })
+      }
+  
+      return await res()
+    },
 
     UPDATE_USER: async (user) => {
       const res = () => {
@@ -65,7 +76,7 @@ export default {
     GET_USERS: async () => {
       const res = () => {
         return new Promise((resolve, reject) => {
-          HTTP.post(`list/usersprofile` )
+          HTTP.get(`list/usersprofile?offset=0&limit=20` )
           .then((response) => { resolve(response.data)  })
           .catch(e => { console.log(e); reject(e) })
         })

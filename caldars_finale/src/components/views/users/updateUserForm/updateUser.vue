@@ -14,8 +14,8 @@ export default {
     
    return {
      
-        user: { userid:this.userid , fullname:'', emailaddress:'', phonenumber: '', pissid:'', confirmpassword:'',
-              adminusersGroupsList:[], profiletype:'',},
+        user: { userid:this.userid , username:'', contactEmail:'', contactMobile: '', password:'', confirmpassword:'',
+              adminusersGroupsList:[],},
         loading:true,
         adminusersGroups: {emailaddress:'',groupname:''},
         checked:[]
