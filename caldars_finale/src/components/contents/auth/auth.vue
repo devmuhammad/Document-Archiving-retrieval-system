@@ -1,4 +1,4 @@
-<template src="./signUp.html">
+<template src="./auth.html">
   
 </template>
 
@@ -6,7 +6,7 @@
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "signUp",
+  name: "auth",
 
   data() {
     return {
@@ -27,8 +27,12 @@ export default {
           datecreated: new Date().toDateString()
         },
         datecreated: new Date().toDateString()
-      }
-    };
+      },
+
+      authbtns:true,
+      signinForm:false,
+      signupForm:false
+    }
   },
 
   computed: {
@@ -38,7 +42,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(["getUsers", "createNewUser", "createInstitution"]),
+    ...mapActions(["getUsers", "createNewUser", "createInstitution", "userLogin"]),
 
     createNew() {
       return this.createNewUser(this.user);
@@ -46,6 +50,24 @@ export default {
     
     createNewInstitution() {
       return this.createInstitution(this.user.institutionid);
+    },
+
+    openSigninForm(){
+      this.authbtns = false;
+      this.signupForm = false;
+      this.signinForm = true;
+    },
+
+    openSignupForm(){
+      this.authbtns = false;
+      this.signinForm = false;
+      this.signupForm = true;
+    },
+
+    closeForms(){
+      this.authbtns = true;
+      this.signinForm = false;
+      this.signupForm = false;
     }
   }
 };

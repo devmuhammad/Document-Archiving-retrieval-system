@@ -1,0 +1,138 @@
+<div class="login-background">
+  <div class="box login-box columns is-gapless">
+    <div class="column company-id">&nbsp;<em>Acuitydrive</em></div>
+    <span class="column auth-section">
+      <template v-if="authbtns === true">
+        <div class="sign-in" @click="openSigninForm()">
+          <div>
+            <span><i class="fa fa-sign-in fa-5x"></i></span>
+            <h1 class="auth-title"> Sign In</h1>
+          </div>
+        </div>
+        <div class="sign-up" @click="openSignupForm()">
+          <div>
+            <span><i class="fa fa-user-plus fa-4x"></i></span>
+            <h1 class="auth-title"> Sign up</h1>
+          </div>
+        </div>
+      </template>
+
+      <section v-if="authbtns === false" class="auth-forms">
+        <div class="auth-close-btn" @click="closeForms"><i class="fa fa-times"></i></div>
+        <!--SIGN IN FORM-->
+        <div class="sign-in-form" v-if="signinForm === true">
+          <span class="signin-header"><i class="fa fa-sign-in"></i>&nbsp;Sign in</span>
+          <div class="auth-form-container">
+            <div class="has-text-centered welcome-msg">
+              <span class="title">Welcome back!</span>
+              <div class="sub-title">Please login to access your account</div>
+            </div>
+
+            <div class="field">
+              <div class="control has-icons-left">
+                <input class="input is-rounded" type="text" placeholder="Username">
+                <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
+              </div>
+            </div>
+               
+            <div class="field">
+              <div class="control has-icons-left">
+                <input class="input" type="password" placeholder="******">
+                <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
+              </div>
+            </div>
+
+            <div class="field">
+              <a class="button is-primary is-fullwidth" @click="userLogin">Sign in</a>
+            </div>
+
+            <div class="has-text-centered">
+              <div class="sm-header"><span>or use social media login</span></div>
+              <div class="social-login-btns">
+                <div class="social-login-facebook"><i class="fa fa-facebook fa-2x"></i></div>
+                <div class="social-login-insta"><i class="fa fa-instagram fa-2x"></i></div>
+                <div class="social-login-twitter"><i class="fa fa-twitter fa-2x"></i></div>
+              </div>   
+            </div>
+
+            <div class="has-text-centered">
+              <span>Forgot password? <a>Reset</a></span><br/>
+              <span>Don't have an account? <a @click="openSignupForm()">Sign up</a></span>
+            </div>
+          </div>
+        </div>
+        <!--END SIGN IN FORM-->
+
+        <!--SIGN UP FORM-->
+        <div class="sign-up-form" v-if="signupForm === true">
+          <span class="signin-header"><i class="fa fa-user-plus"></i>&nbsp;Sign up</span>
+          <div class="auth-form-container">
+            <div class="has-text-centered welcome-msg">
+              <span class="title">Create Account.</span>
+              <div class="sub-title">You are steps away from saving your files.</div>
+            </div>
+
+            <div class="field">
+              <div class="control has-icons-left">
+                <input class="input is-small" type="text" placeholder="Username">
+                <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
+              </div>
+            </div>
+               
+            <div class="field">
+              <div class="control has-icons-left">
+                <input class="input is-small" type="password" placeholder="******">
+                <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control has-icons-left">
+                <input class="input is-small" type="email" placeholder="example@gmail.com">
+                <span class="icon is-small is-left"><i class="fa fa-envelope"></i></span>
+              </div>
+            </div>
+
+            <div class="field">
+              <a class="button is-primary is-fullwidth">Sign up</a>
+            </div>
+
+            <div class="has-text-centered">
+              <div class="sm-header"><span>or create organization</span></div>
+              
+              <div class="field">
+                <div class="control has-icons-left">
+                  <input class="input is-small" type="text" placeholder="Organization name">
+                  <span class="icon is-small is-left"><i class="fa fa-bank"></i></span>
+                </div>
+              </div>
+                  
+              <div class="field">
+                <div class="control has-icons-left">
+                  <input class="input is-small" type="number" placeholder="Contact phone">
+                  <span class="icon is-small is-left"><i class="fa fa-phone"></i></span>
+                </div>
+              </div>
+  
+              <div class="field">
+                <div class="control has-icons-left">
+                  <input class="input is-small" type="email" placeholder="example@gmail.com">
+                  <span class="icon is-small is-left"><i class="fa fa-envelope"></i></span>
+                </div>
+              </div>
+    
+              <div class="field">
+                <a class="button is-primary is-fullwidth">Create organization</a>
+              </div>
+            </div>
+
+            <div class="has-text-centered">
+              <span>Already have an account? <a @click="openSigninForm()">Sign in</a></span>
+            </div>
+          </div>
+        </div>
+        <!--END SIGN UP FORM-->
+      </section>
+    </span>
+  </div>
+</div>

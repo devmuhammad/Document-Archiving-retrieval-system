@@ -28,7 +28,8 @@ const mutations = {
       .catch((err) => { state.login_error.error = err.message })
     }
 
-    return await login()
+    //return await login()
+    state.isLoggedIn = true;
   }
 }
 

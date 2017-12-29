@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <span v-if="isLoggedIn === true"><signUp></signUp></span>  
+    <span v-if="isLoggedIn === false"><auth></auth></span>  
 
     <span v-else>
       <div class="columns is-gapless">
@@ -18,7 +18,7 @@
 <script>
 import sideBar from "@/components/layout/sideBar/sideBar"
 import toolBar from "@/components/layout/toolBar/toolBar"
-import signUp from "@/components/contents/signUp/signUp"
+import auth from "@/components/contents/auth/auth"
 import {LoadDocuments} from "@/mixins/fetchDocuments"
 import {mapGetters} from "vuex"
 
@@ -27,7 +27,7 @@ export default {
   computed:{
     ...mapGetters(["isLoggedIn"])
   },
-  components:{sideBar,toolBar,signUp},
+  components:{sideBar,toolBar,auth},
   mixins:[LoadDocuments]
 }
 </script>
