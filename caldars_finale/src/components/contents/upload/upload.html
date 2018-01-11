@@ -37,8 +37,7 @@
           <small>failed uploads.</small>
         </div>
 
-        <br/>
-
+        <div class="upload-title">All Uploads</div>
         <table class="table is-narrow" style="background-color:transparent">
           <tbody>
             <tr v-for="(f, index) in allFiles" :key="index">
@@ -62,7 +61,7 @@
 
               <td v-else-if="f.status == 'success'">
                 <small>
-                  <span class="tag">Done</span>
+                  <span class="tag is-success">Done</span>
                 </small>
               </td>
             </tr>
@@ -71,7 +70,7 @@
       </div>
 
       <div class="upload-btn-1" v-if="isDone && !isNext">
-        <button class="button is-success next-btn" @click="uploadController();fetchCategories()" :disabled="!isDone && !isFailed">
+        <button class="button is-secondary next-btn" @click="uploadController();fetchCategories()" :disabled="!isDone && !isFailed">
           <span>Continue</span>
           <span class="icon is-small">
             <i class="fa fa-chevron-right"></i>

@@ -10,7 +10,6 @@ export default {
     formatDate(){
       let formated = new Date(this.document.datecreated).toDateString()
       formated = formated.replace(" ", ", ")
-      console.log(formated)
       return formated
     }
   }

@@ -1,0 +1,15 @@
+<div class="user-card">
+  <div class="user-elipsis">
+    <span @click="displayControl"><i class="fa fa-caret-down"></i></span>
+    <div class="user-ctrls is-pulled-left" v-if="showControl === true">
+      <div class="user-ctrl-item"><small>Edit</small></div>
+      <div class="user-ctrl-item"><small>Block account</small></div>
+    </div>
+  </div>
+  <div class="user-card-img is-pulled-left">{{sampleName | getInitials}}</div>
+  <div class="user-card-content is-pulled-left">
+    <small>Umar Abdullahi</small><br/>
+    <small>@factory_worker</small><br/>
+    <small class="user-role">Software developer</small>
+  </div>
+</div>

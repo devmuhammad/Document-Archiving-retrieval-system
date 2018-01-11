@@ -7,7 +7,7 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "auth",
-
+  mounted() { return this.typeWriter() },
   data() {
     return {
       user: {
@@ -31,7 +31,10 @@ export default {
 
       authbtns:true,
       signinForm:false,
-      signupForm:false
+      signupForm:false,
+      i:0,
+      txt:"Create an account and get up to 200MB free space...",
+      demo:""
     }
   },
 
@@ -68,6 +71,23 @@ export default {
       this.authbtns = true;
       this.signinForm = false;
       this.signupForm = false;
+    },
+
+
+    typeWriter() {
+      if (this.i < this.txt.length) {
+        this.demo += this.txt.charAt(this.i);
+        this.i++;
+        setTimeout(this.typeWriter, 200);
+      }
+      this.resetCursor()
+    },
+
+    resetCursor() {
+      if(this.demo === this.txt){
+        this.demo = ""
+        this.i = 0;
+      }
     }
   }
 };

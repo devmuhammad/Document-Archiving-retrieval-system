@@ -1,0 +1,67 @@
+<div :class="{'modal':true,'is-active':isNewUserModalActive}">
+    <div class="modal-content new-user-modal is-centered">
+      <div class="new-user-title is-pulled-left">
+        <h1 class="subtitle is-6">
+          <small><i class="fa fa-user-plus"></i>
+            <span>Create new user</span>
+          </small>
+        </h1>
+      </div>
+      <div class="close-btn is-pulled-right" @click="closeNewUserModal()">
+        <i class="fa fa-close"></i>
+      </div>
+  <br/><br/>
+      <div class="new-user-content" v-if="loading === false">
+        <div class="field">
+          <label class="label">User role</label>
+          <div class="control has-icons-left">
+            <div class="select is-fullwidth">
+              <select>
+                <option>Select role</option>
+                <option>With options</option>
+              </select>
+            </div>
+            <span class="icon is-small is-left">
+              <i class="fa fa-folder"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Fullname</label>
+          <div class="control has-icons-left">
+            <input 
+              class="input" 
+              type="text" 
+            />
+  
+            <span class="icon is-small is-left">
+              <i class="fa fa-user"></i>
+            </span>
+          </div>
+        </div>
+
+
+        <div class="field">
+          <label class="label">username</label>
+          <div class="control has-icons-left">
+            <input 
+              class="input" 
+              type="text" 
+            />
+  
+            <span class="icon is-small is-left">
+              <i class="fa fa-at"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <button class="button is-secondary is-fullwidth">Add</button>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>

@@ -3,11 +3,30 @@
 </template>
 
 <script>
-import userManagementTable from './userManagementTable/userManagementTable'
+import userCard from "@/components/contents/userCard/user-card"
+import addUser from "@/components/contents/newUser/new-user"
 
 export default {
   name:"users",
-  components: {userManagementTable}
+  data () {
+    return {
+      users:6,
+      isAddUserModalActive:false
+    }
+  },
+  methods:{
+    openNewUserModal() {
+      return this.isAddUserModalActive = true
+    },
+
+    closeNewUserModal () {
+      return this.isAddUserModalActive = false
+    }
+  },
+  components: {
+    userCard,
+    addUser
+  }
 
 }
 </script>

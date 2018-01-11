@@ -7,7 +7,7 @@
 
   <div v-if="selectedChildren == undefined" style="text-align:center">
     <img src="../../../assets/img/emptystate3.png"/><br/>
-    <a class="button is-primary">
+    <a class="button is-primary" @click="createProject">
       <span><i class="fa fa-plus"></i></span>
       New Project
     </a>

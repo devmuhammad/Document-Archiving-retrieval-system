@@ -17,7 +17,8 @@ export default {
         documents:false,
         help:false
       },
-      showNote:false
+      showNote:false,
+      viewActions:false
     }
   },
   watch:{
@@ -44,6 +45,10 @@ export default {
         newRoutes.help = true
         this.routes = newRoutes
       }
+    },
+
+    displayActions () {
+      this.viewActions = !this.viewActions;
     }
   },
   components:{notifications}

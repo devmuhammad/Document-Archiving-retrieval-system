@@ -9,7 +9,7 @@ import list from "./list/list"
 
 export default {
   name:"subFolders",
-  props:["categoryChildren", "isListType", "isFolderType"],
+  props:["categoryChildren", "isListType", "isFolderType", "createProject"],
   computed:{
     ...mapGetters(["selectedChildren"])
   },

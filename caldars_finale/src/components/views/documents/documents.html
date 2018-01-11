@@ -2,6 +2,8 @@
   <uploadModal :isUploadActive="setUploadActive" :closeModal="closeModal" />
   <categoryModal v-if="isNewCategoryActive === true" :isNewCategoryActive="isNewCategoryActive" :closeNewCategory="closeCategoryModal"
     :addCategory="create_new_category" :newCategory="new_category" :reset="reset" :loading="isLoading" />
+  <addProjectModal v-if="isProjectModalActive === true" :isProjectModalActive="isProjectModalActive" :closeProjectModal="closeProjectModal" :loading="isProjectLoading"
+    :project="project" :addProject="create_new_project"/>
 
   <div class="columns">
     <!--Left column-->
@@ -39,7 +41,7 @@
       <!--Display folders-->
       <div class="foldersDiv">
         <folders :isListType="isListType" :isFolderType="isFolderType" v-show="viewSubFolders == false"/>  
-        <subfolders :isListType="isListType" :isFolderType="isFolderType" v-show="viewSubFolders == true"/>
+        <subfolders :isListType="isListType" :isFolderType="isFolderType" :createProject="openProjectModal" v-show="viewSubFolders == true"/>
       </div>
       <!--End of Display folders-->
     </div>
@@ -51,13 +53,6 @@
       <search></search>
       <hr/>
       <p>
-        <div class="documentAction">
-          <span>
-            <input type="checkbox">
-          </span>
-          <span>Select all</span>
-        </div>
-
         <div class="documentAction" @click="displayUploadModal">
           <span>
             <i class="fa fa-upload"></i>
@@ -72,11 +67,20 @@
           <span>Create category</span>
         </div>
 
-        <div class="documentAction">
+        <div class="documentAction" @click="openProjectModal">
           <span>
             <i class="fa fa-plus-square"></i>
           </span>
           <span>New project</span>
+        </div>
+
+        <hr/>
+        
+        <div class="documentAction">
+          <span>
+            <input type="checkbox">
+          </span>
+          <span>Select all</span>
         </div>
 
         <div class="documentAction" @click="Delete">
@@ -97,5 +101,5 @@
     <!--End of Right column-->
   </div>
   
-  <commentArea></commentArea>
+  <commentArea v-if="viewSubFolders == true"></commentArea>
 </div>

@@ -1,6 +1,25 @@
 <div class="login-background">
   <div class="box login-box columns is-gapless">
-    <div class="column company-id">&nbsp;<em>Acuitydrive</em></div>
+    <div class="column company-id">
+      <div class="company-id-top">
+          <div class="logo-area">
+            <span><i class="fa fa-hdd-o"></i></span>&nbsp;
+            <span>Acuity<span class="app-name">drive</span></span>
+          </div>
+          <div class="typingText">{{demo}}<span><i class="fa fa-i-cursor"></i></span></div>
+      </div>
+      
+      <div class="company-id-bottom">
+        <div class="homeLinks">
+          <a><span><i class="fa fa-space-shuttle"></i></span> Take a tour</a>
+          <a><span><i class="fa fa-file-text-o"></i></span> Documentation</a>
+          <a><span><i class="fa fa-money"></i></span> Pricing</a>
+          <a><span><i class="fa fa-cube"></i></span> Features</a>
+        </div>
+      </div>
+      
+    </div>
+
     <span class="column auth-section">
       <template v-if="authbtns === true">
         <div class="sign-in" @click="openSigninForm()">

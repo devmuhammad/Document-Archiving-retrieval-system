@@ -10,7 +10,9 @@ import search from "@/components/contents/search/search"
 import pagination from "@/components/contents/pagination/pagination"
 import uploadModal from "@/components/contents/upload/upload"
 import categoryModal from "@/components/contents/category/category"
+import addProjectModal from "@/components/contents/newProject/newProject"
 import {addCategory} from "../../../mixins/addCategory"
+import {addProject} from "../../../mixins/addProject"
 import {DocumentActions} from "../../../mixins/documentActions"
 
 export default {
@@ -43,6 +45,7 @@ export default {
       return this.setUploadActive = false
     }
   },
+  
   components:{
     commentArea, 
     folders, 
@@ -50,8 +53,10 @@ export default {
     pagination,
     uploadModal,
     categoryModal,
-    subfolders
+    subfolders,
+    addProjectModal
   },
-  mixins:[addCategory,DocumentActions]
+
+  mixins:[addCategory,DocumentActions,addProject]
 }
 </script>

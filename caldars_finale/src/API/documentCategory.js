@@ -41,8 +41,20 @@ export default {
     const res = () => {
       return new Promise((resolve, reject) => {
         HTTP.post('category/add', category)
-        .then(response => {console.log(response); resolve(response.data) })
-        .catch(e => { console.log(e); reject(e) })
+        .then(response => { resolve(response.data) })
+        .catch(e => { reject(e) })
+      })
+    }
+
+    return await res()
+  },
+
+  createProject: async (project) => {
+    const res = () => {
+      return new Promise((resolve, reject) => {
+        HTTP.post('project/add', project)
+        .then(response => { resolve(response.data) })
+        .catch(e => { reject(e) })
       })
     }
 

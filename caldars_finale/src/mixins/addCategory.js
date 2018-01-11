@@ -41,7 +41,7 @@ export const addCategory = {
     },
 
     create_new_category(){
-      if(this.new_category.documentType != ""){
+      if(this.new_category.documentType != "" && this.new_category.documentType != "New Category"){
         this.isLoading = true;
         
         const addCategory = () => {

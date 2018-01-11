@@ -21,6 +21,14 @@ export default {
     getChild(){
       return this.getCategoryChild(this.document.id)
     }
+  },
+  filters: {
+    formatDate: function (value) {
+      if (!value) return ''
+      value = new Date(value).toDateString()
+      value = value.replace(" ", ", ")
+      return value
+    }
   }
 }
 </script>

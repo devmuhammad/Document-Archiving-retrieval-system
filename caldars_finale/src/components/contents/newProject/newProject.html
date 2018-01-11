@@ -1,0 +1,58 @@
+<div :class="{'modal':true,'is-active':isProjectModalActive}">
+  <div class="modal-content new-project-modal is-centered">
+    <div class="new-project-title">
+      <h1 class="subtitle is-6">
+        <small><i class="fa fa-plus-square"></i>
+          <span>Create new project</span>
+        </small>
+      </h1>
+    </div>
+    <div class="close-btn" @click="closeProjectModal()">
+      <i class="fa fa-close"></i>
+    </div>
+
+    <div class="new-project-content" v-if="loading === false">
+      <div class="field">
+        <div class="control has-icons-left">
+          <div class="select is-large is-fullwidth">
+            <select>
+              <option>Select category</option>
+              <option>With options</option>
+            </select>
+          </div>
+          <span class="icon is-small is-left">
+            <i class="fa fa-folder"></i>
+          </span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control has-icons-left">
+          <input 
+            class="input is-large notVisible" 
+            type="text" 
+            v-model="project.filename"
+            ref="projectname"
+          />
+
+          <span class="icon is-small is-left">
+            <i class="fa fa-folder-open-o"></i>
+          </span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <button class="button is-primary is-fullwidth" @click="addProject">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <div v-else-if="loading === true" class="new-project-content">
+      <img src="../../../assets/img/saving.png" />
+      <p>
+        <strong>Saving</strong> 
+        <PulseLoader :loading="loading" color="purple"/>
+      </p>
+    </div>
+
+  </div>
+</div>

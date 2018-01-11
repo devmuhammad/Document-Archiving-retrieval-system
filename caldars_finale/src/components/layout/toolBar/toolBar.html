@@ -2,7 +2,7 @@
   <!-- Left side -->
   <div class="level-left">
     <div class="level-item">
-      <span class="tag is-medium cmpny-name">FACTORY INC.</span>
+      <span class="tag is-medium cmpny-name is-white">FACTORY INC.</span>
     </div>
 
     <div class="level-item" v-if="routes.documents == true">
@@ -77,12 +77,18 @@
   <!-- Right side -->
   <div class="level-right">
     <notifications :showNote="showNote"/>
+    <div class="level-item toolBar-item" @click="displayActions">
+      <span><i class="fa fa-user-o"></i></span>
+      <small class="user-name">@factory_worker</small>
+      <div class="user-actions" v-if="viewActions == true">
+        <div class="user-action-item"><i class="fa fa-user"></i> Profile</div>
+        <div class="user-action-item"><i class="fa fa-lock"></i> Logout</div>
+      </div>
+    </div>
+
     <div class="level-item toolBar-item" @click="showNote = !showNote">
       <i class="fa fa-bell-o"></i>
       <span class="tag is-rounded" style="background-color:#ffafa2"><strong>12</strong></span>
-    </div>
-    <div class="level-item toolBar-item">
-      <i class="fa fa-user-o"></i>
-    </div>
+    </div> 
   </div>
 </nav>
