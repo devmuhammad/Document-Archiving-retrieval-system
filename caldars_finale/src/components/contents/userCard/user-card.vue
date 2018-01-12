@@ -9,7 +9,7 @@ export default {
   data () {
     return {
       showControl :false,
-      sampleName:"mohammed olawale"
+      sampleName:"umar abdullahi"
     }
   },
   methods:{

@@ -5,6 +5,7 @@
 <script>
 import lineChart from "@/components/contents/line-chart/line-chart"
 import doughnutChart from "@/components/contents/doughnut-chart/doughnut-chart"
+//import RadialProgressBar from 'vue-radial-progress'
 
 export default {
   name:"dashboard",
