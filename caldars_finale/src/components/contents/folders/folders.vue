@@ -11,7 +11,7 @@ import {mapGetters, mapActions} from "vuex"
 
 export default {
   name:"folders",
-  props:["isListType", "isFolderType"],
+  props:["isListType", "isFolderType", "selectAllFolders"],
 
   data () {
     return {

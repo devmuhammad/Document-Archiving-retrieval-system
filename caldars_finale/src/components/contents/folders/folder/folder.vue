@@ -7,11 +7,10 @@ import {mapActions} from "vuex"
 
 export default {
   name:"folder",
-  props:["document"],
+  props:["document","selected"],
   data (){
     return {
-      isAttr:false,
-      selected:false
+      isAttr:false
     }
   },
   methods:{
@@ -28,6 +27,25 @@ export default {
       value = new Date(value).toDateString()
       value = value.replace(" ", ", ")
       return value
+    }
+  },
+  computed:{
+    selectFolder : {
+      set : function(val) {
+        if (val === true) {
+          return true
+        }else{
+          return false
+        }
+      },
+
+      get : function(val) {
+        if (this.selected === true) {
+          return true
+        }else{
+          return false
+        }
+      }
     }
   }
 }

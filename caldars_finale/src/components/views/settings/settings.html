@@ -8,9 +8,9 @@
         <div class="level-item">
           <a class="button is-medium">
             <span class="icon">
-              <i class="fa fa-google"></i>
+              <i class="fa fa-edit"></i>
             </span>
-            <span>Sync with Google Drive</span>
+            <span>Edit</span>
           </a>
         </div>
       </div>
@@ -22,7 +22,19 @@
           <img class="user-dashboard-img" src="../../../assets/img/user.jpg">
           <p><a class="button is-text">Change picture</a></p>
           
-          <br/>
+          <hr/>
+          <p>
+            <ul>
+              <li><a :class="{'settings-link':true, 'link-is-active':isProfileSettings}" @click="showProfileSettings">
+                <small><span><i class="fa fa-user-secret"></i></span> Profile settings</small> 
+              </a></li>
+              <li><a :class="{'link-disabled':false, 'settings-link':true, 'link-is-active':isGeneralSettings}" @click="showGeneralSettings">
+                <small><span><i class="fa fa-cog"></i></span> General settings</small>
+              </a></li>
+            </ul>
+          </p>
+
+          <hr/>
           <div class="field">
             <label class="label is-small">Old password</label>
             <div class="control has-icons-left">
@@ -60,106 +72,8 @@
           </div>
         </div>
 
-        <div class="account-settings">
-          <div class="field">
-            <label class="label">Email Address</label>
-            <div class="control has-icons-left is-fullwidth">
-              <input 
-                class="input is-medium" 
-                type="text" 
-                placeholder="omarmohammed580@gmail.com"
-              />
-    
-              <span class="icon is-small is-left">
-                <i class="fa fa-envelope"></i>
-              </span>
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label">What do you do?</label>
-            <div class="control has-icons-left is-fullwidth">
-              <input 
-                class="input is-medium" 
-                type="text" 
-                placeholder="Software developer"
-              />
-    
-              <span class="icon is-small is-left">
-                <i class="fa fa-briefcase"></i>
-              </span>
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label">Username</label>
-            <div class="control has-icons-left is-fullwidth">
-              <input 
-                class="input is-medium" 
-                type="text" 
-                placeholder="codebyomar"
-              />
-    
-              <span class="icon is-small is-left">
-                <i class="fa fa-at"></i>
-              </span>
-            </div>
-          </div>
-
-          <div class="account-settings-item is-clearfix">
-            <div class="is-pulled-left">
-              <span class="as-title">E-mail Notifications</span><br/>
-              <span class="as-subtitle"><small>Enable weekly email notifications.</small></span>
-            </div>
-
-            <div class="is-pulled-right">
-              <switches v-model="enable" theme="bulma" type-bold="true" color="blue"></switches>
-            </div>
-          </div>
-
-          <div class="account-settings-item is-clearfix">
-            <div class="is-pulled-left">
-              <span class="as-title">View Archieve</span><br/>
-              <span class="as-subtitle"><small>Display archieved documents and folders.</small></span>
-            </div>
-
-            <div class="is-pulled-right"><switches v-model="enable" theme="bulma" type-bold="true" color="blue"></switches></div>
-          </div>
-
-          <div class="account-settings-item is-clearfix">
-            <div class="is-pulled-left">
-              <span class="as-title">Save drafts</span><br/>
-              <span class="as-subtitle"><small>Keep unsaved files in draft.</small></span>
-            </div>
-
-            <div class="is-pulled-right"><switches v-model="enable" theme="bulma" type-bold="true" color="blue"></switches></div>
-          </div>
-
-          <div class="account-settings-item is-clearfix">
-            <div class="is-pulled-left">
-              <span class="as-title">Manage blocked users</span><br/>
-              <span class="as-subtitle"><small>View list of users you have blocked</small></span>
-            </div>
-
-            <div class="is-pulled-right">
-              <a class="button">MANAGE BLOCKED USERS</a>
-            </div>
-          </div>
-
-          <div class="field is-grouped is-grouped-right">
-            <p class="control">
-              <a class="button is-secondary">
-                Save changes
-              </a>
-            </p>
-            <p class="control">
-              <a class="button is-light">
-                Cancel
-              </a>
-            </p>
-          </div>
-        </div>
-
+        <account-settings v-if="isProfileSettings === true"></account-settings>
+        <general-settings v-if="isGeneralSettings === true"></general-settings>
       </div>
     </div>
   </div>

@@ -40,7 +40,7 @@
       <hr/>
       <!--Display folders-->
       <div class="foldersDiv">
-        <folders :isListType="isListType" :isFolderType="isFolderType" v-show="viewSubFolders == false"/>  
+        <folders :isListType="isListType" :isFolderType="isFolderType" v-show="viewSubFolders == false" :selectAllFolders="selectAllFolders"/>  
         <subfolders :isListType="isListType" :isFolderType="isFolderType" :createProject="openProjectModal" v-show="viewSubFolders == true"/>
       </div>
       <!--End of Display folders-->
@@ -75,12 +75,13 @@
         </div>
 
         <hr/>
-        
+
         <div class="documentAction">
           <span>
-            <input type="checkbox">
+            <label class="label">
+              <input type="checkbox" v-model="select"> Select all
+            </label> 
           </span>
-          <span>Select all</span>
         </div>
 
         <div class="documentAction" @click="Delete">

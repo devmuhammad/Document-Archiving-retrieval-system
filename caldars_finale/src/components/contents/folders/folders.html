@@ -1,7 +1,7 @@
 <div>
   <div class="columns  is-multiline is-centered"  v-show="isFolderType == true && paginating == false">
     <div class="column" v-for="(document, index) in categoriesOfDocuments" :key="index">
-        <folder :document="document"/>
+        <folder :document="document" :selected="selectAllFolders"/>
     </div>
 
     <!--div class="column" v-show="showChild == true">

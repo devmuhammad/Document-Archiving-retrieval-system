@@ -3,15 +3,30 @@
 </template>
 
 <script>
-import Switches from 'vue-switches';
+import accountSettings from "@/components/contents/accountSettings/account-settings"
+import generalSettings from "@/components/contents/generalSettings/general-settings"
 
 export default {
   name:"Settings",
   data () {
     return {
-      enable:true
+      isProfileSettings:true,
+      isGeneralSettings:false
     }
   },
-  components:{Switches}
+  methods:{
+    showProfileSettings () {
+      this.isGeneralSettings = false
+      return this.isProfileSettings = true
+    },
+    showGeneralSettings () {
+      this.isProfileSettings = false
+      return this.isGeneralSettings = true
+    }
+  },
+  components:{
+    accountSettings,
+    generalSettings
+  }
 }
 </script>

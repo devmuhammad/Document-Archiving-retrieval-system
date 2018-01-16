@@ -1,7 +1,7 @@
 <div class="folders" @mouseover="showAttr" @mouseleave="hideAttr" @dblclick="getChild()">
   <div style="display:inline-flex">
     <div style="margin:2px" v-if="isAttr == true">
-      <input type="checkbox" v-model="selected">
+      <input type="checkbox" v-model="selectFolder">
     </div>
     <img src="../../../../assets/img/folder4.png" />
     <div v-if="isAttr == true" class=" tooltip">
