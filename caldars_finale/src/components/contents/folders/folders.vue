@@ -11,7 +11,7 @@ import {mapGetters, mapActions} from "vuex"
 
 export default {
   name:"folders",
-  props:["isListType", "isFolderType", "selectAllFolders"],
+  props:["isListType", "isFolderType"],
 
   data () {
     return {
@@ -28,7 +28,8 @@ export default {
       "categoriesOfDocuments", 
       "categoryDetails",
       "listOfCategories",
-      "paginating"
+      "paginating",
+      "selectAllStatus"
     ]),
 
     isDocument(){

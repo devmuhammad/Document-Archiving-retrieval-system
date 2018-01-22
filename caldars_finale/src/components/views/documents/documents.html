@@ -40,7 +40,7 @@
       <hr/>
       <!--Display folders-->
       <div class="foldersDiv">
-        <folders :isListType="isListType" :isFolderType="isFolderType" v-show="viewSubFolders == false" :selectAllFolders="selectAllFolders"/>  
+        <folders :isListType="isListType" :isFolderType="isFolderType" v-show="viewSubFolders == false"/>  
         <subfolders :isListType="isListType" :isFolderType="isFolderType" :createProject="openProjectModal" v-show="viewSubFolders == true"/>
       </div>
       <!--End of Display folders-->

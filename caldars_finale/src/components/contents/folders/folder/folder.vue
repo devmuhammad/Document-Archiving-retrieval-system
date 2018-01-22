@@ -10,17 +10,21 @@ export default {
   props:["document","selected"],
   data (){
     return {
-      isAttr:false
+      isAttr:false,
+      allSelected:false
     }
   },
+
   methods:{
-    ...mapActions({"getCategoryChild":"getCategoryChild"}),
+    ...mapActions({"getCategoryChild":"getCategoryChild", "unselect":"unselectAll"}),
     showAttr(){ return this.isAttr = true},
     hideAttr(){ return this.isAttr = false},
     getChild(){
+      this.unselect({"select":false})
       return this.getCategoryChild(this.document.id)
     }
   },
+
   filters: {
     formatDate: function (value) {
       if (!value) return ''
@@ -29,24 +33,16 @@ export default {
       return value
     }
   },
-  computed:{
-    selectFolder : {
-      set : function(val) {
-        if (val === true) {
-          return true
-        }else{
-          return false
-        }
-      },
 
-      get : function(val) {
-        if (this.selected === true) {
-          return true
-        }else{
-          return false
-        }
+  watch:{
+    selected: function (val) {
+      if (val === true) {
+        return this.allSelected = true
+      }else{
+        return this.allSelected = false
       }
-    }
+    },
   }
+
 }
 </script>

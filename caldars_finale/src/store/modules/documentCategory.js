@@ -9,7 +9,8 @@ let state = {
   documentCategoryDetails:undefined,
   categoryChildren: null,
   selectedChildren:null,
-  paginating:false
+  paginating:false,
+  selectAllStatus:false
 }
 
 let getters = {
@@ -25,7 +26,8 @@ let getters = {
       page_num:state.documentCategoryDetails.page
     } : undefined
   },
-  paginating: (state) => state.paginating
+  paginating: (state) => state.paginating,
+  selectAllStatus: (state) => state.selectAllStatus
 }
 
 let mutations = {
@@ -86,6 +88,14 @@ let mutations = {
 
   setSubFoldersNull:(state) => {
     return state.categoryChildren = null
+  },
+
+  doSelectAll : (state, data) => {
+    return state.selectAllStatus = data.select
+  },
+
+  unselectAll : (state, data) => {
+    return state.selectAllStatus = data.select
   }
 }
 
@@ -93,7 +103,9 @@ let actions = {
   getDocumentCategory: ({commit}, page_num) => commit("getDocumentCategory", page_num),
   getCategoryChild: ({commit}, parentId) => commit("getCategoryChild", parentId),
   setSubFoldersNull: ({commit}) => commit("setSubFoldersNull"),
-  getCategoryList: ({commit}, page_num) => commit("getCategoryList", page_num)
+  getCategoryList: ({commit}, page_num) => commit("getCategoryList", page_num),
+  doSelectAll: ({commit}, data) => commit("doSelectAll", data),
+  unselectAll: ({commit},data) => commit("unselectAll", data)
 }
 
 export default {

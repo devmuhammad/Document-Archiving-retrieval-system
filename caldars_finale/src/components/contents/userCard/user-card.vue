@@ -23,7 +23,6 @@ export default {
       value = value.split(" ",2)
       for(let i =0;i<value.length;i++){
         initials += value[i].charAt(0)
-        console.log(initials)
       }
       return initials.toUpperCase()
     }

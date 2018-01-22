@@ -8,12 +8,12 @@ export const DocumentActions = {
       folderState:null,
       selectAllSubFolders:false,
       selectAllFolders:false,
-      select:false
+      select:this.selectAllStatus
     }
   },
 
   methods: {
-    ...mapActions(["setSubFoldersNull"]),
+    ...mapActions(["setSubFoldersNull", "doSelectAll"]),
 
     setListType() {
       this.isListType = true
@@ -23,14 +23,12 @@ export const DocumentActions = {
     setFolderType() {
       this.isFolderType = true
       this.isListType = false
-    },
-
-    
+    }
 
   },
 
   computed:{
-    ...mapGetters(["categoryChildren"]),
+    ...mapGetters(["categoryChildren", "selectAllStatus"]),
 
     viewSubFolders() {
       if(this.categoryChildren === null){ return false }
@@ -43,15 +41,28 @@ export const DocumentActions = {
       } else {
         return this.folderState = "SF"
       }
+    }
+  },
+
+  watch: {
+    select : function (val) {
+      switch (val){
+
+        case val === true && this.categoryChildren === null:
+          let data = {select:val, folderState:this.folderState}
+          this.doSelectAll(data)
+          break;
+        case val === true && this.categoryChildren !== null:
+          data = {select:false, folderState:this.folderState}
+          this.doSelectAll(data)
+          break;
+        default:
+          data = {select:val, folderState:this.folderState}
+          this.doSelectAll(data)
+          break;
+      }
     },
 
-    selectAll () {
-      if(this.select === true && this.getFolderState === "F"){
-        return this.selectAllFolders = true
-      } else if(this.select === true && this.getFolderState === "SF") {
-        return this.selectAllSubFolders = true
-      }
-    }
   }
 
 }
