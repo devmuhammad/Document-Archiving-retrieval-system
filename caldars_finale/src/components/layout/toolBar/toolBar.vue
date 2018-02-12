@@ -5,6 +5,7 @@
 <script>
 import notifications from "@/components/contents/notifications/notifications"
 import {documentPath} from "@/mixins/documentPath"
+import uploadModal from "@/components/contents/upload/upload"
 
 export default {
   name:"toolBar",
@@ -21,7 +22,8 @@ export default {
         help:false
       },
       showNote:false,
-      viewActions:false
+      viewActions:false,
+      setUploadActive:false
     }
   },
 
@@ -54,10 +56,18 @@ export default {
 
     displayActions () {
       this.viewActions = !this.viewActions;
+    },
+
+    displayUploadModal(){
+      return this.setUploadActive = true
+    },
+
+    closeModal(){
+      return this.setUploadActive = false
     }
   },
   
-  components:{notifications},
+  components:{notifications, uploadModal},
   mixins:[documentPath]
 }
 </script>
