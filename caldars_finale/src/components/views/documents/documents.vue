@@ -11,6 +11,7 @@ import pagination from "@/components/contents/pagination/pagination"
 import uploadModal from "@/components/contents/upload/upload"
 import categoryModal from "@/components/contents/category/category"
 import addProjectModal from "@/components/contents/newProject/newProject"
+import preview__canvas from "@/components/contents/preview__canvas/preview__canvas"
 import {addCategory} from "../../../mixins/addCategory"
 import {addProject} from "../../../mixins/addProject"
 import {DocumentActions} from "../../../mixins/documentActions"
@@ -54,7 +55,8 @@ export default {
     uploadModal,
     categoryModal,
     subfolders,
-    addProjectModal
+    addProjectModal,
+    preview__canvas
   },
 
   mixins:[addCategory,DocumentActions,addProject]

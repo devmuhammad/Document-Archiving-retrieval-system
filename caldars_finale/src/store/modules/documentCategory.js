@@ -10,7 +10,9 @@ let state = {
   categoryChildren: null,
   selectedChildren:null,
   paginating:false,
-  selectAllStatus:false
+  selectAllStatus:false,
+  dir__stack: new Array (),
+  file_opened: false
 }
 
 let getters = {
@@ -27,7 +29,9 @@ let getters = {
     } : undefined
   },
   paginating: (state) => state.paginating,
-  selectAllStatus: (state) => state.selectAllStatus
+  selectAllStatus: (state) => state.selectAllStatus,
+  dir__stack: (state) => state.dir__stack,
+  file_opened: (state) => state.file_opened
 }
 
 let mutations = {
@@ -58,10 +62,16 @@ let mutations = {
   getCategoryChild: (state, parentId) => {
     for(let i=0;i<state.categoriesOfDocuments.length;i++){
       const category = state.categoriesOfDocuments[i]
+
       if(category.id == parentId){
-        state.selectedChildren = category.documentimageList
-        state.categoryChildren = true
+        state.selectedChildren = category.documentimageList;
+        state.categoryChildren = true;
+        state.dir__stack.push({
+          'path':category.documentType,
+          'isActive':true
+        });
       }
+
     }
   },
 
@@ -87,7 +97,14 @@ let mutations = {
   },
 
   setSubFoldersNull:(state) => {
-    return state.categoryChildren = null
+    let stack__length = state.dir__stack.length;
+    state.categoryChildren = null
+
+    for(let i= 0; i < stack__length; i++){
+      state.dir__stack.pop()
+    }
+
+    return (state.file_opened === true) ? state.file_opened = false : null;
   },
 
   doSelectAll : (state, data) => {
@@ -96,6 +113,39 @@ let mutations = {
 
   unselectAll : (state, data) => {
     return state.selectAllStatus = data.select
+  },
+
+  displayFileContents: (state, selectedFile) => {
+    if(state.dir__stack.length >= 1){
+      state.dir__stack.forEach(path => {
+        path.isActive = false
+      });
+
+      state.dir__stack.push({
+        'path':selectedFile.prvwname,
+        'isActive':true
+      });
+
+      state.file_opened = true
+    }
+  },
+
+  changeDirectory (state, pathIndex) {
+    if(pathIndex !== 1){
+      state.file_opened = false
+      state.dir__stack.pop()
+
+      state.dir__stack.forEach((path, index) => {
+        if(index+1 !== state.dir__stack.length){
+          path.isActive = false
+        }else {
+          path.isActive = true
+        }
+      });
+      
+    }else {
+      return;
+    }
   }
 }
 
@@ -105,7 +155,9 @@ let actions = {
   setSubFoldersNull: ({commit}) => commit("setSubFoldersNull"),
   getCategoryList: ({commit}, page_num) => commit("getCategoryList", page_num),
   doSelectAll: ({commit}, data) => commit("doSelectAll", data),
-  unselectAll: ({commit},data) => commit("unselectAll", data)
+  unselectAll: ({commit},data) => commit("unselectAll", data),
+  displayFileContents: ({commit}, selectedFile) => commit("displayFileContents", selectedFile),
+  changeDirectory: ({commit}, pathIndex) => commit("changeDirectory", pathIndex)
 }
 
 export default {

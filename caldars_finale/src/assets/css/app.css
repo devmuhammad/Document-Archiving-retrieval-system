@@ -7,7 +7,7 @@
   left: 0;
   background-color: #3273dc;
   overflow-x: hidden;
-  padding-top: 85px;
+  padding-top: 5px;
   box-shadow:  0px 0px 20px #888888;
   min-height: 100%;
 }
@@ -26,6 +26,10 @@
 .sidenav a:hover, .offcanvas a:focus{
   font-weight: 600;
   background-color: #004ac1;
+}
+
+.sidenav > div.cabsol {
+  padding: 15px 15px 15px 20px;
 }
 
 @media screen and (max-height: 450px) {
@@ -1105,4 +1109,14 @@ h2.dash-title{
   widows: 50px;
   height: 50px;
   border-radius: 50%;
+}
+
+.preview__canvas {
+  display: flex;
+  justify-content: space-around;
+}
+
+.preview__canvas__item {
+  cursor: zoom-in;
+  border: 1px solid #ccc;
 }

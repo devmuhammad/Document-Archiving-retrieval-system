@@ -14,7 +14,6 @@ export default {
     return {
       isAttr:false,
       selected:false,
-      
     }
   },
 
@@ -24,7 +23,8 @@ export default {
 
     ...mapActions([
     "getComments",
-    "getActivities"
+    "getActivities",
+    "displayFileContents"
     ]),
   }
 }

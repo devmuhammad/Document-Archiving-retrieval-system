@@ -4,10 +4,13 @@
 
 <script>
 import notifications from "@/components/contents/notifications/notifications"
+import {documentPath} from "@/mixins/documentPath"
 
 export default {
   name:"toolBar",
+
   mounted(){ return this.checkRoute() },
+
   data () {
     return {
       routes:{
@@ -21,9 +24,11 @@ export default {
       viewActions:false
     }
   },
+
   watch:{
     '$route':'checkRoute'
   },
+
   methods:{
     checkRoute () {
       let newRoutes = {dashboard: false,settings:false, users:false, documents:false, help:false}
@@ -51,6 +56,8 @@ export default {
       this.viewActions = !this.viewActions;
     }
   },
-  components:{notifications}
+  
+  components:{notifications},
+  mixins:[documentPath]
 }
 </script>

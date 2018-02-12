@@ -11,11 +11,17 @@
       </span>
       <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-          <li>
-            <a href="#">Documents</a>
+          <li @click="goToDocuments()">
+            <a href="#">Document Categories</a>
           </li>
-          <li class="is-active">
-            <a href="#" aria-current="page">Categories</a>
+          <li 
+            @click="changeDirectory(index)"
+            :class="{'is-active':path.isActive}" 
+            v-if="activePath !== null" 
+            v-for="(path, index) in activePath" 
+            :key="index">
+
+            <a href="#">{{path.path}}</a>
           </li>
         </ul>
       </nav>

@@ -13,7 +13,7 @@ export const DocumentActions = {
   },
 
   methods: {
-    ...mapActions(["setSubFoldersNull", "doSelectAll"]),
+    ...mapActions(["setSubFoldersNull", "doSelectAll", "displayFileContents"]),
 
     setListType() {
       this.isListType = true
@@ -28,7 +28,7 @@ export const DocumentActions = {
   },
 
   computed:{
-    ...mapGetters(["categoryChildren", "selectAllStatus"]),
+    ...mapGetters(["categoryChildren", "selectAllStatus", "file_opened"]),
 
     viewSubFolders() {
       if(this.categoryChildren === null){ return false }

@@ -1,0 +1,11 @@
+<section class="preview__canvas">
+  <pdf 
+    :src= "src"
+    style="width:45%" 
+    class="preview__canvas__item"
+    :page="page"
+    @click="maximize_view">
+  </pdf>
+
+  <max__preview :src="src" :pageNum=page :isMaximized="maximize"></max__preview>
+</section>

@@ -12,7 +12,7 @@ export const addProject = {
         "volumeno": 231,
         "barcode": "453bdc",
         "closed": true,
-        "dateclosed": "2017-11-07",
+        "dateclosed": "2018-02-01",
         "closedby": "admin",
         "filecover": "del.pdf",
         "enteredBy": "admin",

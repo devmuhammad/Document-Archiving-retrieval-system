@@ -6,7 +6,7 @@ export const addCategory = {
     return {
       new_category:{
         documentType: "New Category",
-        dateCreated: "2017-12-09",
+        dateCreated: "2018-2-01",
         parentid: 0,
         haschild: 0,
         active: 1

@@ -7,7 +7,7 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "auth",
-  mounted() { return this.typeWriter() },
+  mounted() { console.log(this.$online); return this.typeWriter() },
   data() {
     return {
       user: {

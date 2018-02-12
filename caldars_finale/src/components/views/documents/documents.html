@@ -7,7 +7,7 @@
 
   <div class="columns">
     <!--Left column-->
-    <div class="column">
+    <div class="column" v-if="file_opened === false">
       <div class="pagntn columns">
         <div class="column is-one-quarter back-btn" @click="setSubFoldersNull()">
           <strong class="back-btn">
@@ -45,6 +45,10 @@
       </div>
       <!--End of Display folders-->
     </div>
+
+    <div v-if="file_opened === true" class="column">
+      <preview__canvas></preview__canvas>
+    </div>
     <!--End of Left column-->
 
 
@@ -76,31 +80,33 @@
 
         <hr/>
 
-        <div class="documentAction">
-          <span>
-            <label class="label">
-              <input type="checkbox" v-model="select"> Select all
-            </label> 
-          </span>
-        </div>
+        <template v-if="file_opened === false">
+          <div class="documentAction">
+            <span>
+              <label class="label">
+                <input type="checkbox" v-model="select"> Select all
+              </label> 
+            </span>
+          </div>
 
-        <div class="documentAction" @click="Delete">
-          <span>
-            <i class="fa fa-trash"></i>
-          </span>
-          <span>Delete</span>
-        </div>
+          <div class="documentAction" @click="Delete">
+            <span>
+              <i class="fa fa-trash"></i>
+            </span>
+            <span>Delete</span>
+          </div>
 
-        <div class="documentAction">
-          <span>
-            <i class="fa fa-share"></i>
-          </span>
-          <span>Share</span>
-        </div>
+          <div class="documentAction">
+            <span>
+              <i class="fa fa-share"></i>
+            </span>
+            <span>Share</span>
+          </div>
+        </template>
       </p>
     </div>
     <!--End of Right column-->
   </div>
   
-  <commentArea v-if="viewSubFolders == true"></commentArea>
+  <commentArea v-if="file_opened === true"></commentArea>
 </div>
