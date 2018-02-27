@@ -106,7 +106,7 @@ export default {
   },
 
   search: async (keyword) => {
-    const endpoint = "list/documentimages/masters?page=0&size=9&search=documentType:"+keyword;
+    const endpoint = "list/documentimages/masters?page=0&size=9&search=previewname:"+keyword;
 
     const res = () => {
       return new Promise((resolve, reject) => {

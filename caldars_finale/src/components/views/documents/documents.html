@@ -42,7 +42,7 @@
       <div class="foldersDiv">
         <template v-if="isSearchResultReady === false || isSearchResultReady === undefined">
           <folders :isListType="isListType" :isFolderType="isFolderType" v-show="viewSubFolders == false"/>  
-          <subfolders :isListType="isListType" :isFolderType="isFolderType" :createProject="openProjectModal" v-show="viewSubFolders == true"/>\
+          <subfolders :isListType="isListType" :isFolderType="isFolderType" :createProject="openProjectModal" v-show="viewSubFolders == true"/>
         </template>
 
         <template v-else>

@@ -1,7 +1,6 @@
 <div class="folders" 
   @mouseover="showAttr" 
   @mouseleave="hideAttr" 
-  @click="displayFileContents(document)" 
 >
   <div style="display:inline-flex">
 
@@ -9,7 +8,7 @@
       <input type="checkbox" v-model="selected">
     </div>
 
-    <img src="../../../../assets/img/subFolders.png" />
+    <img src="../../../../assets/img/subFolders.png" @click="displayFileContents(document)"/>
 
     <div v-if="isAttr == true" class=" tooltip">
       <i class="fa fa-ellipsis-h"></i>
@@ -20,7 +19,7 @@
 
   </div>
 
-  <div>
+  <div @click="displayFileContents(document)">
     <small class="doc-name">{{document.prvwname}}</small>
     <span style="color:#7f0a25" v-show="selected == true"><i class="fa fa-check"></i></span>
   </div>
