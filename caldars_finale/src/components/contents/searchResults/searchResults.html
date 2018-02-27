@@ -1,0 +1,8 @@
+<div>
+  <div class="has-text-centered"><small class="tag is-success">{{searchResults.length}} documents found!</small></div>
+  <table class="table is-fullwidth is-striped is-narrow is-hoverable">
+      <tbody>
+        <sresultItem v-for="(result, index) in searchResults" :result="result" :key="index"></sresultItem>
+      </tbody>
+  </table>
+</div>

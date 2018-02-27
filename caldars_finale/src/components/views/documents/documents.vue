@@ -12,6 +12,7 @@ import uploadModal from "@/components/contents/upload/upload"
 import categoryModal from "@/components/contents/category/category"
 import addProjectModal from "@/components/contents/newProject/newProject"
 import preview__canvas from "@/components/contents/preview__canvas/preview__canvas"
+import searchResults from "@/components/contents/searchResults/searchResults"
 import {addCategory} from "../../../mixins/addCategory"
 import {addProject} from "../../../mixins/addProject"
 import {DocumentActions} from "../../../mixins/documentActions"
@@ -56,7 +57,8 @@ export default {
     categoryModal,
     subfolders,
     addProjectModal,
-    preview__canvas
+    preview__canvas,
+    searchResults
   },
 
   mixins:[addCategory,DocumentActions,addProject]

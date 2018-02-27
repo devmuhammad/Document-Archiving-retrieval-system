@@ -1,11 +1,21 @@
 <section class="preview__canvas">
-  <pdf 
-    :src= "src"
-    style="width:45%" 
-    class="preview__canvas__item"
-    :page="page"
-    @click="maximize_view">
-  </pdf>
+  <template>
+    <a class="button is-primary is-large max-btn" @click="maximize_view()"><i class="fa fa-search-plus"></i></a>
+    <!--pdf 
+      :src= "src"
+      style="width:45%" 
+      class="preview__canvas__item"
+      :page="page">
+    </pdf-->
+    <embed 
+      :src="src" 
+      type="application/pdf" 
+      @click="maximize_view()" 
+      class="preview__canvas__item"
+      height="650px"
+      width="100%"
+      ></embed>
+  </template>
 
-  <max__preview :src="src" :pageNum=page :isMaximized="maximize"></max__preview>
+  <max__preview :src="src" :pageNum="page" :isMaximized="maximize" :closePreview="minimize_view"></max__preview>
 </section>

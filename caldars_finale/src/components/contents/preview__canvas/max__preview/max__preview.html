@@ -1,7 +1,7 @@
 <div :class="{'modal':true, 'is-active':isMaximized}">
   <div class="modal-background"></div>
-  <div class="modal-content">
+  <div class="modal-content max-screen">
     <pdf :src="src" :page="pageNum"></pdf>
   </div>
-  <button class="modal-close is-large" aria-label="close"></button>
+  <button class="modal-close is-large" aria-label="close" @click="closePreview()"></button>
 </div>

@@ -8,7 +8,7 @@ import pdf from "vue-pdf"
 
 export default {
   name:"max__preview",
-  props:["src", "pageNum", "isMaximized"],
+  props:["src", "pageNum", "isMaximized", "closePreview"],
   components:{pdf}
 }
 </script>

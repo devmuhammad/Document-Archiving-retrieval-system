@@ -6,6 +6,7 @@
 import notifications from "@/components/contents/notifications/notifications"
 import {documentPath} from "@/mixins/documentPath"
 import uploadModal from "@/components/contents/upload/upload"
+import {mapGetters} from "vuex"
 
 export default {
   name:"toolBar",
@@ -19,7 +20,8 @@ export default {
         settings:false,
         users:false,
         documents:false,
-        help:false
+        help:false,
+        search: false
       },
       showNote:false,
       viewActions:false,
@@ -28,12 +30,20 @@ export default {
   },
 
   watch:{
-    '$route':'checkRoute'
+    '$route':'checkRoute',
+
+    isSearchResultReady : function (val) {
+      if (val === true) {
+        this.routes = {dashboard: false,settings:false, users:false, documents:false, help:false, search: true}
+      }else if(val === false || val === undefined){
+        this.routes = {dashboard: false,settings:false, users:false, documents:true, help:false, search: false}
+      }
+    }
   },
 
   methods:{
     checkRoute () {
-      let newRoutes = {dashboard: false,settings:false, users:false, documents:false, help:false}
+      let newRoutes = {dashboard: false,settings:false, users:false, documents:false, help:false, search: false}
       let curRoute = this.$route.path
       
       if(curRoute === '/documents'){
@@ -54,20 +64,19 @@ export default {
       }
     },
 
-    displayActions () {
-      this.viewActions = !this.viewActions;
-    },
+    displayActions () { this.viewActions = !this.viewActions; },
 
-    displayUploadModal(){
-      return this.setUploadActive = true
-    },
+    displayUploadModal(){ return this.setUploadActive = true },
 
-    closeModal(){
-      return this.setUploadActive = false
-    }
+    closeModal(){ return this.setUploadActive = false }
   },
-  
+
+  computed : {
+    ...mapGetters(["isSearchResultReady"])
+  },
+
   components:{notifications, uploadModal},
+
   mixins:[documentPath]
 }
 </script>

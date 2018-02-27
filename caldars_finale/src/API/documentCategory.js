@@ -64,8 +64,8 @@ export default {
   uploadFile : async (file) => {
     const res = () => {
       return new Promise((resolve, reject) => {
-        const config = { headers: { 'Content-Type': 'multipart/form-data' }
-}
+        const config = { headers: { 'Content-Type': 'multipart/form-data' }}
+
         HTTP.post('upload', file, config)
         .then(response => { 
           const res = {"message":response.data, "code":200, "error":null}
@@ -103,5 +103,19 @@ export default {
     }
 
     return await res()
-  }
+  },
+
+  search: async (keyword) => {
+    const endpoint = "list/documentimages/masters?page=0&size=9&search=documentType:"+keyword;
+
+    const res = () => {
+      return new Promise((resolve, reject) => {
+        HTTP.get(endpoint)
+        .then(response => {resolve(response.data) })
+        .catch(e => { reject(e) })
+      })
+    }
+
+    return await res()
+  },
 }

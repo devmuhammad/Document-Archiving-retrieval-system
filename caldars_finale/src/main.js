@@ -9,7 +9,7 @@ import VueNetwork from "./mixins/vue-network/src/main"
 Vue.config.productionTip = false
 
 Vue.use(vueChartjs)
-Vue.use(VueNetwork)
+Vue.use(VueNetwork, { displayNotification:true })
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

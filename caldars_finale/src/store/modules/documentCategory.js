@@ -12,7 +12,10 @@ let state = {
   paginating:false,
   selectAllStatus:false,
   dir__stack: new Array (),
-  file_opened: false
+  file_opened: false,
+  searchResults: null,
+  searchError: null,
+  isSearchResultReady: false
 }
 
 let getters = {
@@ -31,7 +34,10 @@ let getters = {
   paginating: (state) => state.paginating,
   selectAllStatus: (state) => state.selectAllStatus,
   dir__stack: (state) => state.dir__stack,
-  file_opened: (state) => state.file_opened
+  file_opened: (state) => state.file_opened,
+  searchResults: (state) => state.searchResults,
+  searchError: (state) => state.searchError,
+  isSearchResultReady: (state) => state.isSearchResultReady
 }
 
 let mutations = {
@@ -99,6 +105,7 @@ let mutations = {
   setSubFoldersNull:(state) => {
     let stack__length = state.dir__stack.length;
     state.categoryChildren = null
+    state.isSearchResultReady = undefined
 
     for(let i= 0; i < stack__length; i++){
       state.dir__stack.pop()
@@ -146,6 +153,27 @@ let mutations = {
     }else {
       return;
     }
+  },
+
+
+  search: (state, keyword) => {
+    const goSearch = () => {
+      return new Promise((resolve, reject) => {
+        API.search(keyword)
+          .then((res) => {
+            state.isSearchResultReady = true
+            state.file_opened = false
+            return state.searchResults = res.documentslist
+          })
+          .catch((err) => {
+            state.isSearchResultReady = true
+            return state.searchError = err.message
+          })
+      })
+    }
+
+    state.isSearchResultReady = false
+    return goSearch()
   }
 }
 
@@ -157,7 +185,8 @@ let actions = {
   doSelectAll: ({commit}, data) => commit("doSelectAll", data),
   unselectAll: ({commit},data) => commit("unselectAll", data),
   displayFileContents: ({commit}, selectedFile) => commit("displayFileContents", selectedFile),
-  changeDirectory: ({commit}, pathIndex) => commit("changeDirectory", pathIndex)
+  changeDirectory: ({commit}, pathIndex) => commit("changeDirectory", pathIndex),
+  search : ({commit}, keyword) => commit("search", keyword)
 }
 
 export default {

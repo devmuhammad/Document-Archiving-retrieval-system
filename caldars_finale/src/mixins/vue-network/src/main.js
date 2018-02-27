@@ -3,44 +3,35 @@ import vnetwork from "./vue-network.vue"
 
 
 const VueNetwork = {
-  install (Vue, options) {
-    
-    if(!options){
+  install (Vue, options = { displayNotification: true }) {
 
-      options = {}
-
-    }
-
-    Vue.prototype.$online = window.navigator.onLine;
+    Vue.prototype.$isOnline = window.navigator.onLine;
     Vue.component("vnetwork", vnetwork);
 
     Vue.mixin ({
-      mounted () {
-        window.addEventListener('offline', function(e) { console.log('offline'); });
+      created () {
+        let status = this.$isOnline
+
+        window.addEventListener('offline', function(e) { 
+           status = false; 
+
+           return (options.displayNotification === true)
+             ? showStatus(status)
+             : null;
+        });
         
-        return window.addEventListener('online', function(e) { console.log('online'); });
+        window.addEventListener('online', function(e) { 
+          status = true; 
+
+          return (options.displayNotification === true)
+            ? showStatus(status)
+            : null;
+        });
       },
-
-      data () {
-        return { isOnline:this.$online }
-      },
-
-      watch : {
-        isOnline : function (val) {
-          console.log(val)
-          if(val === true){
-            return showStatus();
-          } else if (val === false) {
-            return showStatus();
-          }
-        }
-
-      }
 
     })
 
   }
 }
-
 
 export default VueNetwork;

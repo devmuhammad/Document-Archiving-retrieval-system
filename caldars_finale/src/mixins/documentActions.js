@@ -8,7 +8,8 @@ export const DocumentActions = {
       folderState:null,
       selectAllSubFolders:false,
       selectAllFolders:false,
-      select:this.selectAllStatus
+      select:this.selectAllStatus,
+      searchKeyword: null
     }
   },
 
@@ -28,7 +29,7 @@ export const DocumentActions = {
   },
 
   computed:{
-    ...mapGetters(["categoryChildren", "selectAllStatus", "file_opened"]),
+    ...mapGetters(["categoryChildren", "selectAllStatus", "file_opened", "isSearchResultReady"]),
 
     viewSubFolders() {
       if(this.categoryChildren === null){ return false }

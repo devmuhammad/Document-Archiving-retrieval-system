@@ -27,6 +27,20 @@
       </nav>
     </div>
 
+    <div class="level-item" v-else-if="routes.search == true">
+      <span class="breadCrumbIcon">
+        <i class="fa fa-search"></i>
+      </span>
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+          <li class="is-active">
+            <a href="#" aria-current="page">Search results</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+
     <div class="level-item" v-else-if="routes.dashboard == true">
       <span class="breadCrumbIcon">
         <i class="fa fa-tachometer"></i>

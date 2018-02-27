@@ -16,11 +16,18 @@ export default {
       maximize: false
     }
   },
+
   methods: {
-    maximize_view() {
-      this.maximize = true
+    maximize_view () {
+      console.log("++++++")
+      return this.maximize = true
+    },
+
+    minimize_view () {
+      this.maximize = false;
     }
   },
+
   components : {pdf, max__preview}
 }
 </script>
