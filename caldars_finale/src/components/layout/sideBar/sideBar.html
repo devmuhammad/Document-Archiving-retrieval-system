@@ -37,11 +37,25 @@
   <div class="global-search-button">
     <div class="field">
       <label class="label">Search</label>
-      <div class="control">
-        <input class="input" type="text" placeholder="Type to search here">
+      <div class="control has-icons-left has-icons-right">
+        <input 
+          :disabled="isSearching"
+          class="input" 
+          type="text" 
+          placeholder="Type here to search"  
+          v-on:keyup.enter="searchFor" 
+          v-model="searchKeyword"
+        />
+
+        <span class="icon is-small is-left">
+          <i class="fa fa-search"></i>
+        </span>
+        <span class="icon is-small is-right" v-if="isSearching === true">
+          <i class="fa fa-spinner"></i>
+        </span>
       </div>
-      <p class="help"><small></small></p>
-    </div>   
+      <strong><p class="help is-danger" v-if="error">{{error}}</p></strong>
+    </div>
   </div>
   <!--router-link to="/transactions" :class="{'routeIsActive':activeRoute.transactActive}">
       <span><i class="fa fa-exchange"></i></span>

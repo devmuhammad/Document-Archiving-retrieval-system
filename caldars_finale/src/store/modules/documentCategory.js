@@ -10,12 +10,14 @@ let state = {
   categoryChildren: null,
   selectedChildren:null,
   paginating:false,
-  selectAllStatus:false,
+  selectAllStatus:null,
   dir__stack: new Array (),
   file_opened: false,
   searchResults: null,
   searchError: null,
-  isSearchResultReady: false
+  isSearchResultReady: false,
+  selectedDocumentIds : new Array(),
+  selectedDocumentTitle: new Array()
 }
 
 let getters = {
@@ -23,6 +25,15 @@ let getters = {
   listOfCategories: (state) => state.categoryList,
   categoryChildren: (state) => state.categoryChildren,
   selectedChildren: (state) => state.selectedChildren,
+  paginating: (state) => state.paginating,
+  selectAllStatus: (state) => state.selectAllStatus,
+  dir__stack: (state) => state.dir__stack,
+  file_opened: (state) => state.file_opened,
+  searchResults: (state) => state.searchResults,
+  searchError: (state) => state.searchError,
+  isSearchResultReady: (state) => state.isSearchResultReady,
+  selectedDocumentIds: (state) => state.selectedDocumentIds,
+  selectedDocumentTitle: (state) => state.selectedDocumentTitle, 
   categoryDetails: (state) => {
     return (state.documentCategoryDetails !== undefined) ?
     {
@@ -31,13 +42,14 @@ let getters = {
       page_num:state.documentCategoryDetails.page
     } : undefined
   },
-  paginating: (state) => state.paginating,
-  selectAllStatus: (state) => state.selectAllStatus,
-  dir__stack: (state) => state.dir__stack,
-  file_opened: (state) => state.file_opened,
-  searchResults: (state) => state.searchResults,
-  searchError: (state) => state.searchError,
-  isSearchResultReady: (state) => state.isSearchResultReady
+  numOfSelectedCat : (state) => {return state.selectedDocumentIds.length-1},
+  deleteStatement : (state, getters) => {
+    if(state.selectedDocumentIds.length > 0) {
+      return "Are you sure you wan to delete "+ state.selectedDocumentTitle[0] + " and " + getters.numOfSelectedCat + " other document categories?";
+    }else {
+      return "Please select a document to delete!"
+    }
+  }
 }
 
 let mutations = {
@@ -167,6 +179,7 @@ let mutations = {
           })
           .catch((err) => {
             state.isSearchResultReady = true
+            state.file_opened = false
             return state.searchError = err.message
           })
       })
@@ -174,6 +187,41 @@ let mutations = {
 
     state.isSearchResultReady = false
     return goSearch()
+  },
+
+  storeSelectedDocumentIds : (state, data) => {
+    state.selectedDocumentTitle.push(data.title)
+    return state.selectedDocumentIds.push(data.id)
+  },
+
+  removeIdFromStore : (state, data) => {
+    let indexOfId = state.selectedDocumentIds.indexOf(data.id)
+    let indexOfTitle = state.selectedDocumentTitle.indexOf(data.title)
+    state.selectedDocumentIds.splice(indexOfId, 1)
+    state.selectedDocumentTitle.splice(indexOfTitle, 1)
+  },
+
+  DELETE_CATEGORY : async (state) => {
+    let ids = state.selectedDocumentIds, titles = state.selectedDocumentTitle;
+
+    let getIndex = (arr, elmnt) => arr.indexOf(elmnt) 
+
+    const del = () => {
+      return state.selectedDocumentIds.map((id) => {
+        state.selectedDocumentTitle.map((title) => {
+          API.deleteCategory(id)
+            .then((res) => { 
+              state.selectAllStatus = false;
+              state.selectedDocumentIds.splice(getIndex(ids, id), 1)
+              titles.splice(getIndex(titles, title), 1)
+              new Toast({"message":"<strong>"+title+" </strong>: "+ res});
+            })
+            .catch((err) => err.message)
+        })
+      })
+    }
+
+    return await del()
   }
 }
 
@@ -186,7 +234,10 @@ let actions = {
   unselectAll: ({commit},data) => commit("unselectAll", data),
   displayFileContents: ({commit}, selectedFile) => commit("displayFileContents", selectedFile),
   changeDirectory: ({commit}, pathIndex) => commit("changeDirectory", pathIndex),
-  search : ({commit}, keyword) => commit("search", keyword)
+  search : ({commit}, keyword) => commit("search", keyword),
+  storeSelectedDocumentIds: ({commit}, data) => commit("storeSelectedDocumentIds", data),
+  removeIdFromStore : ({commit}, data) => commit("removeIdFromStore", data),
+  DELETE_CATEGORY : ({commit}) => commit("DELETE_CATEGORY")
 }
 
 export default {

@@ -203,7 +203,7 @@ div.documentAction:hover{
 
 .caret2:before{
   margin-left: 250px;
-  margin-top:-12px;
+  margin-top: -12px;
   content: "";
   position: fixed;
   width: 0;
@@ -794,7 +794,7 @@ div.sm-header>span {
 }
 
 .typingText{
-  padding: 30px 10px 10px 10px;
+  padding: 0px 10px 10px 10px;
   font-size: 28px;
   font-weight: 600;
   color: gainsboro;

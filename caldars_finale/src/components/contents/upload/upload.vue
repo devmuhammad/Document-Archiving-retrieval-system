@@ -5,6 +5,7 @@
 <script>
 import { uploadService } from "@/mixins/fileUploadService.js";
 import ClipLoader from "../../../../node_modules/vue-spinner/src/ClipLoader.vue"
+import RiseLoader from "../../../../node_modules/vue-spinner/src/RiseLoader.vue"
 
 export default {
   name: "upload",
@@ -45,7 +46,7 @@ export default {
     }
   },
 
-  components:{ClipLoader},
+  components:{RiseLoader,ClipLoader},
 
   mixins: [uploadService]
 };

@@ -4,6 +4,8 @@
 
 
 <script>
+import {mapGetters, mapActions} from "vuex";
+
 export default {
   name:"Sidebar",
   mounted:function () { return this.changeActiveRoute() },
@@ -15,13 +17,31 @@ export default {
         settingsActive:false,
         usersActive:false,
         helpActive:false
-      }
+      },
+      searchKeyword: null,
+      error: undefined,
+      isSearching: null
     }
   },
-  watch: {
-    $route:"changeActiveRoute"
-  },
   methods:{
+    ...mapActions(["search"]),
+
+    searchFor() {
+      this.isSearching = true
+      let keyw = this.searchKeyword
+
+      const search = () => {
+        this.search( keyw ) 
+        if(this.$route.path !== "/documents"){
+          this.$router.push("/documents")
+        }
+      }
+
+      return keyw !== "" 
+      ? search()
+      : this.error = "Search field can't be empty!"; this.isSearching = true;
+    },
+
     changeActiveRoute(){
       let newState = {dashActive:false, documentActive:false, settingsActive:false, usersActive:false, helpActive:false}
       let curPath = window.location.pathname.split("/",4)[1]
@@ -48,6 +68,32 @@ export default {
           this.activeRoute = newState
           break;   
       }
+    }
+  },
+  computed : {
+    ...mapGetters(["searchError", "isSearchResultReady"])
+  },
+  watch : {
+    $route:"changeActiveRoute", 
+
+    searchKeyword : function (val) {
+      let keyw = val
+
+      return keyw !== "" 
+      ? this.error = null
+      : this.error = "Search field can't be empty!"
+    },
+
+    searchError : function (err) {
+
+      return err === null
+      ? null
+      : this.error = err
+    },
+
+    isSearchResultReady : function (val) {
+      console.log(!val)
+      return val === undefined ? this.isSearching = false : this.isSearching = !val;
     }
   }
 }

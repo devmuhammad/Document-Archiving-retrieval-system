@@ -6,7 +6,7 @@ export const addCategory = {
     return {
       new_category:{
         documentType: "New Category",
-        dateCreated: "2018-2-01",
+        dateCreated: "2018-03-01",
         parentid: 0,
         haschild: 0,
         active: 1
@@ -16,6 +16,8 @@ export const addCategory = {
     }
   },
   methods:{
+    ...mapActions(["getDocumentCategory"]),
+
     reset(){
       this.isNewCategoryActive = false;
       this.isLoading = false 
@@ -35,7 +37,7 @@ export const addCategory = {
       let error_msg = "oOPps!"+" "
 
       new Toast({
-        message: (status === "success") ? data + success_msg : error_msg + data,
+        message: (status === "success") ? "<strong> "+ data + "</strong>" + success_msg : error_msg + data,
         type: (status === "success") ? 'success':'danger'
       })
     },
@@ -52,6 +54,7 @@ export const addCategory = {
           })
           .then((res) => { 
             this.reset()
+            this.getDocumentCategory(0)
             return this.notify(res.documentType,"success") 
           })
           .catch((err) => { 

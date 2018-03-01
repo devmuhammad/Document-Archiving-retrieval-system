@@ -23,7 +23,8 @@
             <br> or click to browse
           </p>
           <p v-if="isSaving">
-            Uploading {{ fileCount }} file(s)...
+            Uploading {{ fileCount }} file(s)...<br/> <br/>
+            <RiseLoader :loading="isSaving" color="#42526e" size="20px"/>
           </p>
         </div>
       </form>

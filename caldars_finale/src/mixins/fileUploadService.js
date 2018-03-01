@@ -1,5 +1,6 @@
 import { acuitydrive } from './acuityUploader'
 import API from "../API/documentCategory"
+import {mapActions} from "vuex"
 const STATUS_INITIAL = 0, STATUS_SAVING = 1, STATUS_SUCCESS = 2, STATUS_FAILED = 3;
 
 export const uploadService = {
@@ -40,6 +41,8 @@ export const uploadService = {
   },
 
   methods: {
+    ...mapActions(["getDocumentCategory","getCategoryList"]),
+
     reset() {
       // reset form to initial state
       this.currentStatus = STATUS_INITIAL;
@@ -128,25 +131,25 @@ export const uploadService = {
         });
     },
 
-    SAVE_FILE_PROP(){
+    resetForm(){
+      this.categoryType=undefined;
+      this.projectType=undefined;
+      this.desc="";
+      this.createdBy="";
+      this.filesList=undefined;
+    },
+
+    SAVE_FILE_PROP () {
       const documentImg = {
         "isuploaded": 1,
         "prvwname": this.filesList,
         "description": this.desc,
         "receivedfrom": this.createdBy,
         "userid": 1,
-        "datecreated": "2017-12-18",
-        "lastmodified": "2017-12-18",
+        "datecreated": "2018-02-27",
+        "lastmodified": "2018-02-27",
         "parentid": {"id": this.projectType},
         "doctypeId" : {"id": this.categoryType}
-      }
-
-      const resetForm = () => {
-        this.categoryType=undefined;
-        this.projectType=undefined;
-        this.desc="";
-        this.createdBy="";
-        this.filesList=undefined;
       }
 
       this.isSavingProps = true;
@@ -159,7 +162,7 @@ export const uploadService = {
               this.isSavingProps = false
               this.SEND_NOTIFICATION(savedFile + " was saved successfully!", 'success')
               this.DROP_FILE(savedFile)
-              return (this.uploadedFiles.length > 0) ? resetForm() : this.finishedSaving = true;
+              return (this.uploadedFiles.length > 0) ? this.resetForm() : this.finishedSaving = true;
               break;
             case 500:
               this.isSavingProps = false
@@ -191,4 +194,16 @@ export const uploadService = {
     }
 
   },
+
+  watch : {
+    finishedSaving : function(val) {
+      if(val === false){
+        return;
+      }else if(val === true){
+        this.resetForm()
+        this.getDocumentCategory()
+        this.getCategoryList(0)
+      }
+    }
+  }
 }

@@ -14,7 +14,13 @@ export const DocumentActions = {
   },
 
   methods: {
-    ...mapActions(["setSubFoldersNull", "doSelectAll", "displayFileContents"]),
+    ...mapActions([
+      "setSubFoldersNull", 
+      "doSelectAll", 
+      "displayFileContents", 
+      "DELETE_CATEGORY",
+      "getDocumentCategory"
+    ]),
 
     setListType() {
       this.isListType = true
@@ -24,12 +30,38 @@ export const DocumentActions = {
     setFolderType() {
       this.isFolderType = true
       this.isListType = false
-    }
+    },
+
+    async EXEC_DELETE () {
+      await this.DELETE_CATEGORY()
+      return this.getDocumentCategory(0)
+    },
+
+    Delete(){
+      let customButtons = this.deleteStatement === "Please select a document to delete!" ? null :[
+        {
+          text:"Yes",
+          onClick: () => {return this.EXEC_DELETE() }  
+        }
+      ];
+
+      new Toast({
+        message: this.deleteStatement,
+        type: 'danger',
+        customButtons
+      })
+    },
 
   },
 
   computed:{
-    ...mapGetters(["categoryChildren", "selectAllStatus", "file_opened", "isSearchResultReady"]),
+    ...mapGetters([
+      "categoryChildren", 
+      "selectAllStatus", 
+      "file_opened", 
+      "isSearchResultReady",
+      "deleteStatement"
+    ]),
 
     viewSubFolders() {
       if(this.categoryChildren === null){ return false }
@@ -48,7 +80,6 @@ export const DocumentActions = {
   watch: {
     select : function (val) {
       switch (val){
-
         case val === true && this.categoryChildren === null:
           let data = {select:val, folderState:this.folderState}
           this.doSelectAll(data)

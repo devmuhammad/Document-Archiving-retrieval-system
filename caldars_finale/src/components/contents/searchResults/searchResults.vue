@@ -9,7 +9,7 @@ import sresultItem from "./result/sresult"
 export default {
   name:"searchResults",
   
-  computed:{ ...mapGetters(["searchResults"]) },
+  computed:{ ...mapGetters(["searchResults", "searchError"]) },
 
   components: {sresultItem}
 }

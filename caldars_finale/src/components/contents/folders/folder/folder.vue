@@ -11,12 +11,19 @@ export default {
   data (){
     return {
       isAttr:false,
-      allSelected:false
+      allSelected:false,
+      id_location: undefined
     }
   },
 
   methods:{
-    ...mapActions({"getCategoryChild":"getCategoryChild", "unselect":"unselectAll"}),
+    ...mapActions({
+      "getCategoryChild":"getCategoryChild", 
+      "unselect":"unselectAll",
+      "logId": "storeSelectedDocumentIds",
+      "removeID": "removeIdFromStore"
+    }),
+
     showAttr(){ return this.isAttr = true},
     hideAttr(){ return this.isAttr = false},
     getChild(){
@@ -42,6 +49,20 @@ export default {
         return this.allSelected = false
       }
     },
+
+    allSelected: function (val) {
+      if(val === true) {
+        return this.logId({
+          "id":this.document.id, 
+          "title":this.document.documentType
+        })
+      }else if(val === false) {
+        return this.removeID({
+          "id":this.document.id, 
+          "title":this.document.documentType
+        })
+      }
+    }
   }
 
 }

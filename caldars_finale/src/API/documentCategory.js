@@ -106,11 +106,24 @@ export default {
   },
 
   search: async (keyword) => {
-    const endpoint = "list/documentimages/masters?page=0&size=9&search=previewname:"+keyword;
+    const endpoint = "list/documentimages/masters?page=0&size=9&search=documentType:"+keyword;
 
     const res = () => {
       return new Promise((resolve, reject) => {
         HTTP.get(endpoint)
+        .then(response => {resolve(response.data) })
+        .catch(e => { reject(e) })
+      })
+    }
+
+    return await res()
+  },
+
+  deleteCategory : async (document_id) => {
+
+    const res = () => {
+      return new Promise((resolve, reject) => {
+        HTTP.delete("category/delete/"+document_id)
         .then(response => {resolve(response.data) })
         .catch(e => { reject(e) })
       })

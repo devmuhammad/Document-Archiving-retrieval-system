@@ -47,8 +47,13 @@ export default {
       let curRoute = this.$route.path
       
       if(curRoute === '/documents'){
-        newRoutes.documents = true
-        this.routes = newRoutes
+        if(this.isSearchResultReady === true) {
+          newRoutes.search = true
+          this.routes = newRoutes
+        }else{
+          newRoutes.documents = true
+          this.routes = newRoutes
+        }
       }else if(curRoute === '/'){
         newRoutes.dashboard = true
         this.routes = newRoutes

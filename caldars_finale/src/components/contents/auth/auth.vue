@@ -33,7 +33,7 @@ export default {
       signinForm:false,
       signupForm:false,
       i:0,
-      txt:"Create an account and get up to 200MB free space...",
+      txt:"A safe and fast way of managing your files...",
       demo:""
     }
   },
