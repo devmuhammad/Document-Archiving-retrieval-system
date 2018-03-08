@@ -1,13 +1,17 @@
 <div class="commentBox" >
   <div class="commentCtrls">
-    <div class="field">
+      <div class="field">
       <p class="control">
-        <textarea class="textarea commentField" placeholder="Add a comment..." v-model="comment.description"></textarea>
+        <textarea class="textarea commentField" 
+        placeholder="Add a comment..." 
+        v-model="comment.comments">
+      </textarea>
       </p>
     </div>
     <div class="field" style="float:right;margin-left:20px">
       <p class="control">
-        <button class="button is-rounded is-outlined is-primary" @click="createNew()">Post Comment</button>
+        <button class="button is-rounded is-outlined is-primary" 
+        @click=" postComment() ">Post Comment</button>
       </p>
     </div>
   </div>
@@ -24,8 +28,8 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong> {{comment.username}} <small> made a comment </small></strong> 
-          <small style="float:right">   {{comment.duration}} ago</small>
+          <strong> Admin <small> made a comment </small></strong> 
+          <small style="float:right">  @ {{comment.datelog}}  </small>
           <br> {{comment.comments}}
           <br>
           <small> <a>Like</a> </small>
@@ -33,4 +37,5 @@
       </div>
     </div>
   </article>
+</br>  
 </div>

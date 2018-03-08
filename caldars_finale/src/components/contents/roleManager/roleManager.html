@@ -1,0 +1,108 @@
+<div class="columns">
+    <div class="column is-half">
+            <h1 class="title is-5" style="text-align:center">Create User Group</h1>
+            <div class="field">
+                    <!-- <label class="label">UserGroup Name</label> -->
+                    <div class="control has-icons-left">
+                      <input 
+                        class="input" 
+                        type="text"
+                        v-model="newUserGroup"
+                        placeholder="User-Group Title" 
+                      />
+            
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-users"></i>
+                      </span>
+                    </div>
+                  </div>
+        
+            
+                </br>
+            <div class="box">
+              <div class="control is-grouped">
+                  <p v-model="userRolesList"><strong>
+                      Select Roles for User-Group: </strong></p>
+  
+          <p class="control">
+              <label class="checkbox ">
+              <input type="checkbox" value="Create Users" v-model="checked" /> Create Users
+              </label>
+              </p>
+          <p class="control">
+              <label class="checkbox">
+              <input type="checkbox" value="Manage Users" v-model="checked" /> Manage Users
+              </label>
+              </p>
+          <p class="control">
+            <label class="checkbox">
+            <input type="checkbox" value="Create Organization" v-model="checked" /> Create/Edit Organization
+            </label>
+            </p>
+          <p class="control">
+              <label class="checkbox">
+              <input type="checkbox" value="Create Project" v-model="checked"/> Create Project
+              </label>
+               </p>
+          <p class="control">
+              <label class="checkbox">
+              <input type="checkbox"  value="Create Categories" v-model="checked" /> Create Document Categories
+              </label>
+              </p>
+          <p class="control">
+              <label class="checkbox">
+              <input type="checkbox"  value="Advanced Search" v-model="checked" /> Advanced Search
+              </label>
+              </p>
+          <p class="control">
+              <label class="checkbox">
+              <input type="checkbox"  value="View Activities" v-model="checked" /> View Activities
+              </label>
+              </p>
+          <p class="control">
+              <label class="checkbox">
+              <input type="checkbox"  value="Preview Documents" v-model="checked" /> Preview Documents
+              </label>
+              </p>
+          <p class="control">
+              <label class="checkbox">
+              <input type="checkbox"  value="Share Documents" v-model="checked" /> Share Documents
+              </label>
+              </p>
+          <p class="control">
+              <label class="checkbox">
+              <input type="checkbox"  value="Delete Documents" v-model="checked" /> Delete Documents
+              </label>
+              </p>
+
+               
+  </div>
+   </div>
+
+            <div class="field">
+              <div class="control">
+              <button class="button is-secondary is-fullwidth" @click="addUserGroup">Add Group</button>
+              </div>
+              </div>
+        </div>
+    
+    <div class="column is-half">
+      <h1 class="title is-5" style="text-align:center">User-Groups and Roles</h1>
+      <div class="notification" >
+      <button class="delete" @click=""></button>
+      <div class="level-left ">
+        <div class="level-item ">
+            <i class="fa fa-tick" ></i>
+        <div class="level-item has-text-centered "> 
+              <p>
+                  <strong style="float:left"> {{newUserGroup}}   </strong><br>
+            
+                  <small style="text-align: left" v-for="(check, index) in checked"
+                  > {{ check }} </small>
+              </p>
+          </div>
+        </div> 
+      </div>
+    </div>
+    </div>
+</div>

@@ -13,10 +13,10 @@ export default {
 
     return await res()
   },
-  ADD_COMMENT: async () => {
+  ADD_COMMENT: async (comment) => {
     const res = () => {
       return new Promise((resolve, reject) => {
-        HTTP.post('documentactivitieslog/add')
+        HTTP.post('comments/add', comment)
         .then(response => { resolve(response) })
         .catch(e => { reject(e) })
       })
@@ -27,7 +27,7 @@ export default {
   UPDATE_COMMENT: async () => {
     const res = () => {
       return new Promise((resolve, reject) => {
-        HTTP.put('documentactivitieslog/add')
+        HTTP.put('comments/add')
         .then(response => { resolve(response) })
         .catch(e => { reject(e) })
       })
@@ -38,7 +38,7 @@ export default {
   DELETE_COMMENT: async () => {
     const res = () => {
       return new Promise((resolve, reject) => {
-        HTTP.delete('documentactivitieslog/delete/' + id)
+        HTTP.delete('comments/delete/' + id)
         .then(response => { resolve(response.data) })
         .catch(e => { reject(e) })
       })

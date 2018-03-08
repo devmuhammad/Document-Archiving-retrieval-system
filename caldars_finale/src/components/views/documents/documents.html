@@ -4,7 +4,8 @@
     :addCategory="create_new_category" :newCategory="new_category" :reset="reset" :loading="isLoading" />
   <addProjectModal v-if="isProjectModalActive === true" :isProjectModalActive="isProjectModalActive" :closeProjectModal="closeProjectModal" :loading="isProjectLoading"
     :project="project" :addProject="create_new_project"/>
-
+  <shareDoc :isShareActive="setShareActive":closeShareModal="closeShareModal" />
+  
   <div class="columns">
     <!--Left column-->
     <div class="column" v-if="file_opened === false">
@@ -102,7 +103,7 @@
             <span>Delete</span>
           </div>
 
-          <div class="documentAction">
+          <div class="documentAction" @click="showShareModal">
             <span>
               <i class="fa fa-share"></i>
             </span>

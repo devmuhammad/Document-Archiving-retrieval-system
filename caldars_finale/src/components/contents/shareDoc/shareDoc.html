@@ -1,0 +1,66 @@
+<div :class="{'modal':true,'is-active':isShareActive}">
+  <div class="modal-content new-user-modal is-centered">
+    <div class="new-user-title is-pulled-left">
+      <h1 class="subtitle is-6">
+        <small>
+          <i class="fa fa-share"></i>
+          <span>Share Document</span>
+        </small>
+      </h1>
+    </div>
+    <div class="close-btn is-pulled-right" @click="closeShareModal()">
+      <i class="fa fa-close"></i>
+    </div>
+    <br/>
+    <br/>
+    <strong>You have selected the following files to be shared :</strong>
+    <div style="display: flex; justify-content: center;">
+    <img src="../../../assets/img/subFolders.png" />
+    </div>
+    
+    <span v-for="(selectedDoc, index) in selectedDocs" style="text-align:center"><strong>
+      <i class="fa fa-check"> {{selectedDoc.prvwname}} </i>
+    </strong></br>
+  </span>
+</br>
+    <div class="new-user-content" v-if="loading === false">
+      <div class="field">
+        <label class="label">Share To</label>
+        <div class="control has-icons-left">
+          <span class="select is-fullwidth">
+            <select v-on:change="getSelected" v-model="selected">
+               <!-- <option selected> Admin </option>  -->
+              <option v-for="user in userslist" :value="userslist.id" v-model="share.touserid">{{user.userName}}</option>
+            </select>
+          </span>
+          <span class="icon is-small is-left">
+            <i class="fa fa-users"></i>
+          </span>
+          </div>
+          </div>
+
+      <div class="field">
+        <label class="label">Comment</label>
+        <div class="control has-icons-left">
+          <textarea class="textarea commentField" 
+        placeholder="Add a comment..." 
+        v-model="share.comments">
+      </textarea>
+
+          <span class="icon is-small is-left">
+            <i class="fa fa-talk"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <button class="button is-secondary is-fullwidth"
+          @click="shareFile()"
+          :loading="loading">
+          Share</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

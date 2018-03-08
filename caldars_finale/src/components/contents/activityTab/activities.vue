@@ -1,4 +1,4 @@
-<<template src="./activities.html">
+g<<template src="./activities.html">
   
 </template>
 
@@ -14,13 +14,12 @@ export default {
     return {
       id:2,
       data: [],
-      busy: false
+      busy: false,
+     // activitylist:4
     }
   },
   computed:{
-    ...mapGetters([
-      "activitylist"
-    ]),
+    ...mapGetters([ "activitylist"]),
 
 },
 methods:{

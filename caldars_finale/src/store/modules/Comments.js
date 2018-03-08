@@ -28,6 +28,7 @@ let mutations = {
         .then((res) => {
           state.commentlist = res
           state.comlength = res.length
+          
         })
         .catch((err) => { console.log({'error':err.message}); state.get_comerror.error = err.message})
       }  
@@ -46,7 +47,7 @@ let mutations = {
         .then((res) => { resolve(res)})
         .catch((err) => { reject(err) })
       })
-      .then((res) => { state.create_commentstatus = res.status; this.ADD_COMMENT(0)})
+      .then((res) => { state.create_commentstatus = res.status; this.LIST_COMMENT(0)})
       .catch((err) => {state.create_error.error = err.message})
     }
 

@@ -3,10 +3,10 @@ import { HTTP } from './http'
 
 export default {
 
-  LOGIN: async (userlog) => {
+  SHARE: async () => {
     const res = () => {
       return new Promise((resolve, reject) => {
-        HTTP.get(`userprofile/authenticate`, { params: { username: userlog.username, password: userlog.password } })
+        HTTP.post(`sharedocuments/add`, )
           .then(response => { resolve(response.data) })
           .catch(e => { reject(e) })
       })

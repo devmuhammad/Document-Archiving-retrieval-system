@@ -50,27 +50,43 @@
 
             <div class="field">
               <div class="control has-icons-left">
-                <input class="input is-rounded" type="text" placeholder="Username">
+                <input class="input is-rounded" type="text" 
+                placeholder="Username" 
+                v-model.trim="userlog.username"
+                required>
                 <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
               </div>
             </div>
                
             <div class="field">
               <div class="control has-icons-left">
-                <input class="input" type="password" placeholder="******">
+                <input class="input" type="password" 
+                placeholder="******"
+                v-model.trim="userlog.password"
+                required>
                 <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
               </div>
             </div>
-
+            <div v-if="logerror != '' || logmsg != ''" style="color:#da2347;font-weight:600" class="has-text-centered">
+                <small>{{logerror}}</small>
+                <small>{{logmsg}}</small>
+              </div>
             <div class="field">
-              <a class="button is-primary is-fullwidth" @click="userLogin">Sign in</a>
+              <button 
+                  type="submit"
+                  :class="{'button':true, 'is-primary':true, 'is-loading':isLoading}" 
+                  style="width:100%"
+                  @click="login">
+                  <span class="icon"> <i class="fa fa-lock"></i> </span>
+                  <span>Login</span>
+              </button>
             </div>
 
             <!--div class="has-text-centered">
               <div class="sm-header"><span>or use social media login</span></div>
               <div class="social-login-btns">
                 <div class="social-login-facebook"><i class="fa fa-facebook fa-2x"></i></div>
-                <div class="social-login-insta"><i class="fa fa-instagram fa-2x"></i></div>
+                <div class="social-login-insta"><i class="fa fa-google-plus fa-2x"></i></div>
                 <div class="social-login-twitter"><i class="fa fa-twitter fa-2x"></i></div>
               </div>   
             </div-->
@@ -94,22 +110,22 @@
 
             <div class="field">
               <div class="control has-icons-left">
-                <input class="input is-small" type="text" placeholder="Username">
+                <input class="input is-small" type="text" placeholder="Username" v-model="user.userName">
                 <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
               </div>
             </div>
                
             <div class="field">
               <div class="control has-icons-left">
-                <input class="input is-small" type="password" placeholder="******">
+                <input class="input is-small" type="password" placeholder="******" v-model="user.password">
                 <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
               </div>
             </div>
 
             <div class="field">
               <div class="control has-icons-left">
-                <input class="input is-small" type="email" placeholder="example@gmail.com">
-                <span class="icon is-small is-left"><i class="fa fa-envelope"></i></span>
+                <input class="input is-small" type="password" placeholder="confirm password">
+                <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
               </div>
             </div>
 
@@ -122,28 +138,48 @@
               
               <div class="field">
                 <div class="control has-icons-left">
-                  <input class="input is-small" type="text" placeholder="Organization name">
+                  <input class="input is-small" type="text" placeholder="Organization name" v-model="user.institutionid.name">
                   <span class="icon is-small is-left"><i class="fa fa-bank"></i></span>
                 </div>
               </div>
                   
               <div class="field">
                 <div class="control has-icons-left">
-                  <input class="input is-small" type="number" placeholder="Contact phone">
-                  <span class="icon is-small is-left"><i class="fa fa-phone"></i></span>
+                  <input class="input is-small" placeholder="Contact Person" v-model="user.institutionid.contactperson">
+                  <span class="icon is-small is-left"><i class="fa fa-address-book"></i></span>
                 </div>
               </div>
   
               <div class="field">
                 <div class="control has-icons-left">
-                  <input class="input is-small" type="email" placeholder="example@gmail.com">
+                  <input class="input is-small" type="email" placeholder="Contact Email" v-model="user.institutionid.contactEmail">
                   <span class="icon is-small is-left"><i class="fa fa-envelope"></i></span>
                 </div>
               </div>
-    
               <div class="field">
-                <a class="button is-primary is-fullwidth">Create organization</a>
-              </div>
+                  <div class="control has-icons-left">
+                      <span class="select">
+                          <select v-on:change="getSelected" v-model="selected">
+                            <option selected>Business Type</option>
+                            <option v-for="businesstype in businesstypes" :value="businesstype.id" 
+                            v-model="user.institutionid.businesstypeid.id">{{businesstype.businesstype}}</option>
+                          </select>
+                        </span>
+                        <span class="icon is-small is-left"><i class="fa fa-briefcase"></i></span>
+                  </div>
+                </div>
+                <div v-if="usererror != ''" style="color:#da2347;font-weight:600" class="has-text-centered">
+                  <small>{{usererror}}</small>
+                </div>
+              <div class="field">
+                  <button 
+                  type="submit"
+                  :class="{'button':true, 'is-primary':true, 'is-loading':isLoading}" 
+                  style="width:100%"
+                  @click="signUp ">
+                  <span>Sign up</span>
+              </button>
+                </div>
             </div>
 
             <div class="has-text-centered">
