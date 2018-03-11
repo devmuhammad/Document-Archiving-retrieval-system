@@ -5,6 +5,7 @@ import Comments from './modules/Comments'
 import Usermanagement from './modules/usermanagement'
 import documentCategory from "./modules/documentCategory"
 import login from "./modules/login"
+import share from "./modules/share"
 
 Vue.use(Vuex)
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     Comments,
     Usermanagement,
     login,
+    share,
     documentCategory
   }
 })  

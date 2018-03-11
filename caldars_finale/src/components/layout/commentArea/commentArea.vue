@@ -14,15 +14,16 @@ export default {
       iscomActive: false,
       isActive: false,
       document_Footer: 50,
-      comtag:0,
-      acttag:0,
+      comtag:1,
+      acttag:4,
+
     };
   },
 
   computed:{
     ...mapGetters([
       "actlength",
-      "comlength"
+      "comlength",
     ]),
   },
   

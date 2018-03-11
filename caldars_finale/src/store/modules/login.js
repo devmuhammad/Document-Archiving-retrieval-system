@@ -1,16 +1,23 @@
 import api from "../../API/Login"
-import { stat } from "fs";
 
 let state = {
   user: {},
   login_error: null,
   login_status: false,
-  isLoggedIn:false
+  isLoggedIn:false,
+  login_msg:{},
+  loggedInUser:"",
+  loggedInUsername:"",
+  selectedDocs:[]
 }
 
 const getters = {
   login_status: state => state.login_status,
   isLoggedIn: state => state.isLoggedIn,
+  login_msg: state => state.login_msg,
+  loggedInUser: state => state.loggedInUser,
+  loggedInUser: state => state.loggedInUser,
+  selectedDocs: state => state.selectedDoc,
   login_error: state => state.login_error
 }
 

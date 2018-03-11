@@ -1,0 +1,43 @@
+<!-- <div class="table_ctrl_small">
+                    
+        <a 
+            @click = ""
+            class="table_ctrl_item">
+            <i class="fa fa-print"></i>
+        </a>
+        </div> -->
+        <span v-if="useract" >
+                      <table class="table is-fullwidth is-bordered is-striped is-narrow">
+                              <thead>
+                                <tr>
+                                  <th>Date Time</th>
+                                  <th>Activities</th>
+                                  <th>Task</th>
+                                </tr>
+                              </thead>
+                              <tbody> 
+                                      <userActivitiesTableItem 
+                                        v-for="(useractivity, index) in useractivities" 
+                                        :key="index"
+                                        :date="useract.date"
+                                        :activities = "useract.activities"
+                                        :task = "useract.task"
+                                    >
+                                      </userActivitiesTableItem>
+                                  </tbody>
+                              </table>   
+              
+      
+          </span>
+          
+          <span class="columns" v-else>
+              <span class="column"></span>
+              <span class="column" style="margin-top:200px;padding-bottom:200px">
+                  <FadeLoader
+                    :loading = "loading"  
+                    color="#da251c"
+                    size="20px"
+                  ></FadeLoader>
+              </span>
+          </span>
+          </div>           

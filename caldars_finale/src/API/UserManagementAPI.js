@@ -4,7 +4,7 @@ export default {
     CREATE_USER: async (user) => {
       const res = () => {
         return new Promise ((resolve, reject) => {
-          HTTP.post('usersprofile/add', user)
+          HTTP.post('userprofile/add', user)
           .then(response => { resolve(response) })
           .catch(e => { reject(e) })
         })
@@ -76,7 +76,30 @@ export default {
     GET_USERS: async () => {
       const res = () => {
         return new Promise((resolve, reject) => {
-          HTTP.get(`list/usersprofile?offset=0&limit=20` )
+          HTTP.get(`list/userprofile?page=0&size=10` )
+          .then((response) => { resolve(response.data)  })
+          .catch(e => { console.log(e); reject(e) })
+        })
+      }
+
+      return await res()
+    },
+    GET_INSTITUTION: async (id) => {
+      const res = () => {
+        return new Promise((resolve, reject) => {
+          HTTP.get(`list/institution` + id)
+          .then(response => { resolve(response.data) })
+          .catch(e => { reject(e) })
+        })
+      }
+       
+      return await res()
+    },
+
+    GET_BUSINESSTYPES: async () => {
+      const res = () => {
+        return new Promise((resolve, reject) => {
+          HTTP.get(`businesstypes` )
           .then((response) => { resolve(response.data)  })
           .catch(e => { console.log(e); reject(e) })
         })

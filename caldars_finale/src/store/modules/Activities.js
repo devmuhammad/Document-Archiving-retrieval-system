@@ -3,6 +3,7 @@ import api from "../../API/activities"
 let state = {
     activitylist :[],
     activity: {},
+    actlength:undefined,
     get_acterror: {},
     delete_error:{},
 }

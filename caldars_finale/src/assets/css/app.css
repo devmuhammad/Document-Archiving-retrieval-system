@@ -895,7 +895,9 @@ h2.dash-title{
   padding-left:4px;
   font-weight: 500;
 }
-
+.user-page{
+  padding:10px 20px 20px 20px;
+}
 .user-container{
   display:grid;
   grid-template-columns: auto auto auto auto;
@@ -1160,4 +1162,7 @@ h2.dash-title{
   color:red;
   font-size: 12px;
   font-weight: 500;
+}
+.box{
+  background-color: transparent;
 }

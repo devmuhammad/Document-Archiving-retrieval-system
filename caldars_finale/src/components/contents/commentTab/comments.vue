@@ -14,20 +14,29 @@ export default {
   ],
   data(){
     return {
-      id:2,
-      comment :{description: '',datelog:new Date().toDateString()},
-      
+     // commentlist:[],
+     time:new Date(),
+      comment :{ comments: '', documentactivitiesid:{id:3}, userid:{id:1}, datelog:new Date().now},  
       data: [],
       busy: false
     }
   },
   computed:{
     ...mapGetters(["commentlist"]),
+    ...mapGetters(["selectedChildren"]),
   },
+  
   methods:{
-    createNew(){ return this.addNewComment(this.comment) },
+    // createNew(){ 
+    //    },
 
-    deletecoment () { return this.DeleteComment(this.id[0])},
+      postComment(){
+        this.commentlist.push(this.comment)
+        return this.addNewComment(this.comment)
+        this.comment={}
+      },
+
+    deletecomment () { return this.DeleteComment(this.comment.id[0])},
 
 ...mapActions([
     "DeleteComment",
