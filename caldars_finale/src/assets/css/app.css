@@ -618,6 +618,11 @@ div>nav.commentHeader.level{
   width:100%
 }
 
+.is-error {
+  color:red;
+  font-weight: 500;
+}
+
 .login-background{
   background: linear-gradient(-95deg,#FFFFFF,#cfe5fa );
   width: 100%;

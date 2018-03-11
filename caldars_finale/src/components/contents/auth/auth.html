@@ -47,24 +47,47 @@
               <span class="title">Welcome back!</span>
               <div class="sub-title">Please login to access your account</div>
             </div>
-
-            <div class="field">
-              <div class="control has-icons-left">
-                <input class="input is-rounded" type="text" placeholder="Username">
-                <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
+            
+            <form v-on:submit.prevent>
+              <div class="field">
+                <div class="control has-icons-left">
+                  <input 
+                    class="input is-rounded" 
+                    type="text" 
+                    placeholder="Username" 
+                    v-model="login_deet.username" 
+                    :disabled="isLogging"
+                    required
+                  />
+                  <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
+                </div>
               </div>
-            </div>
-               
-            <div class="field">
-              <div class="control has-icons-left">
-                <input class="input" type="password" placeholder="******">
-                <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
+                
+              <div class="field">
+                <div class="control has-icons-left">
+                  <input 
+                    class="input" 
+                    type="password" 
+                    placeholder="******" 
+                    v-model="login_deet.passw" 
+                    :disabled="isLogging"
+                    required
+                  >
+                  <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
+                </div>
               </div>
-            </div>
 
-            <div class="field">
-              <a class="button is-primary is-fullwidth" @click="userLogin">Sign in</a>
-            </div>
+              <div class="field">
+                <button 
+                  type="submit" 
+                  :class="{'button':true, 'is-primary':true, 'is-fullwidth':true, 'is-loading':isLogging}"
+                  @click="tryLogin" 
+                >Sign In</button>
+              </div>
+
+              <div v-if="signinErr" class="has-text-centered"><small class="is-error">{{ signinErr }}</small></div>
+              <br/>
+            </form>
 
             <!--div class="has-text-centered">
               <div class="sm-header"><span>or use social media login</span></div>

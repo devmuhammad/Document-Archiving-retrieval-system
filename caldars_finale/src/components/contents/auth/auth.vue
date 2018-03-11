@@ -10,6 +10,11 @@ export default {
   mounted() { console.log(this.$isOnline); return this.typeWriter() },
   data() {
     return {
+      login_deet:{
+        "username":"",
+        "passw":""
+      },
+      signinErr: "",
       user: {
         userName: "",
         firstName: "Admin",
@@ -33,19 +38,37 @@ export default {
       signinForm:false,
       signupForm:false,
       i:0,
-      txt:"A safe and fast way of managing your files...",
+      txt:"A safe and fast way of managing your files .....",
       demo:""
     }
   },
 
   computed: {
     ...mapGetters({
-      response_status: "create_inststatus"
+      "response_status": "create_inststatus",
+      "isLogging": "login_status",
+      "login_error": "login_error"
     })
   },
 
   methods: {
-    ...mapActions(["getUsers", "createNewUser", "createInstitution", "userLogin"]),
+    ...mapActions([
+      "getUsers", 
+      "createNewUser", 
+      "createInstitution", 
+      "userLogin"
+    ]),
+
+    tryLogin () {
+      let credentials = this.login_deet
+
+      if(credentials.username !== "" && credentials.passw !== ""){
+        this.signinErr = null
+        return this.userLogin(credentials)
+      }else {
+        this.signinErr = "Please fill in your login credentials!"
+      }
+    },
 
     createNew() {
       return this.createNewUser(this.user);
@@ -87,6 +110,14 @@ export default {
       if(this.demo === this.txt){
         this.demo = ""
         this.i = 0;
+      }
+    }
+  },
+
+  watch: {
+    login_error : function (value) {
+      if(value !== null) {
+        this.signinErr = value
       }
     }
   }
