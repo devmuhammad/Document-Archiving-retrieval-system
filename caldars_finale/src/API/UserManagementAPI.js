@@ -61,10 +61,10 @@ export default {
       return await res()
     },
 
-    GET_USER: async (id) => {
+    GET_USER: async () => {
       const res = () => {
         return new Promise((resolve, reject) => {
-          HTTP.get(`usersprofile/` + id)
+          HTTP.get(`usersprofile/`)
           .then(response => { resolve(response.data) })
           .catch(e => { reject(e) })
         })

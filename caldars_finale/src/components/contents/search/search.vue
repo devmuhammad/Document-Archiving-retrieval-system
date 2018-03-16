@@ -20,17 +20,22 @@ export default {
     ...mapActions(["search"]),
 
     searchFor() {
-      this.isSearching = true
       let keyw = this.searchKeyword
 
-      return keyw !== "" 
-      ? this.search( keyw ) 
-      : this.error = "Search field can't be empty!"; this.isSearching = true;
+      if(keyw !== "" && keyw !== null){
+        this.isSearching = true
+        this.search( keyw )
+      }else {
+        this.error = "Search field can't be empty!"; 
+      }
     }
   },
 
   computed : {
-    ...mapGetters(["searchError", "isSearchResultReady"])
+    ...mapGetters([
+      "searchError", 
+      "isSearchResultReady"
+    ])
   },
 
   watch : {
@@ -50,8 +55,9 @@ export default {
     },
 
     isSearchResultReady : function (val) {
-      console.log(!val)
-      return val === undefined ? this.isSearching = false : this.isSearching = !val;
+      return val === undefined 
+      ? this.isSearching = false 
+      : this.isSearching = !val;
     }
   }
 }

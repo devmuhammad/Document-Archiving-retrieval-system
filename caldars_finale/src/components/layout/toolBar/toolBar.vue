@@ -6,7 +6,7 @@
 import notifications from "@/components/contents/notifications/notifications"
 import {documentPath} from "@/mixins/documentPath"
 import uploadModal from "@/components/contents/upload/upload"
-import {mapGetters} from "vuex"
+import {mapGetters, mapActions} from "vuex"
 
 export default {
   name:"toolBar",
@@ -34,14 +34,32 @@ export default {
 
     isSearchResultReady : function (val) {
       if (val === true) {
-        this.routes = {dashboard: false,settings:false, users:false, documents:false, help:false, search: true}
+        this.routes = {
+          dashboard: false,
+          settings:false, 
+          users:false, 
+          documents:false, 
+          help:false, 
+          search: true
+        }
       }else if(val === false || val === undefined){
-        this.routes = {dashboard: false,settings:false, users:false, documents:true, help:false, search: false}
+        this.routes = {
+          dashboard: false,
+          settings:false, 
+          users:false, 
+          documents:true, 
+          help:false, 
+          search: false
+        }
       }
     }
   },
 
   methods:{
+    ...mapActions({
+      "logout":"LOGOUT_USER"
+    }),
+
     checkRoute () {
       let newRoutes = {dashboard: false,settings:false, users:false, documents:false, help:false, search: false}
       let curRoute = this.$route.path

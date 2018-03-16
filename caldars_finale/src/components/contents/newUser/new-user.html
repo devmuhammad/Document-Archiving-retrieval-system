@@ -10,29 +10,21 @@
       <div class="close-btn is-pulled-right" @click="closeNewUserModal()">
         <i class="fa fa-close"></i>
       </div>
-  <br/><br/>
-      <div class="new-user-content" v-if="loading === false">
-        <div class="field">
-          <label class="label">User role</label>
-          <div class="control has-icons-left">
-            <div class="select is-fullwidth">
-              <select>
-                <option>Select role</option>
-                <option>With options</option>
-              </select>
-            </div>
-            <span class="icon is-small is-left">
-              <i class="fa fa-folder"></i>
-            </span>
-          </div>
-        </div>
 
+      <br/>
+      <br/>
+      <div v-if="error" class="has-text-centered is-error">{{error}}</div>
+      <div class="new-user-content" v-if="loading === false">
+      <form v-on:submit.prevent>  
         <div class="field">
           <label class="label">Fullname</label>
           <div class="control has-icons-left">
             <input 
               class="input" 
               type="text" 
+              placeholder="firstname middlename lastname"
+              v-model="fullname"
+              required
             />
   
             <span class="icon is-small is-left">
@@ -48,6 +40,9 @@
             <input 
               class="input" 
               type="text" 
+              placeholder="Username"
+              v-model="newUser.userName"
+              required
             />
   
             <span class="icon is-small is-left">
@@ -62,6 +57,9 @@
             <input 
               class="input" 
               type="password" 
+              placeholder="password"
+              v-model="pass"
+              required
             />
   
             <span class="icon is-small is-left">
@@ -71,11 +69,68 @@
         </div>
 
         <div class="field">
-          <div class="control">
-            <button class="button is-secondary is-fullwidth">Add</button>
+          <label class="label">Confirm Password</label>
+          <div class="control has-icons-left">
+            <input 
+              class="input" 
+              type="password" 
+              placeholder="Retype password"
+              v-model= "cpass"
+              required
+            />
+  
+            <span class="icon is-small is-left">
+              <i class="fa fa-lock"></i>
+            </span>
           </div>
         </div>
-      </div>
+
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control has-icons-left">
+            <input 
+              class="input" 
+              type="email"
+              placeholder="abc@example.com" 
+              v-model= "newUser.contactEmail"
+              required
+            />
   
+            <span class="icon is-small is-left">
+              <i class="fa fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Phone number</label>
+          <div class="control has-icons-left">
+            <input 
+              class="input" 
+              type="tel"
+              placeholder="08011111111" 
+              minlength= "11"
+              v-model= "newUser.contactMobile"
+              required
+            />
+  
+            <span class="icon is-small is-left">
+              <i class="fa fa-phone"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <button 
+              type="submit" 
+              :class="{'button':true, 'is-secondary':true, 'is-fullwidth':true, 'is-loading':create_userstatus}" 
+              @click="createUser">
+              Add
+            </button>
+          </div>
+        </div>
+      </form>  
+      </div>
     </div>
   </div>

@@ -11,7 +11,7 @@ import {mapActions, mapState, mapGetters} from "vuex"
 
 export default {
   name:"users",
-  created: function () { return this.getUsers([]) },
+  created: function () { return this.getUsers() },
   data () {
     return {
       displayUserActivities: false,
@@ -57,7 +57,6 @@ export default {
   ...mapActions([
       "getUsers",
       "DeleteUser",
-      
     ])
   },
   components: {

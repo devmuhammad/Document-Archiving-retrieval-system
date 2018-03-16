@@ -6,10 +6,11 @@
 <script>
 export default {
   name:"user-card",
+  props:["user"],
   data () {
     return {
       showControl :false,
-      sampleName:"umar abdullahi"
+      fullName: this.user.firstName + " " + this.user.lastName + " " + this.user.middleName
     }
   },
   methods:{

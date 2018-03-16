@@ -4,7 +4,14 @@
 
 
 <script>
+import { mapGetters } from "vuex"
+
 export default {
-  name:"general-settings"
+  name:"general-settings",
+  computed: {
+    ...mapGetters({
+      "user":"loggedInUser"
+    })
+  }
 }
 </script>

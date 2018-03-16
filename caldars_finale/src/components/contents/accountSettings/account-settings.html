@@ -2,7 +2,7 @@
   <div class="field">
     <label class="label">Email Address</label>
     <div class="control has-icons-left is-fullwidth">
-      <input class="input is-medium" type="text" placeholder="omarmohammed580@gmail.com" />
+      <input class="input is-medium" type="text" :value="user.contactEmail" :disabled="disableInputs"/>
 
       <span class="icon is-small is-left">
         <i class="fa fa-envelope"></i>
@@ -11,12 +11,12 @@
   </div>
 
   <div class="field">
-    <label class="label">What do you do?</label>
+    <label class="label">Contact phone</label>
     <div class="control has-icons-left is-fullwidth">
-      <input class="input is-medium" type="text" placeholder="Software developer" />
+      <input class="input is-medium" type="text" :value="user.contactMobile" :disabled="disableInputs"/>
 
       <span class="icon is-small is-left">
-        <i class="fa fa-briefcase"></i>
+        <i class="fa fa-phone"></i>
       </span>
     </div>
   </div>
@@ -24,7 +24,7 @@
   <div class="field">
     <label class="label">Username</label>
     <div class="control has-icons-left is-fullwidth">
-      <input class="input is-medium" type="text" placeholder="codebyomar" />
+      <input class="input is-medium" type="text" :value="user.userName" :disabled="disableInputs"/>
 
       <span class="icon is-small is-left">
         <i class="fa fa-at"></i>

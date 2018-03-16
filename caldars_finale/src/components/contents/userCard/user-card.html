@@ -6,10 +6,10 @@
       <div class="user-ctrl-item"><small>Block account</small></div>
     </div>
   </div>
-  <div class="user-card-img is-pulled-left">{{sampleName | getInitials}}</div>
+  <div class="user-card-img is-pulled-left">{{fullName | getInitials}}</div>
   <div class="user-card-content is-pulled-left">
-    <small>Umar Abdullahi</small><br/>
-    <small>@factory_worker</small><br/>
-    <small class="user-role">Software developer</small>
+    <small>{{user.firstName + " " + user.lastName}}</small><br/>
+    <small>@{{user.userName}}</small><br/>
+    <small class="user-role">{{user.contactEmail}}</small>
   </div>
 </div>

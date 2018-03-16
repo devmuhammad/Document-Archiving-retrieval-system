@@ -56,7 +56,8 @@ export default {
       "isLogging": "login_status",
       "login_error": "login_error"
     }, ['businesstypes','create_instid','login_status','login_msg','login_error','create_usererror']),
-  getStatus(){
+    
+    getStatus(){
       return (this.login_status==0) 
       ? this.isLoading = true
       : this.isLoading = false;
@@ -93,6 +94,7 @@ export default {
     login_error : function (value) {
       if(value !== null) {
         this.signinErr = value
+        this.isLoading = false;
       }
     }
     
@@ -144,10 +146,10 @@ export default {
       
       }
     },
-    login(){
+
+    login() {
       this.getStatus
-      
-      //setTimeout(this.isLoading, 2000)
+
       if(this.userlog.username == "" || this.userlog.password == ""){
         this.logerror = "You can't submit an empty form!";
         this.isLoading = false;
@@ -156,25 +158,25 @@ export default {
       }
     },
     
-    getSelected(){
+    getSelected() {
        let values = this.businesstypes.map(function(o){return o.businesstypes.id })
        let index = values.indexOf(this.selected)
        this.selected = this.businesstypes[index].businesstype
     },
 
-    openSigninForm(){
+    openSigninForm() {
       this.authbtns = false;
       this.signupForm = false;
       this.signinForm = true;
     },
 
-    openSignupForm(){
+    openSignupForm() {
       this.authbtns = false;
       this.signinForm = false;
       this.signupForm = true;
     },
 
-    closeForms(){
+    closeForms() {
       this.authbtns = true;
       this.signinForm = false;
       this.signupForm = false;

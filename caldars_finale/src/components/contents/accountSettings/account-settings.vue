@@ -5,13 +5,20 @@
 
 <script>
 import Switches from 'vue-switches';
+import {mapGetters} from "vuex"
 
 export default {
   name:"account-settings",
-    data () {
+  data () {
     return {
-      enable:true
+      enable:true,
+      disableInputs:true
     }
+  },
+  computed : {
+    ...mapGetters({
+      user:"loggedInUser"
+    })
   },
   components:{Switches}
 }

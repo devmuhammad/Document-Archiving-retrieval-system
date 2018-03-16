@@ -993,11 +993,12 @@ h2.dash-title{
 }
 
 .new-user-modal{
-  background-color: #BCDEFA;
+  background-color: ghostwhite;
   color:#333;
   width: 500px;
   padding: 10px 20px 20px 20px;
   border-radius: 5px;
+  border:1px solid #ccc; 
 }
 
 .new-user-title > h1{

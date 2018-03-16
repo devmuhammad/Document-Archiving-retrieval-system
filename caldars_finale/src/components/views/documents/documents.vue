@@ -34,18 +34,6 @@ export default {
     ])
   },
   methods:{
-    Delete(){
-      new Toast({
-        message: 'Are you sure you want to delete "Proposal and 3 other documents"?',
-        type: 'danger',
-        customButtons:[
-          { text:"Yes",
-            onClick:function confirmDelete(){
-              return true;
-            }}
-        ]
-      })
-    },
     displayUploadModal(){
       return this.setUploadActive = true
     },

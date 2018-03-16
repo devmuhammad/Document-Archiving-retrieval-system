@@ -2,7 +2,10 @@ import {mapGetters, mapActions} from "vuex"
 
 export const LoadDocuments = {
   methods:{
-    ...mapActions(["getDocumentCategory","getCategoryList"])
+    ...mapActions([
+      "getDocumentCategory",
+      "getCategoryList"
+    ])
   },
   mounted(){
     this.getCategoryList()
