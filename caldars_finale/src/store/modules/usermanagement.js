@@ -14,6 +14,7 @@ let state = {
   create_inststatus: undefined,
   create_updatestatus: undefined,
   create_passwordstatus: undefined,
+  changepasserr:undefined,
   delete_error: {},
 }
 
@@ -27,7 +28,8 @@ const getters = {
   create_userstatus: state => state.create_userstatus,
   create_inststatus: state => state.create_inststatus,
   create_updatestatus: state => state.create_updatestatus,
-  create_passwordstatus: state => state.create_passwordstatus
+  create_passwordstatus: state => state.create_passwordstatus,
+  changepasserr: state => state.changepasserr
 }
 
 const mutations = {
@@ -111,7 +113,7 @@ const mutations = {
           .catch((err) => { reject(err) })
       })
       .then((res) => { state.create_passwordstatus = res.status; this.GET_USERS(0) })
-      .catch((err) => { state.create_usererror.error = err.message })
+      .catch((err) => { state.changepasserr.error = err.message })
 
     }
 

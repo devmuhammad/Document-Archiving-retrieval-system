@@ -31,7 +31,7 @@ export default {
   },
   computed:{
     ...mapGetters([
-      'userslist','loggedInUser','loggedInUsername','selectedDocs'
+      'userslist','loggedInUser','selectedDocs'
     ])
   },
   methods: {
@@ -42,8 +42,8 @@ export default {
     },
     
     shareFile(){
-      this.share.userid.id= this.loggedInUser
-      this.share.sharedby = this.loggedInUsername
+      this.share.userid.id= this.loggedInUser.id
+      this.share.sharedby = this.loggedInUser.userName
       for (let i=0; i<=this.selectedDocs.length; i++){
       this.share.doctid = this.selectedDocs[i].id
       

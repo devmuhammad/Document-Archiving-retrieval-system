@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from "vuex"
+import {mapActions, mapGetters, mapState} from "vuex"
 
 export default {
   
@@ -24,33 +24,47 @@ export default {
     ...mapGetters ([
       'selectedDocs'
     ]),
+    
+
   },
   
-     
-  
-
   methods:{
     showAttr(){ return this.isAttr = true},
     hideAttr(){ return this.isAttr = false},
 
-  checkAndAdd() {
-  //let id = this.selectedDocs.length + 1;
-  if( this.selectedDocs.some(id => {
-    return id === this.document.id
-  }))
-   { this.selectedDocs.push(this.document) }
-},
-  getSelected(){
+getSelected(){
       
        if (this.selected){
-         this.checkAndAdd
+         for (let i=0; i<this.selectedDocs.length; i++){
+           let value = this.selectedDocs[i]
+           if (value === this.document.id){
+
+           }
+           else if (value !== this.document.id){
+             this.selectedDocs.push(this.document)
+           }
          }
-       
-       if (!this.selected){
-         this.selectedDocs.splice(this.document.id)
+       }
+       else if (!this.selected){
+         for (let i=0; i<this.selectedDocs.length; i++){
+           let value = this.selectedDocs[i]
+           if (value === this.document.id){
+             this.selectedDocs.splice(this.document)
+           }
+           else if (value !== this.document.id){
+             
+           }
+         }
        }
   },
-
+//   checkAndAdd(){
+//   //let id = this.selectedDocs.length + 1;
+//   this.selectedDocs.some(id => {
+//     return id === this.document.id
+//   })
+//    { this.selectedDocs.push(this.document) }
+// },
+  
    getDocument(){ this.documentId= this.document.id
 
     this.$store.commit(this.documentId)

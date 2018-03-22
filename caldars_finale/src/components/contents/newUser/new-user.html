@@ -119,7 +119,24 @@
             </span>
           </div>
         </div>
-
+        <div class="field">
+            <label class="label">User Group</label>
+            <div class="control has-icons-left">
+              <span class="select is-fullwidth">
+                <!-- <select v-on:change="getSelected" v-model="selected"> -->
+                   <!-- <option selected> Admin </option>  -->
+                  <!-- <option v-for="user in userslist" :value="userslist.id" v-model="share.touserid">{{user.userName}}</option> -->
+                <select>
+                  <option>Manager</option>
+                  <option>Administrator</option>
+                  <option>User</option>
+                </select>
+              </span>
+              <span class="icon is-small is-left">
+                <i class="fa fa-users"></i>
+              </span>
+              </div>
+              </div>
         <div class="field">
           <div class="control">
             <button 

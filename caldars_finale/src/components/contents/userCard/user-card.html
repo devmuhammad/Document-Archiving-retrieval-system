@@ -1,14 +1,28 @@
+
 <div class="user-card">
-  <div class="user-elipsis">
-    <span @click="displayControl"><i class="fa fa-caret-down"></i></span>
-    <div class="user-ctrls is-pulled-left" v-if="showControl === true">
-      <div class="user-ctrl-item"><small>Edit</small></div>
-      <div class="user-ctrl-item"><small>Block account</small></div>
+  
+  <div class="user-elipsis"
+  @mouseover="displayControl"
+  @mouseout="closeControl" >
+    <span >
+      <i class="fa fa-caret-down"></i></span>
+    <div class="user-ctrls is-pulled-left" 
+    v-if="showControl ==true">
+      <div class="user-ctrl-item"
+      @click="openEditUserModal"><small>Edit</small>
+        
+      </div>
+      <div class="user-ctrl-item"><small>Assign Role</small></div>
+      <div class="user-ctrl-item" @click="blockUser"><small>Block user</small></div>
+      <div class="user-ctrl-item" @click="unblockUser"><small>Unblock user</small></div>
     </div>
   </div>
+  <editUser :user="user" :isEditUserModalActive="isEditUserModalActive" :closeEditUserModal="closeEditUserModal" />
   <div class="user-card-img is-pulled-left">{{fullName | getInitials}}</div>
   <div class="user-card-content is-pulled-left">
-    <small>{{user.firstName + " " + user.lastName}}</small><br/>
+      <strong>Status : {{status}}</strong>
+  </br>
+    <small><em>{{user.firstName + " " + user.lastName}}</em></small><br/>
     <small>@{{user.userName}}</small><br/>
     <small class="user-role">{{user.contactEmail}}</small>
   </div>

@@ -18,7 +18,7 @@ const getters = {
   isLoggedIn: state => state.isLoggedIn,
   login_msg: state => state.login_msg,
   loggedInUser: state => state.loggedInUser,
-  selectedDocs: state => state.selectedDoc,
+  selectedDocs: state => state.selectedDocs,
   login_error: state => state.login_error
 }
 

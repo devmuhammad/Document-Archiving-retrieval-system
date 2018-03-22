@@ -51,11 +51,15 @@ export default {
   },
 
   computed: {
-    ...mapGetters({
-      "response_status": "create_inststatus",
+    ...mapGetters({"businesstypes":"businesstypes",
+      "create_instid":"create_instid",
+      "login_status":"login_status",
+      "login_msg":"login_msg",
+      "login_error":"login_error",
+      "create_usererror":"create_usererror",
       "isLogging": "login_status",
-      "login_error": "login_error"
-    }, ['businesstypes','create_instid','login_status','login_msg','login_error','create_usererror']),
+      "response_status": "create_inststatus",
+      "login_error": "login_error"}),
     
     getStatus(){
       return (this.login_status==0) 

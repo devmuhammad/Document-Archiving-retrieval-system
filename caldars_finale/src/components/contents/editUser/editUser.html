@@ -1,0 +1,153 @@
+<div :class="{'modal':true,'is-active':isEditUserModalActive}">
+        <div class="modal-content new-user-modal is-centered">
+          <div class="new-user-title is-pulled-left">
+            <h1 class="subtitle is-6">
+              <small><i class="fa fa-edit"></i>
+                <span>Edit user</span>
+              </small>
+            </h1>
+          </div>
+          <div class="close-btn is-pulled-right" @click="closeEditUserModal()">
+            <i class="fa fa-close"></i>
+          </div>
+    
+          <br/>
+          <br/>
+          <div v-if="error" class="has-text-centered is-error">{{error}}</div>
+          <div class="new-user-content" v-if="loading === false">
+          <form v-on:submit.prevent>  
+            <div class="field">
+              <label class="label">{{fullName}}</label>
+              <div class="control has-icons-left">
+                <input 
+                  class="input" 
+                  type="text" 
+                  placeholder="firstname middlename lastname"
+                  v-model="newName"
+                  required
+                />
+      
+                <span class="icon is-small is-left">
+                  <i class="fa fa-user"></i>
+                </span>
+              </div>
+            </div>
+    
+    
+            <div class="field">
+              <label class="label">{{user.userName}}</label>
+              <div class="control has-icons-left">
+                <input 
+                  class="input" 
+                  type="text" 
+                  placeholder="Username"
+                  v-model="newUser.userName"
+                  required
+                />
+      
+                <span class="icon is-small is-left">
+                  <i class="fa fa-at"></i>
+                </span>
+              </div>
+            </div>
+    
+            <div class="field">
+              <label class="label">New Password</label>
+              <div class="control has-icons-left">
+                <input 
+                  class="input" 
+                  type="password" 
+                  placeholder="password"
+                  v-model="pass"
+                  required
+                />
+      
+                <span class="icon is-small is-left">
+                  <i class="fa fa-lock"></i>
+                </span>
+              </div>
+            </div>
+    
+            <div class="field">
+              <label class="label">Confirm Password</label>
+              <div class="control has-icons-left">
+                <input 
+                  class="input" 
+                  type="password" 
+                  placeholder="Retype password"
+                  v-model= "cpass"
+                  required
+                />
+      
+                <span class="icon is-small is-left">
+                  <i class="fa fa-lock"></i>
+                </span>
+              </div>
+            </div>
+    
+            <div class="field">
+              <label class="label">{{user.contactEmail}}</label>
+              <div class="control has-icons-left">
+                <input 
+                  class="input" 
+                  type="email"
+                  placeholder="abc@example.com" 
+                  v-model= "newUser.contactEmail"
+                  required
+                />
+      
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+              </div>
+            </div>
+    
+            <div class="field">
+              <label class="label">{{user.contactMobile}}</label>
+              <div class="control has-icons-left">
+                <input 
+                  class="input" 
+                  type="tel"
+                  placeholder="08011111111" 
+                  minlength= "11"
+                  v-model= "newUser.contactMobile"
+                  required
+                />
+      
+                <span class="icon is-small is-left">
+                  <i class="fa fa-phone"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+                    <label class="label">User Group</label>
+                    <div class="control has-icons-left">
+                      <span class="select is-fullwidth">
+                        <!-- <select v-on:change="getSelected" v-model="selected"> -->
+                           <!-- <option selected> Admin </option>  -->
+                          <!-- <option v-for="user in userslist" :value="userslist.id" v-model="share.touserid">{{user.userName}}</option> -->
+                        <select>
+                          <option>Manager</option>
+                          <option>Administrator</option>
+                          <option>User</option>
+                        </select>
+                      </span>
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-users"></i>
+                      </span>
+                      </div>
+                      </div> 
+            <div class="field">
+              <div class="control">
+                <button 
+                  type="submit" 
+                  :class="{'button':true, 'is-secondary':true, 'is-fullwidth':true,}" 
+                  @click="">
+                  Add
+                </button>
+              </div>
+            </div>
+          </form>  
+          </div>
+        </div>
+      </div>

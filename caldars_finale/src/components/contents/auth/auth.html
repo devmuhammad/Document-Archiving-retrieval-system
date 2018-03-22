@@ -166,11 +166,11 @@
               <div class="field">
                   <div class="control has-icons-left">
                       <span class="select">
-                          <select v-on:change="getSelected" v-model="selected">
-                            <option selected>Business Type</option>
-                            <option v-for="businesstype in businesstypes" :value="businesstype.id" 
-                            v-model="user.institutionid.businesstypeid.id">{{businesstype.businesstype}}</option>
-                          </select>
+                        <select v-on:change="getSelected" v-model="selected">
+                          <option selected>Business Type</option>
+                          <option v-for="businesstype in businesstypes" :value="businesstype.id" 
+                          v-model="user.institutionid.businesstypeid.id">{{businesstype.businesstype}}</option>
+                        </select>
                         </span>
                         <span class="icon is-small is-left"><i class="fa fa-briefcase"></i></span>
                   </div>
