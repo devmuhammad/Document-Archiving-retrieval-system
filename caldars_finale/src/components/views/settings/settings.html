@@ -41,6 +41,7 @@
               <input 
                 class="input is-small" 
                 type="text" 
+                v-model="user.oldPass"
                 placeholder="******"
               />
     
@@ -56,6 +57,7 @@
               <input 
                 class="input is-small" 
                 type="text" 
+                v-model="user.newPass"
                 placeholder="******"
               />
     
@@ -71,18 +73,19 @@
               <input 
                 class="input is-small" 
                 type="text" 
+                v-model="confPass"
                 placeholder="******"
               />
-    
               <span class="icon is-small is-left">
                 <i class="fa fa-lock"></i>
               </span>
             </div>
           </div>
-
+          <small>{{error}}</small>
           <div class="field">
             <div class="control">
-              <button class="button is-secondary is-fullwidth">Change</button>
+              <button class="button is-secondary is-fullwidth"
+              @click="changePass()">Change</button>
             </div>
           </div>
         </div>

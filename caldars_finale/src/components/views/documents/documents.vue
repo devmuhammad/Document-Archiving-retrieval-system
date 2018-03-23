@@ -41,7 +41,7 @@ export default {
       return this.setUploadActive = false
     },
     showShareModal(){
-      if (this.selectedDocs.length === 0){
+      if (this.selectedDocs.length == 0){
         new Toast({
         message: 'Please Select document(s) to share',
         type: 'danger'})
