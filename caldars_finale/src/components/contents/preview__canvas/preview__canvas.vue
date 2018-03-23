@@ -11,7 +11,7 @@ export default {
   name:"preview__canvas",
   data () {
     return {
-      src:"/src/assets/sh2017.pdf",
+      src:"/src/assets/intro-to-ethereum.pdf",
       page:1,
       maximize: false
     }
@@ -19,7 +19,6 @@ export default {
 
   methods: {
     maximize_view () {
-      console.log("++++++")
       return this.maximize = true
     },
 

@@ -38,7 +38,15 @@ export default {
       value = new Date(value).toDateString()
       value = value.replace(" ", ", ")
       return value
-    }
+    },
+
+    getFirstChar: function (text){
+      if(!text){
+        return ""
+      }else {
+        return text.charAt(0)
+      }
+    } 
   },
 
   watch:{

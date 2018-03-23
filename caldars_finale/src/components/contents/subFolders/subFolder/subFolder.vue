@@ -3,21 +3,22 @@
 </template>
 
 <script>
-import {mapActions, mapGetters, mapState} from "vuex"
+import { mapActions, mapGetters } from "vuex";
+import pdf from "vue-pdf";
 
 export default {
-  
-  name:"subFolder",
+  name: "subFolder",
 
   props:["document"], 
 
   data() {
     return {
-      isAttr:false,
-      
-      selected:false,
-      documentId:this.document.id
-    }
+      isAttr: false,
+      src:"../../src/assets/intro-to-ethereum.pdf",
+      selected: false,
+      documentId: this.document.id
+      page: 1
+    };
   },
   
   computed:{
@@ -63,17 +64,20 @@ getSelected(){
        }
   },
 
-  
-   getDocument(){ this.documentId= this.document.id
+ getDocument(){ this.documentId= this.document.id
 
     this.$store.commit(this.documentId)
    },
 
     ...mapActions([
-    "getComments",
-    "getActivities",
-    "displayFileContents"
-    ]),
+      "getComments", 
+      "getActivities", 
+      "displayFileContents"
+    ])
+  },
+
+  components: {
+    pdf
   }
-}
+};
 </script>

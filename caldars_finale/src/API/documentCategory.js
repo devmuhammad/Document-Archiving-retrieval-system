@@ -1,7 +1,7 @@
 import {HTTP} from "./http"
 
 export default {
-  getDocumentCategories: async (page_num = 0, size = 10) => {
+  getDocumentCategories: async (page_num = 0, size = 20) => {
     const res = () => {
       return new Promise((resolve, reject) => {
         HTTP.get('list/categories?page='+page_num+'&size='+size)

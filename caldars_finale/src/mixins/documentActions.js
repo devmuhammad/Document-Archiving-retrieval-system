@@ -60,7 +60,8 @@ export const DocumentActions = {
       "selectAllStatus", 
       "file_opened", 
       "isSearchResultReady",
-      "deleteStatement"
+      "deleteStatement",
+      "selectedDocumentIds"
     ]),
 
     viewSubFolders() {

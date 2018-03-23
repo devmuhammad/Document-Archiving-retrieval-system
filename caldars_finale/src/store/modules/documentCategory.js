@@ -56,15 +56,18 @@ let mutations = {
   getDocumentCategory: (state,page_num) => {
     const getList = () => {
       return new Promise ((resolve, reject) => {
-        if(page_num >= 0){ state.paginating = true}
+        if(page_num == 0){ state.paginating = true}
         API.getDocumentCategories(page_num)
           .then((res) => { resolve(res)})
           .catch((err) => { reject(err) })
       })
       .then((res) => { 
-        state.categoryChildren = null
+        //state.categoryChildren = null
         state.documentCategoryDetails = res
-        state.categoriesOfDocuments = res.categories
+        res.categories.forEach(element => {
+          state.categoriesOfDocuments.push(element)
+        });
+         
         state.paginating = false
       })
       .catch((err) => {

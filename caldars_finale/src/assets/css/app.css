@@ -357,9 +357,11 @@ div>nav.commentHeader.level{
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
+  width: 150px;
+  background-color: #fff;
+  box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+  color: #42526e;
+  font-weight: 500;
   text-align: left;
   border-radius: 6px;
   padding: 5px;
@@ -1167,3 +1169,21 @@ h2.dash-title{
 .box{
   background-color: transparent;
 }
+
+.folderImg {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: url("../img/files_5.png");
+  background-repeat: no-repeat;
+  height: 76px;
+  width: 76px;
+  padding-top :5px;
+}
+
+.doc-first-char {
+  background-color:transparent;
+  width: 30px;
+  font-weight: 700;
+  color:transparent;
+} 

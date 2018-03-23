@@ -3,7 +3,11 @@
     <div style="margin:2px" v-if="isAttr == true">
       <input type="checkbox" v-model="allSelected">
     </div>
-    <img src="../../../../assets/img/folder4.png" />
+    <!--img src="../../../../assets/img/document01.png" /-->
+    <div class="folderImg">
+      <!--div class="doc-first-char">{{document.documentType | getFirstChar}}</div-->
+    </div>
+
     <div v-if="isAttr == true" class=" tooltip">
       <i class="fa fa-ellipsis-h"></i>
       <span class="tooltiptext">
