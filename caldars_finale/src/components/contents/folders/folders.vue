@@ -19,8 +19,16 @@ export default {
       folderType:false,
       children:undefined,
       showChild:false,
-      isFetching:false
+      isFetching:false,
+      bottom: false,
+      page_num: 0
     }
+  },
+
+  created() {
+    window.addEventListener('scroll', () => {
+      this.bottom = this.bottomVisible()
+    })
   },
 
   computed:{
@@ -48,6 +56,8 @@ export default {
   },
 
   methods:{
+    ...mapActions(["getDocumentCategory"]),
+
     getChild(parentId){
       for(let i=0;i>this.categoriesOfDocuments;i++){
         const category = this.categoriesOfDocuments[i]
@@ -55,6 +65,23 @@ export default {
           this.children = category.documentimageList
           this.showChildren = true
         }
+      }
+    },
+
+    bottomVisible() {
+      const scrollY = window.scrollY
+      const visible = document.documentElement.clientHeight
+      const pageHeight = document.documentElement.scrollHeight
+      const bottomOfPage = visible + scrollY >= pageHeight
+      return bottomOfPage || pageHeight < visible
+    },
+  },
+
+  watch: {
+    bottom(bottom) {
+      if (bottom) {
+        this.page_num+=1
+        this.getDocumentCategory(this.page_num)
       }
     }
   },

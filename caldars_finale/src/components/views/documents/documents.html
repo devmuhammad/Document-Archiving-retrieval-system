@@ -10,7 +10,7 @@
     <!--Left column-->
     <div class="column" v-if="file_opened === false">
       <div class="pagntn columns">
-        <div class="column is-one-quarter back-btn" @click="setSubFoldersNull()">
+        <div class="column is-one-half back-btn" @click="setSubFoldersNull()">
           <strong class="back-btn">
             <span>
               <i class="fa fa-arrow-circle-left"></i>
@@ -21,11 +21,11 @@
           </strong>
         </div>
 
-        <div class="column is-centered">
+        <!--div class="column is-centered">
           <pagination></pagination>
-        </div>
+        </div-->
 
-        <div class="column is-one-quarter category-based-actions">
+        <div class="column is-half category-based-actions">
           <span :class="{'cba':true, 'is-active':isListType}" @click="setListType()">
             <i class="fa fa-list-alt fa-2x"></i>
           </span>
@@ -33,7 +33,14 @@
             <i class="fa fa-th fa-2x"></i>
           </span>
           <span class="cba">
-            <a class="button is-outlined is-small">View Projects</a>
+            <a class="button is-small">View Projects</a>
+          </span>
+          <span class="cba is-pulled-right" style="color:indianred" v-if="selectedDocumentIds.length > 0" @click="Delete">
+            <i class="fa fa-trash fa-2x"></i>
+          </span>
+          <span></span>
+          <span class="cba is-pulled-right" v-if="selectedDocumentIds.length > 0">
+            <i class="fa fa-external-link-square fa-2x"></i>
           </span>
         </div>
       </div>
@@ -42,7 +49,9 @@
       <!--Display folders-->
       <div class="foldersDiv">
         <template v-if="isSearchResultReady === false || isSearchResultReady === undefined">
-          <folders :isListType="isListType" :isFolderType="isFolderType" v-show="viewSubFolders == false"/>  
+          <folders :isListType="isListType" :isFolderType="isFolderType" v-show="viewSubFolders == false"/>
+          <!--folders :isListType="isListType" :isFolderType="isFolderType" v-show="viewSubFolders == false"/>  
+          <folders :isListType="isListType" :isFolderType="isFolderType" v-show="viewSubFolders == false"/-->
           <subfolders :isListType="isListType" :isFolderType="isFolderType" :createProject="openProjectModal" v-show="viewSubFolders == true"/>
         </template>
 
@@ -85,9 +94,9 @@
           <span>New project</span>
         </div>
 
-        <hr/>
 
-        <template v-if="file_opened === false">
+
+        <!--template v-if="file_opened === false">
           <div class="documentAction">
             <span>
               <label class="label">
@@ -109,7 +118,7 @@
             </span>
             <span>Share</span>
           </div>
-        </template>
+        </template-->
       </p>
     </div>
     <!--End of Right column-->

@@ -7,8 +7,16 @@
     <div style="margin:2px" v-if="isAttr == true">
       <input type="checkbox" v-on:change="getSelected" v-model="selected" :value="document.id">
     </div>
-    <img src="../../../../assets/img/subFolders.png" 
-    @click="displayFileContents(document) + getComments(document.id) + getActivities(document.id)" >
+
+    <template @click="displayFileContents(document) + getComments(document.id) + getActivities(document.id)">
+      <pdf 
+        :src= "src"
+        style="width:100%" 
+        :page="page">
+      </pdf>
+    </template>
+    <!--img src="../../../../assets/img/subFolders.png" 
+    @click="displayFileContents(document) + getComments(document.id) + getActivities(document.id)"-->
     <div v-if="isAttr == true" class=" tooltip">
       <i class="fa fa-ellipsis-h"></i>
       <span class="tooltiptext">

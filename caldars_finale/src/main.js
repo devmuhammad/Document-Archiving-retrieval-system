@@ -5,7 +5,7 @@ import App from './App'
 import vueChartjs from 'vue-chartjs'
 import router from './router'
 import store from "./store"
-import VueNetwork from "./mixins/vue-network/src/main"
+import VueNetwork from "vue-network-plugin"
 Vue.config.productionTip = false
 
 Vue.use(vueChartjs)

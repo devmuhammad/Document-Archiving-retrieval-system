@@ -95,7 +95,18 @@ export default {
   },
 
   computed : {
-    ...mapGetters(["isSearchResultReady"])
+    ...mapGetters(["isSearchResultReady", "loggedInUser"])
+  },
+
+  filters: {
+    truncate(text) {
+      if(!text) {
+        return ""
+      }else {
+        let trunc = text.substring(0, 15) + "..."
+        return trunc.toUpperCase()
+      }
+    }
   },
 
   components:{notifications, uploadModal},
