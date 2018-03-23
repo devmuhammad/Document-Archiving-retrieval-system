@@ -16,7 +16,7 @@ export default {
       isAttr:false,
       
       selected:false,
-      documentId:0
+      documentId:this.document.id
     }
   },
   
@@ -35,35 +35,34 @@ export default {
 getSelected(){
       
        if (this.selected){
-         for (let i=0; i<this.selectedDocs.length; i++){
-           let value = this.selectedDocs[i]
-           if (value === this.document.id){
-
-           }
-           else if (value !== this.document.id){
-             this.selectedDocs.push(this.document)
-           }
-         }
+         var found = this.selectedDocs.some(id => {
+          return id === this.document.id;
+        });
+        if (!found) {
+        this.selectedDocs.push(this.document);
+      }
+      
+        //  for (let i=0; i<this.selectedDocs.length; i++){
+           
+        //    if (this.selectedDocs[i].id != this.document.id){
+        //   this.selectedDocs.push(i,this.document)
+        //    } 
+        //    }
+         
        }
        else if (!this.selected){
-         for (let i=0; i<this.selectedDocs.length; i++){
-           let value = this.selectedDocs[i]
-           if (value === this.document.id){
-             this.selectedDocs.splice(this.document)
-           }
-           else if (value !== this.document.id){
+         
+         for (let i=0; i< this.selectedDocs.length; i++){
+           
+           if (this.selectedDocs[i].id === this.document.id){
              
+             this.selectedDocs.splice(i,1)
            }
          }
+        
        }
   },
-//   checkAndAdd(){
-//   //let id = this.selectedDocs.length + 1;
-//   this.selectedDocs.some(id => {
-//     return id === this.document.id
-//   })
-//    { this.selectedDocs.push(this.document) }
-// },
+
   
    getDocument(){ this.documentId= this.document.id
 

@@ -1,8 +1,8 @@
 import api from "../../API/share"
 
 let state = {
-    create_shareerror :"",
-    create_sharestatus :""
+    create_shareerror :{},
+    create_sharestatus :{}
 }
 const getters = {
     

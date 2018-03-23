@@ -23,14 +23,14 @@
     </strong></br>
   </span>
 </br>
-    <div class="new-user-content" v-if="loading === false">
+    <div class="new-user-content" v-if="loading === false" v-show="dspform">
       <div class="field">
         <label class="label">Share To</label>
         <div class="control has-icons-left">
           <span class="select is-fullwidth">
             <select v-on:change="getSelected" v-model="selected">
                <!-- <option selected> Admin </option>  -->
-              <option v-for="user in userslist" :value="userslist.id" v-model="share.touserid">{{user.userName}}</option>
+              <option v-for="user in userslist" :value="userslist.id" >{{user.userName}}</option>
             </select>
           </span>
           <span class="icon is-small is-left">
@@ -56,11 +56,17 @@
       <div class="field">
         <div class="control">
           <button class="button is-secondary is-fullwidth"
-          @click="shareFile()"
+          @click="shareSim()"
           :loading="loading">
           Share</button>
         </div>
       </div>
     </div>
+    <div v-show="dspmsg" class="success-message">
+      <div>
+        <span><i class="fa fa-check-circle fa-5x"></i></span>
+        <p><h1 class="title is-4">Files shared successfully</h1></p>
+      </div>
+  </div>
   </div>
 </div>
