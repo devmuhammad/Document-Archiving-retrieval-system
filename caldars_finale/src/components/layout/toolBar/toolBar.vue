@@ -95,7 +95,11 @@ export default {
   },
 
   computed : {
-    ...mapGetters(["isSearchResultReady", "loggedInUser"])
+    ...mapGetters(["isSearchResultReady", "loggedInUser"]),
+
+    companyName() {
+      return this.loggedInUser.institutionid.name
+    }
   },
 
   filters: {

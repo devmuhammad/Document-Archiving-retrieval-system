@@ -35,12 +35,12 @@ const mutations = {
         if (res.message == "Login Succcessfull") 
         {
           state.login_status = false
-          state.isLoggedIn = true;
 
           jwt.sign({data: res.users}, secret, { expiresIn: '1h' }, (err, token) => {
             if(!err){
               localStore.setItem("darsxlxl", token)
               state.loggedInUser = res.users;
+              state.isLoggedIn = true;
             }else { state.isLoggedIn = false; }  
           });
 
