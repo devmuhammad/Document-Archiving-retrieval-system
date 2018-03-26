@@ -35,11 +35,18 @@
           <span class="cba">
             <a class="button is-small">View Projects</a>
           </span>
+          <span class="cba is-pulled-right" style="color:indianred" v-if="selectedDocs.length > 0" @click="Delete">
+              <i class="fa fa-trash fa-2x"></i>
+            </span>
+            <span></span>
+            <span class="cba is-pulled-right" v-if="selectedDocs.length > 0" @click="showdocShareModal">
+              <i class="fa fa-external-link-square fa-2x"></i>
+            </span>
           <span class="cba is-pulled-right" style="color:indianred" v-if="selectedDocumentIds.length > 0" @click="Delete">
             <i class="fa fa-trash fa-2x"></i>
           </span>
           <span></span>
-          <span class="cba is-pulled-right" v-if="selectedDocumentIds.length > 0">
+          <span class="cba is-pulled-right" v-if="selectedDocumentIds.length > 0" @click="showcatShareModal">
             <i class="fa fa-external-link-square fa-2x"></i>
           </span>
         </div>
@@ -70,6 +77,8 @@
 
     <!--Right column-->
     <div class="column is-one-quarter">
+    <commentArea v-if="file_opened === true"></commentArea>
+    <div v-if="file_opened === false">
       <search></search>
       <hr/>
       <p>
@@ -121,8 +130,9 @@
         </template-->
       </p>
     </div>
+    </div>
     <!--End of Right column-->
   </div>
   
-  <commentArea v-if="file_opened === true"></commentArea>
+  
 </div>

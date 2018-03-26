@@ -16,7 +16,7 @@ export default {
       isAttr: false,
       src:"../../src/assets/intro-to-ethereum.pdf",
       selected: false,
-      documentId: this.document.id
+      documentId: this.document.id,
       page: 1
     };
   },
@@ -63,11 +63,6 @@ getSelected(){
         
        }
   },
-
- getDocument(){ this.documentId= this.document.id
-
-    this.$store.commit(this.documentId)
-   },
 
     ...mapActions([
       "getComments", 
