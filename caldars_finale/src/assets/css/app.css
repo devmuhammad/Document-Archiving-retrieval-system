@@ -78,7 +78,7 @@
   background-color: transparent;
   padding-top:50px;  
   overflow: auto;
-  height: 250px;
+  height: auto;
 }
 
 .tab{
@@ -243,8 +243,7 @@ div.documentAction:hover{
 
 .commentBox{
   border:1px;
-  margin-right: 300px;
-  margin-left: 300px;
+  padding: 7px;
 }
 
 .newact{
@@ -258,7 +257,7 @@ div.documentAction:hover{
 .commentField{
   background-color:ghostwhite;
   border:2px solid #ccc;
-  width: 500px;
+  width: 100%;
 }
 
 .commentCtrls{
@@ -273,7 +272,7 @@ div>nav.commentHeader.level{
   background-color: #fff;
   z-index: 999999999;
   position: fixed;
-  width:80%;
+  
   margin-top: -5px;
   padding: 5px;
   margin-bottom: 30px;

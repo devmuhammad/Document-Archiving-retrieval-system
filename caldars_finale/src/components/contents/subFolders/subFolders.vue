@@ -13,7 +13,7 @@ export default {
   props:["categoryChildren", "isListType", "isFolderType", "createProject"],
   
   computed:{
-    ...mapGetters(["selectedChildren"])
+    ...mapGetters(["selectedChildren","selectedDocs"])
   },
   components:{subFolder, list}
 }

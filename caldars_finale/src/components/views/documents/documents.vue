@@ -40,7 +40,7 @@ export default {
     closeModal(){
       return this.setUploadActive = false
     },
-    showShareModal(){
+    showdocShareModal(){
       if (this.selectedDocs.length == 0){
         new Toast({
         message: 'Please Select document(s) to share',
@@ -52,6 +52,15 @@ export default {
       return this.setShareActive = false
       this.selectedDocs = []
     },
+showcatShareModal(){
+      if (selectedDocumentIds.length == 0){
+        new Toast({
+        message: 'Please Select document(s) to share',
+        type: 'danger'})
+      } else
+        return this.setShareActive = true
+    },
+    
   },
   
   components:{
