@@ -1,41 +1,39 @@
 <div class="commentBox" >
   <div class="commentCtrls">
-      <div class="field">
+    <div class="field">
       <p class="control">
-        <textarea class="textarea commentField" 
-        placeholder="Add a comment..." 
-        v-model="comment.comments">
-      </textarea>
+        <textarea class="textarea commentField" placeholder="Add a comment..." v-model="comment.comments"> </textarea>
       </p>
     </div>
-    <div class="field" style="float:right;margin-left:20px">
+    <div class="field">
       <p class="control">
-        <button class="button is-rounded is-outlined is-primary" 
+        <button class="button is-rounded is-outlined is-primary is-small" 
         @click=" postComment() ">Post Comment</button>
       </p>
     </div>
   </div>
-<hr/>
+  <hr/>
+  
   <article class="media" 
-  v-for="(comment,index) in commentlist" 
-  :key="index"
-  :commentlist="commentlist">
-    <figure class="media-left">
-      <p class="image is-64x64">
-        <img src="https://bulma.io/images/placeholders/128x128.png" class="commentImg">
-      </p>
-    </figure>
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong> Admin <small> made a comment </small></strong> 
-          <small style="float:right">  @ {{comment.datelog}}  </small>
-          <br> {{comment.comments}}
-          <br>
-          <small> <a>Like</a> </small>
+    v-for="(comment,index) in commentlist" 
+    :key="index"
+    :commentlist="commentlist">
+      <figure class="media-left">
+        <p class="image is-64x64">
+          <img src="https://bulma.io/images/placeholders/128x128.png" class="commentImg">
         </p>
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong> Admin <small> made a comment </small></strong> 
+            <small style="float:right">  @ {{comment.datelog}}  </small>
+            <br> {{comment.comments}}
+            <br>
+            <small> <a>Like</a> </small>
+          </p>
+        </div>
       </div>
-    </div>
   </article>
-</br>  
+  </br>  
 </div>

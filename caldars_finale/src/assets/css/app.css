@@ -243,7 +243,7 @@ div.documentAction:hover{
 
 .commentBox{
   border:1px;
-  padding: 7px;
+  padding: 5px;
 }
 
 .newact{
@@ -262,20 +262,13 @@ div.documentAction:hover{
 
 .commentCtrls{
   margin-bottom: 30px;
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-top: 0px;
 }
 
 div>nav.commentHeader.level{
   background-color: #fff;
-  z-index: 999999999;
-  position: fixed;
-  
   margin-top: -5px;
   padding: 5px;
-  margin-bottom: 30px;
 }
 
 .textarea:focus{

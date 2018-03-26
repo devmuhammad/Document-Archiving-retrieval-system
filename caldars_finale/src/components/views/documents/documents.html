@@ -77,59 +77,33 @@
 
     <!--Right column-->
     <div class="column is-one-quarter">
-    <commentArea v-if="file_opened === true"></commentArea>
-    <div v-if="file_opened === false">
-      <search></search>
-      <hr/>
-      <p>
-        <div class="documentAction" @click="displayUploadModal">
-          <span>
-            <i class="fa fa-upload"></i>
-          </span>
-          <span>Upload files</span>
-        </div>
-
-        <div class="documentAction" @click="openCategoryModal">
-          <span>
-            <i class="fa fa-folder"></i>
-          </span>
-          <span>Create category</span>
-        </div>
-
-        <div class="documentAction" @click="openProjectModal">
-          <span>
-            <i class="fa fa-plus-square"></i>
-          </span>
-          <span>New project</span>
-        </div>
-
-
-
-        <!--template v-if="file_opened === false">
-          <div class="documentAction">
+      <commentArea v-if="file_opened === true"></commentArea>
+      <div v-if="file_opened === false">
+        <search></search>
+        <hr/>
+        <p>
+          <div class="documentAction" @click="displayUploadModal">
             <span>
-              <label class="label">
-                <input type="checkbox" v-model="select"> Select all
-              </label> 
+              <i class="fa fa-upload"></i>
             </span>
+            <span>Upload files</span>
           </div>
 
-          <div class="documentAction" @click="Delete">
+          <div class="documentAction" @click="openCategoryModal">
             <span>
-              <i class="fa fa-trash"></i>
+              <i class="fa fa-folder"></i>
             </span>
-            <span>Delete</span>
+            <span>Create category</span>
           </div>
 
-          <div class="documentAction" @click="showShareModal">
+          <div class="documentAction" @click="openProjectModal">
             <span>
-              <i class="fa fa-share"></i>
+              <i class="fa fa-plus-square"></i>
             </span>
-            <span>Share</span>
+            <span>New project</span>
           </div>
-        </template-->
-      </p>
-    </div>
+        </p>
+      </div>
     </div>
     <!--End of Right column-->
   </div>
