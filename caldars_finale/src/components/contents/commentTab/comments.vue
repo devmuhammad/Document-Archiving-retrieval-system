@@ -15,8 +15,8 @@ export default {
   data(){
     return {
      // commentlist:[],
-     time:new Date(),
-      comment :{ comments: '', documentactivitiesid:{id:3}, userid:{id:1}, datelog:new Date().now},  
+     newComment:"",
+      comment :{ comments: '', documentactivitiesid:{id:3}, userid:{id:1}, datelog: Date.now()},  
       data: [],
       busy: false
     }
@@ -31,8 +31,10 @@ export default {
     //    },
 
       postComment(){
+        this.comment.comments = this.newComment
         this.commentlist.push(this.comment)
-        return this.addNewComment(this.comment)
+         this.addNewComment(this.comment)
+        this.newComment =""
         this.comment={}
       },
 
