@@ -11,7 +11,7 @@ export default {
         datasets: [
           {
             label: 'Activities',
-            data: [25,30,67],
+            data: [25,70,30],
             backgroundColor: ['#7f0a25','#38A89D','#2F365F'],
           }
         ]

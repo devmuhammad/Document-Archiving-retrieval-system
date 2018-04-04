@@ -10,7 +10,7 @@ export default {
   data () {
     return {
       showScroll:false,
-      notes:10
+      notes:1
     }
   },
   components:{notification}
