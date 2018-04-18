@@ -4,6 +4,24 @@
     <small class="tag is-success" v-if="searchResults !== null">{{searchResults.length}} documents found!</small>
   </div>
   <table class="table is-fullwidth is-striped is-narrow is-hoverable">
+    <thead>
+      <th>
+        <div class="has-text-centered">
+            
+            <!-- <div style="float:left;padding-right:10px">
+                <span><input type="checkbox"/></span>
+              </div> -->
+              <div style="padding-left:100px;float:left">
+                  <span style="text-align: center"><strong>Files</strong></span>
+              </div>
+              </div>
+              </th>
+              <th>
+                  <div class="is-pulled-right">
+                      <span><strong>Date Modified</strong></span>
+                    </div>
+                    </th>
+    </thead>
       <tbody>
         <sresultItem v-for="(result, index) in searchResults" :result="result" :key="index"></sresultItem>
       </tbody>
