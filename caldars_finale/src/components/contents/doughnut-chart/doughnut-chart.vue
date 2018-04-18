@@ -1,7 +1,7 @@
 
 <script>
 import {Doughnut, Pie} from 'vue-chartjs';
-//import {pieceLabel} from 'chart.piecelabel.js'
+import {pieceLabel} from 'chart.piecelabel.js'
 
 export default {
   extends: Pie,
