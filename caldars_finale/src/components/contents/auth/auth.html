@@ -114,7 +114,18 @@
               <span class="title">Create Account.</span>
               <div class="sub-title">You are steps away from saving your files.</div>
             </div>
-
+            <div class="field is-horizontal">
+              
+                <p class="control ">
+                <input type="checkbox" v-on:change="getInd" v-model="indcheck" > Individual
+              </p>
+              
+                <p style="padding-left: 100px" class="control ">
+                <input type="checkbox" v-on:change="getOrg" v-model="orgcheck" > Organization
+              </p>
+              
+              
+            </div>
             <div class="field">
               <div class="control has-icons-left">
                 <input class="input is-small" type="text" placeholder="Username" v-model="user.userName">
@@ -140,7 +151,7 @@
               <a class="button is-primary is-fullwidth">Sign up</a>
             </div-->
 
-            <div class="has-text-centered">
+            <div class="has-text-centered" v-show ="showOrg">
               <!--div class="sm-header"><span>or create organization</span></div-->
               
               <div class="field">

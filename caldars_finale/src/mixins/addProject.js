@@ -8,7 +8,7 @@ export const addProject = {
         "id": 1,
         "fileregisterId": "232",
         "filenumber": "987",
-        "filename": "New Project",
+        "filename": "",
         "volumeno": 231,
         "barcode": "453bdc",
         "closed": true,
@@ -34,7 +34,7 @@ export const addProject = {
     resetProject(){
       this.isProjectModalActive = false;
       this.isProjectLoading = false 
-      this.project.filename = "New Project"
+      this.project.filename = ""
     },
 
     openProjectModal(){
@@ -56,7 +56,7 @@ export const addProject = {
     },
 
     create_new_project(){
-      if(this.project.filename != "" && this.project.filename != "New Project"){
+      if(this.project.filename != "" ){
         this.isProjectLoading = true;
         
         const addProject = () => {

@@ -15,8 +15,9 @@ export default {
   data(){
     return {
      // commentlist:[],
+     today: new Date().toISOString().slice(0, 10),
      newComment:"",
-      comment :{ comments: '', documentactivitiesid:{id:3}, userid:{id:1}, datelog: Date.now()},  
+      comment :{ comments: '', documentactivitiesid:{id:3}, userid:{id:1}, datelog: this.today},  
       data: [],
       busy: false
     }
@@ -24,6 +25,7 @@ export default {
   computed:{
     ...mapGetters(["commentlist"]),
     ...mapGetters(["selectedChildren"]),
+    ...mapGetters({user:"loggedInUser"})
   },
   
   methods:{

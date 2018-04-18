@@ -15,6 +15,9 @@ export default {
         "username":"",
         "passw":""
       },
+      showOrg:false,
+      indcheck:true,
+      orgcheck:false,
       signinErr: "",
       selected:'Business Type',
       userlog:{username:"",password:""},
@@ -96,6 +99,7 @@ export default {
       else this.usererror = " :( Please Check Network"
       this.isLoading = false
     },
+    
 
     login_error : function (value) {
       if(value !== null) {
@@ -167,6 +171,18 @@ export default {
         this.isLoading = false;
       }else{
         return this.userLogin(this.userlog);
+      }
+    },
+    getInd() {
+      if (this.indcheck ){
+        this.orgcheck = false
+        this.showOrg = false
+      }
+      },
+      getOrg(){
+      if (this.orgcheck){
+        this.indcheck = false
+        this.showOrg = true
       }
     },
     

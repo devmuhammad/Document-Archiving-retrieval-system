@@ -5,7 +5,7 @@ export const addCategory = {
   data(){
     return {
       new_category:{
-        documentType: "New Category",
+        documentType: "",
         dateCreated: "2018-03-01",
         parentid: 0,
         haschild: 0,
@@ -21,7 +21,7 @@ export const addCategory = {
     reset(){
       this.isNewCategoryActive = false;
       this.isLoading = false 
-      this.new_category.documentType = "New Category"
+      this.new_category.documentType = ""
     },
 
     openCategoryModal(){
@@ -43,7 +43,7 @@ export const addCategory = {
     },
 
     create_new_category(){
-      if(this.new_category.documentType != "" && this.new_category.documentType != "New Category"){
+      if(this.new_category.documentType != "" ){
         this.isLoading = true;
         
         const addCategory = () => {
