@@ -1,9 +1,10 @@
 
 <script>
-import {Doughnut} from 'vue-chartjs';
+import {Doughnut, Pie} from 'vue-chartjs';
+//import {pieceLabel} from 'chart.piecelabel.js'
 
 export default {
-  extends: Doughnut,
+  extends: Pie,
   data () {
     return {
       datacollection: {
@@ -23,6 +24,12 @@ export default {
       responsive: true, 
       maintainAspectRatio: false,
       title: {display: true,text: 'Activity details'},
+      pieceLabel: {
+        mode: 'percentage',
+        precision: 1,
+        fontColor: '#FFF',
+        fontSize: 18,
+      }
     })
   }
 }
