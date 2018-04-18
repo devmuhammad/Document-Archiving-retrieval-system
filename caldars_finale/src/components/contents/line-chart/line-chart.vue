@@ -1,9 +1,10 @@
 
 <script>
-import {Bar, Line} from 'vue-chartjs';
+import {Bar, Line, HorizontalBar} from 'vue-chartjs';
+import {pieceLabel} from 'chart.piecelabel.js';
 
 export default {
-  extends: Bar,
+  extends: HorizontalBar,
   props: ["data", "options"],
   data () {
     return {
