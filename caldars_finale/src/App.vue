@@ -61,5 +61,5 @@ export default {
 
 <style rel="stylesheet" src="./assets/css/font-awesome.min.css"></style>
 <style lang="sass"> @import "./assets/sass/app.scss"; </style>
-<style src="./assets/css/toast.min.css"></style>
+<style src="./assets/css/Toast.min.css"></style>
 <style src="./assets/css/app.css"></style>

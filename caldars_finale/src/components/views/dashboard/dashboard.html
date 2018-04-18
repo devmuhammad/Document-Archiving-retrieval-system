@@ -15,7 +15,7 @@
                   <small>Space used</small><br/>
                   <progress class="progress is-primary" value="108" max="200">54%</progress>
                 </div>
-                <div>44%</div>
+                <div>44% of 2GB</div>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@
       <div class="graph-area">
         <h2 class="title is-5 dash-title">Activity</h2>
         <div class="columns">
-          <div class="column acuity-chart"><lineChart></lineChart></div>
+          <div class="column acuity-chart"><lineChart  :data="documentActivities" :options="options"></lineChart></div>
           <div class="column acuity-chart">
             <div class="activity-details-chart"><doughnutChart></doughnutChart></div>
           </div>
