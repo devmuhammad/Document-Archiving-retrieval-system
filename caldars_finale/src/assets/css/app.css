@@ -5,8 +5,9 @@
   z-index: 1;
   top: 0px;
   left: 0;
-  background-color: #3273dc;
+  background-color: #1C3D5A;
   overflow-x: hidden;
+  overflow-y: hidden;
   padding-top: 5px;
   box-shadow:  0px 0px 20px #888888;
   min-height: 100%;
@@ -25,7 +26,7 @@
 
 .sidenav a:hover, .offcanvas a:focus{
   font-weight: 600;
-  background-color: #004ac1;
+  background-color: #2779BD;
 }
 
 .sidenav > div.cabsol {
@@ -39,7 +40,7 @@
 
 .sidenav >.routeIsActive{
   color:ghostwhite;
-  background-color: #004ac1;
+  background-color: #2779BD;
 }
 
 .sidenav >.routeIsActive>.route-name{
@@ -910,7 +911,8 @@ h2.dash-title{
   flex-wrap: wrap;
   justify-content: space-between;
   align-content: flex-start;
-  padding:20px;
+  padding:10px;
+  height: 120px;
   background-color: white;
   box-shadow: 0px 3px 10px rgba(0,0,0,.25);
   border-radius: 5px;
@@ -1140,7 +1142,7 @@ h2.dash-title{
 
 .global-search-button{
   padding: 0px 10px 0px 10px;
-  height: 250px;
+  height: 100px;
 }
 
 .max-screen {

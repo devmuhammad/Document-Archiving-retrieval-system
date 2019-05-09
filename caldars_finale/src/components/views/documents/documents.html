@@ -10,7 +10,7 @@
     <!--Left column-->
     <div class="column" v-if="file_opened === false">
       <div class="pagntn columns">
-        <div class="column is-one-half back-btn" @click="setSubFoldersNull()">
+        <div class="column is-one-half back-btn" @click="setSubFoldersNull(); remShare()">
           <strong class="back-btn">
             <span>
               <i class="fa fa-arrow-circle-left"></i>
@@ -77,7 +77,7 @@
 
     <!--Right column-->
     <div class="column is-one-quarter">
-      <commentArea v-if="file_opened === true"></commentArea>
+      <!-- <commentArea v-if="file_opened === true"></commentArea> -->
       <div v-if="file_opened === false">
         <search></search>
         <hr/>

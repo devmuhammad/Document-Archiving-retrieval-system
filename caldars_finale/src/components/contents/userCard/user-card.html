@@ -19,10 +19,10 @@
   </div>
   <editUser :user="user" :isEditUserModalActive="isEditUserModalActive" :closeEditUserModal="closeEditUserModal" />
   <div class="user-card-img is-pulled-left">{{fullName | getInitials}}</div>
-  <div class="user-card-content is-pulled-left">
-      <strong>Status : {{status}}</strong>
+  <div class="user-card-content is-pulled-right">
+      <strong>{{user.firstName + " " + user.lastName}}</strong>
   </br>
-    <small><em>{{user.firstName + " " + user.lastName}}</em></small><br/>
+    <small><em>Status : <span style="color:green">{{status}}</span></em></small><br/>
     <small>@{{user.userName}}</small><br/>
     <small class="user-role">{{user.contactEmail}}</small>
   </div>

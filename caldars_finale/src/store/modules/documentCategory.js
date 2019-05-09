@@ -203,6 +203,7 @@ let mutations = {
     state.selectedDocumentIds.splice(indexOfId, 1)
     state.selectedDocumentTitle.splice(indexOfTitle, 1)
   },
+  
 
   DELETE_CATEGORY : async (state) => {
     let ids = state.selectedDocumentIds, titles = state.selectedDocumentTitle;

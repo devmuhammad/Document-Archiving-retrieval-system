@@ -55,6 +55,9 @@ const mutations = {
 
     return await login()
   },
+  remShare : async (state) => {
+    state.selectedDocs = []
+  },
 
   RESET_LOGIN :(state, data) => { 
     state.loggedInUser = data.user
@@ -70,7 +73,8 @@ const mutations = {
 const actions = {
   userLogin: ({ commit }, user) => commit('userLogin', user),
   RESET_LOGIN: ({commit}, data) => commit('RESET_LOGIN', data),
-  LOGOUT_USER: ({commit}) => commit('LOGOUT_USER')
+  LOGOUT_USER: ({commit}) => commit('LOGOUT_USER'),
+  remShare: ({commit}) => commit ('remShare')
 }
 
 export default {

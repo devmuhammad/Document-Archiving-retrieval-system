@@ -2,7 +2,7 @@
   <!-- Left side -->
   <div class="level-left">
     <div class="level-item">
-      <span class="tag is-medium cmpny-name is-white">{{companyName | truncate}}</span>
+      <span class="tag is-medium cmpny-name is-white">{{companyName }}</span>
     </div>
 
     <div class="level-item" v-if="routes.documents == true">
@@ -27,7 +27,7 @@
       </nav>
     </div>
 
-    <div class="level-item" v-else-if="routes.search == true">
+    <!-- <div class="level-item" v-else-if="routes.search == true">
       <span class="breadCrumbIcon">
         <i class="fa fa-search"></i>
       </span>
@@ -38,7 +38,7 @@
           </li>
         </ul>
       </nav>
-    </div>
+    </div> -->
 
 
     <div class="level-item" v-else-if="routes.dashboard == true">

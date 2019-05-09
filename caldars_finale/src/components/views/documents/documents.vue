@@ -37,6 +37,7 @@ export default {
     displayUploadModal(){
       return this.setUploadActive = true
     },
+    
     closeModal(){
       return this.setUploadActive = false
     },
@@ -60,7 +61,9 @@ showcatShareModal(){
       } else
         return this.setShareActive = true
     },
-    
+    ...mapActions([
+      'remShare'
+    ])
   },
   
   components:{
