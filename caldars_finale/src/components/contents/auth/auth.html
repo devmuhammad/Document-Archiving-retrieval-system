@@ -3,7 +3,7 @@
     <div class="column company-id">
       <div class="company-id-top">
           <div class="logo-area">
-            <span><img src="../../../assets/img/auth-cabsol.png"/><!--i class="fa fa-hdd-o"></i--></span>&nbsp;
+            <span><img src="../../../assets/img/auth-cabsol.png" width="70" height="70"/><!--i class="fa fa-hdd-o"></i--></span>&nbsp;
             <!--span>Acuity<span class="app-name">drive</span></span-->
           </div>
           <div class="typingText">{{demo}}<span><i class="fa fa-i-cursor"></i></span></div>
@@ -43,7 +43,7 @@
           <span class="signin-header"><i class="fa fa-sign-in"></i>&nbsp;Sign in</span>
           <div class="auth-form-container">
             <div class="has-text-centered welcome-msg">
-              <div><img src="../../../assets/img/auth-cabsol.png"/></div>
+              <div><img src="../../../assets/img/auth-cabsol.png" width="50" height="50"/></div>
               <span class="title">Welcome back!</span>
               <div class="sub-title">Please login to access your account</div>
             </div>
@@ -69,7 +69,7 @@
                     class="input" 
                     type="password" 
                     placeholder="******" 
-                    v-model.trim="login_deet.passw" 
+                    v-model.trim="login_deet.password" 
                     :disabled="isLogging"
                     required
                   >
@@ -107,7 +107,7 @@
         <!--END SIGN IN FORM-->
 
         <!--SIGN UP FORM-->
-        <div class="sign-up-form" v-if="signupForm === true">
+        <div id="signupFormd" class="sign-up-form" v-if="signupForm === true">
           <span class="signin-header"><i class="fa fa-user-plus"></i>&nbsp;Sign up</span>
           <div class="auth-form-container">
             <div class="has-text-centered welcome-msg">

@@ -6,6 +6,7 @@
 import {mapActions, mapGetters, mapState} from "vuex"
 import accountSettings from "@/components/contents/accountSettings/account-settings"
 import generalSettings from "@/components/contents/generalSettings/general-settings"
+import api from '@/API/UserManagementAPI'
 
 export default {
   name:"Settings",
@@ -14,7 +15,9 @@ export default {
       isProfileSettings:true,
       isGeneralSettings:false,
       confPass:"",
+      errorFetching:false,
       error:"",
+      institution:{},
       user: {
           oldPass:"",
           newPass:""
@@ -26,9 +29,13 @@ export default {
       'create_passwordstatus',
       'changepasserr'
     ]),
-
-
   },
+
+  mounted(){
+    this.getInstitution();
+    
+  },
+
   methods:{
 
     changePass(){
@@ -49,6 +56,24 @@ export default {
     showGeneralSettings () {
       this.isProfileSettings = false
       return this.isGeneralSettings = true
+    },
+
+    getInstitution(){
+      
+      const fetch = () => {
+        return api.GET_INSTITUTIONS()
+          .then(res => {
+            // console.log(res)
+            this.institution = res.data
+            // this.projects = res.projects
+          })
+          .catch(err => {
+            this.errorFetching = true
+          })
+      };
+
+      return fetch()
+
     },
 
     ...mapActions([

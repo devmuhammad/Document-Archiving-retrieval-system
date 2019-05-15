@@ -11,6 +11,7 @@ export default {
   mounted:function () { return this.changeActiveRoute() },
   data () {
     return {
+      isAdmin:false,
       activeRoute:{
         dashActive:false,
         documentActive:false,
@@ -22,6 +23,9 @@ export default {
       error: undefined,
       isSearching: null
     }
+  },
+  created(){
+    this.checkAdmin();
   },
   methods:{
     ...mapActions(["search"]),
@@ -40,6 +44,12 @@ export default {
       return keyw !== "" 
       ? search()
       : this.error = "Search field can't be empty!"; this.isSearching = true;
+    },
+
+    checkAdmin(){
+      if (this.loggedInUser.roletype == "Authorizer"){
+        this.isAdmin = false
+      } this.isAdmin = true
     },
 
     changeActiveRoute(){
@@ -71,7 +81,7 @@ export default {
     }
   },
   computed : {
-    ...mapGetters(["searchError", "isSearchResultReady"])
+    ...mapGetters(["searchError","loggedInUser", "isSearchResultReady"])
   },
   watch : {
     $route:"changeActiveRoute", 

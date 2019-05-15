@@ -13,7 +13,7 @@ export default {
     return {
       login_deet:{
         "username":"",
-        "passw":""
+        "password":""
       },
       showOrg:false,
       indcheck:true,
@@ -65,7 +65,8 @@ export default {
       "login_error": "login_error",
       "create_usererror": "create_usererror"
     }),
-    
+
+
     getStatus(){
       return (this.login_status==0) 
       ? this.isLoading = true
@@ -128,7 +129,7 @@ export default {
     tryLogin () {
       let credentials = this.login_deet
 
-      if(credentials.username !== "" && credentials.passw !== ""){
+      if(credentials.username !== "" && credentials.password !== ""){
         this.signinErr = null
         return this.userLogin(credentials)
       }else {
@@ -199,9 +200,11 @@ export default {
     },
 
     openSignupForm() {
+      $("#signupFormd").addClass("disabledbutton");
       this.authbtns = false;
       this.signinForm = false;
       this.signupForm = true;
+      
     },
 
     closeForms() {

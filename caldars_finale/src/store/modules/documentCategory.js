@@ -105,6 +105,7 @@ let mutations = {
           .catch((err) => { reject(err) })
       })
       .then((res) => {
+        console.log(res)
         state.categoryList = res.documentslist
         state.paginating = false
       })

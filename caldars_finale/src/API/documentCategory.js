@@ -1,10 +1,12 @@
 import {HTTP} from "./http"
+import {userHTTP} from "./http"
 
 export default {
   getDocumentCategories: async (page_num = 0, size = 20) => {
     const res = () => {
       return new Promise((resolve, reject) => {
         HTTP.get('list/categories?page='+page_num+'&size='+size)
+      
         .then(response => { resolve(response.data) })
         .catch(e => { reject(e) })
       })

@@ -1,10 +1,12 @@
 import {HTTP} from './http'
+import {userHTTP} from './http'
 
 export default {
     CREATE_USER: async (user) => {
       const res = () => {
         return new Promise ((resolve, reject) => {
-          HTTP.post('userprofile/add', user)
+          // HTTP.post('userprofile/add', user)
+          userHTTP.post('users/user/add', user)
           .then(response => { resolve(response) })
           .catch(e => { reject(e) })
         })
@@ -15,7 +17,7 @@ export default {
     CREATE_INSTITUTION: async (institutionid) => {
       const res = () => {
         return new Promise((resolve, reject) => {
-          HTTP.post('institution/add', institutionid)
+          userHTTP.post('institution/add', institutionid)
           .then(response => { resolve(response) })
           .catch(e => { reject(e) })
         })
@@ -27,7 +29,19 @@ export default {
     UPDATE_USER: async (user) => {
       const res = () => {
         return new Promise((resolve, reject) => {
-          HTTP.post(`usersprofile/add`, user)
+          userHTTP.post(`users/user/update`, user)
+          .then(response => { resolve(response) })
+          .catch(e => { reject(e) })
+        })
+      }
+
+      return await res()
+    },
+
+    UPDATE_FILEPATH: async (path) => {
+      const res = () => {
+        return new Promise((resolve, reject) => {
+          userHTTP.post(`institution/update`, path)
           .then(response => { resolve(response) })
           .catch(e => { reject(e) })
         })
@@ -39,7 +53,7 @@ export default {
     CHANGE_PASSWORD: async (user) => {
       const res = () => {
         return new Promise((resolve, reject) => {
-          HTTP.put(`changepassword/`, user)
+          userHTTP.put(`users/user/changepassword`, user)
           .then(response => { resolve(response) })
           .catch(e => { reject(e) })
         })
@@ -52,7 +66,7 @@ export default {
     DELETE_USER: async (id) => {
       const res = () => {
         return new Promise((resolve, reject) => {
-          HTTP.delete(`usersprofile/delete/` + id)
+          userHTTP.delete(`users/user/delete/` + id)
           .then(response => { resolve(response.data) })
           .catch(e => { reject(e) })
         })
@@ -64,7 +78,7 @@ export default {
     GET_USER: async () => {
       const res = () => {
         return new Promise((resolve, reject) => {
-          HTTP.get(`usersprofile/`)
+          userHTTP.get(`users/user/retrieve/`)
           .then(response => { resolve(response.data) })
           .catch(e => { reject(e) })
         })
@@ -76,7 +90,7 @@ export default {
     GET_USERS: async () => {
       const res = () => {
         return new Promise((resolve, reject) => {
-          HTTP.get(`list/userprofile?page=0&size=10` )
+          userHTTP.get(`users/user/list` )
           .then((response) => { resolve(response.data)  })
           .catch(e => { console.log(e); reject(e) })
         })
@@ -84,10 +98,11 @@ export default {
 
       return await res()
     },
-    GET_INSTITUTION: async (id) => {
+
+    GET_INSTITUTIONS: async () => {
       const res = () => {
         return new Promise((resolve, reject) => {
-          HTTP.get(`list/institution` + id)
+          userHTTP.get(`institution/retrieve/defualt`)
           .then(response => { resolve(response.data) })
           .catch(e => { reject(e) })
         })

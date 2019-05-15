@@ -1,8 +1,8 @@
 {
-  "name": "caldars_finale",
-  "version": "1.0.0",
-  "description": "A document manager",
-  "author": "codebyomar <omarmohammed580@gmail.com>",
+  "name": "Caldars",
+  "version": "2.0.0",
+  "description": "A Document archiving and retrieval management systems",
+  "author": "Devmuhammad Olacoded <shuaibola12@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",

@@ -41,7 +41,7 @@ const mutations = {
             .then((res) => { resolve(res) })
             .catch((err) => { reject(err) })
         })
-        .then((res) => { state.userslist = res; })
+        .then((res) => { state.userslist = res.data; })
         .catch((err) => {  state.get_usererror.error = err.message })
       }
 
@@ -59,7 +59,7 @@ const mutations = {
         .then((res) => { resolve(res) })
         .catch((err) => { reject(err) })
       })
-      .then((res) => { state.create_userstatus = res.status; state.create_userstatus = false; })
+      .then((res) => { state.create_userstatus = res.status; state.create_userstatus = false;api.GET_USERS() })
       .catch((err) => { state.create_usererror = err.message; state.create_userstatus = false; })
     }
 
@@ -96,7 +96,7 @@ const mutations = {
           .then((res) => { resolve(res) })
           .catch((err) => { reject(err) })
       })
-      .then((res) => { state.create_updatestatus = res.status; this.GET_USERS(0) })
+      .then((res) => { state.create_updatestatus = res.status; api.GET_USERS() })
       .catch((err) => { state.create_usererror.error = err.message })
 
     }
@@ -141,7 +141,7 @@ const mutations = {
 
   DeleteUser: (state, userid) => {
     api.DELETE_USER(userid)
-      .then((res) => { console.log(res); })
+      .then((res) => { api.GET_USERS(0) })
       .catch((err) => { state.delete_error.error = err.message })
   },
 

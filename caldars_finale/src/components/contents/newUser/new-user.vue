@@ -17,22 +17,28 @@ export default {
   data () {
     return {
       loading:false,
+      addComp:0,
       fullname: "",
       pass: "",
       cpass: "",
       error:"",
+      groupselected:"",
       newUser: {
-        userName: "",
+        username: "",
         password: "",
-        firstName: "",
-        middleName: "",
-        lastName: "",
-        contactMobile: "",
-        contactEmail: "",
+        fullname:"",
+        status:true,
+        roletypes:"",
+        phone: "",
+        supervisor: 0,
+        contactemail: "",
         dateCreated: Date.now(),
-        enteredbyid: "",
+        groups: [],
         institutionid: {
+          id:"",
           name: "",
+          licenceid: "",
+          logoname: "",
           contactperson: "",
           contactemail: "",
           contactphone: "",
@@ -48,35 +54,47 @@ export default {
   computed: {
     ...mapGetters([
       "loggedInUser",
+      "usergroups",
       "create_usererror",
       "create_userstatus"
     ]),
   },
-
+  mounted(){
+    this.getUsergroups()
+  },
   methods: {
     ...mapActions([
-      "createNewUser"
+      "createNewUser",
+      "getUsergroups"
     ]),
 
-    createUser() {
+
+    async createUser() {
       if(this.pass === this.cpass && this.pass !== "" && this.cpass !== "")
       {
         let nUser = this.newUser
         let instid = nUser.institutionid
         let binessid = instid.businesstypeid
-        nUser.firstName = this.fullname.split(" ", 3)[0]
-        nUser.middleName = this.fullname.split(" ", 3)[1]
-        nUser.lastName = this.fullname.split(" ", 3)[2]
+        nUser.fullname = this.fullname
         nUser.password = this.pass
-        nUser.enteredbyid = this.loggedInUser.enteredbyid
-        instid.name = this.loggedInUser.institutionid.name
-        instid.contactperson = this.loggedInUser.institutionid.contactperson
-        instid.contactemail = this.loggedInUser.institutionid.contactemail
-        instid.contactphone = this.newUser.contactMobile
-        instid.weburl = this.loggedInUser.institutionid.contactemail
-        binessid.id = this.loggedInUser.institutionid.businesstypeid.id
+        nUser.groups.push(this.groupselected)
+        nUser.supervisor = this.loggedInUser.id
+        instid.name = this.loggedInUser.institution.name
+        instid.contactperson = this.loggedInUser.institution.contactperson
+        instid.contactemail = this.loggedInUser.institution.contactemail
+        instid.contactphone = this.loggedInUser.institution.contactphone
+        instid.weburl = this.loggedInUser.institution.weburl
+        binessid.id = this.loggedInUser.institution.businesstypeid.id
         //console.log(nUser)
-        return this.createNewUser(this.newUser)
+       await this.createNewUser(this.newUser)
+       if (this.create_userstatus) {
+          new Toast({
+        message: "Success, Created user !",
+        type: 'success',
+            })
+         this.closeNewUserModal();
+         this.addComp++
+       }else this.error = "Unable to create User, please try again !"
       }else {
         this.error = "Passwords do not match!"
       }

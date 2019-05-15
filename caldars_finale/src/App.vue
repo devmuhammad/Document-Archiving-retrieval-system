@@ -30,7 +30,8 @@ export default {
   },
   created () { this.checkToken() },
   methods: {
-    ...mapActions(["RESET_LOGIN"]),
+    ...mapActions(["RESET_LOGIN","LOGOUT_USER"
+    ]),
 
     checkToken() {
       const localStore = window.localStorage;
@@ -45,13 +46,14 @@ export default {
               "loggedIn":true
             })
           }else {
+            this.LOGOUT_USER()
             this.RESET_LOGIN({
               "user":null, 
               "loggedIn":false
             })
           }
         });
-      }else { this.RESET_LOGIN({"user":null, "loggedIn":false }) }
+      }else { this.LOGOUT_USER(), this.RESET_LOGIN({"user":null, "loggedIn":false }) }
     }
   },
   components: { sideBar,toolBar,auth},

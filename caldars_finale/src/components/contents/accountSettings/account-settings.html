@@ -2,7 +2,7 @@
   <div class="field">
     <label class="label">Email Address</label>
     <div class="control has-icons-left is-fullwidth">
-      <input class="input is-medium" type="text" :value="user.contactEmail" :disabled="disableInputs"/>
+      <input class="input is-medium" type="text" :value="user.contactemail" :disabled="disableInputs"/>
 
       <span class="icon is-small is-left">
         <i class="fa fa-envelope"></i>
@@ -13,7 +13,7 @@
   <div class="field">
     <label class="label">Contact phone</label>
     <div class="control has-icons-left is-fullwidth">
-      <input class="input is-medium" type="text" :value="user.contactMobile" :disabled="disableInputs"/>
+      <input class="input is-medium" type="text" :value="user.phone" :disabled="disableInputs"/>
 
       <span class="icon is-small is-left">
         <i class="fa fa-phone"></i>
@@ -24,7 +24,7 @@
   <div class="field">
     <label class="label">Username</label>
     <div class="control has-icons-left is-fullwidth">
-      <input class="input is-medium" type="text" :value="user.userName" :disabled="disableInputs"/>
+      <input class="input is-medium" type="text" :value="user.username" :disabled="disableInputs"/>
 
       <span class="icon is-small is-left">
         <i class="fa fa-at"></i>
@@ -42,21 +42,21 @@
     </div>
 
     <div class="is-pulled-right">
-      <switches v-model="enable" theme="bulma" type-bold="true" color="blue"></switches>
+      <switches v-model="enable_mail" theme="bulma" type-bold="false" color="blue"></switches>
     </div>
   </div>
 
   <div class="account-settings-item is-clearfix">
     <div class="is-pulled-left">
-      <span class="as-title">View Archieve</span>
+      <span class="as-title">View Archive</span>
       <br/>
       <span class="as-subtitle">
-        <small>Display archieved documents and folders.</small>
+        <small>Display archived documents and folders.</small>
       </span>
     </div>
 
     <div class="is-pulled-right">
-      <switches v-model="enable" theme="bulma" type-bold="true" color="blue"></switches>
+      <switches v-model="enable_arc" theme="bulma" type-bold="true" color="blue"></switches>
     </div>
   </div>
 

@@ -806,7 +806,8 @@ div.sm-header>span {
   font-weight: 400;
   align-content: center;
   justify-content: space-between;
-  margin-top: 49%;
+  bottom:0;
+  margin-top: 35%;
 }
 
 .homeLinks > a{
@@ -824,6 +825,7 @@ div.sm-header>span {
 
 .company-id-bottom{
   height: 50%;
+  
 }
 
 .logo-area{
@@ -891,14 +893,14 @@ h2.dash-title{
   font-weight: 500;
 }
 .user-page{
-  padding:10px 20px 20px 20px;
+  padding:10px 0px 20px 0px;
 }
 .user-container{
   display:grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto;
   grid-column-gap: 30px;
   grid-row-gap: 30px;
-  padding-left: 15px;
+  padding-left: 5px;
   padding-right:15px;
 }
 
@@ -909,10 +911,11 @@ h2.dash-title{
 .user-card{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  flex-direction: column;
   align-content: flex-start;
   padding:10px;
-  height: 120px;
+  /* height: 120px; */
   background-color: white;
   box-shadow: 0px 3px 10px rgba(0,0,0,.25);
   border-radius: 5px;
@@ -934,7 +937,7 @@ h2.dash-title{
 }
 
 .user-card-content{
-  margin-right:10px;
+  /* margin-right:10px; */
   font-weight: 400;
 }
 
@@ -944,7 +947,10 @@ h2.dash-title{
 
 .user-elipsis{
   cursor: pointer;
-  margin-right:10px;
+  display:flex;
+  justify-content: flex-end;
+  width:100%;
+  /* margin-right:10px; */
 }
 
 .user-ctrls {
@@ -1081,8 +1087,8 @@ h2.dash-title{
 
 .settings-grid{
   display: grid;
-  grid-template-columns: auto 100%;
-  grid-gap: 90px;
+  grid-template-columns: 30% 90%;
+  grid-gap:70px;
 }
 
 .account-settings{
@@ -1181,3 +1187,10 @@ h2.dash-title{
   font-weight: 700;
   color:transparent;
 } 
+.disabledbutton {
+  pointer-events: none;
+  opacity: 0.4;
+}
+a.sidebarlink-active.router-link-active {
+  background-color: #2779BD
+}

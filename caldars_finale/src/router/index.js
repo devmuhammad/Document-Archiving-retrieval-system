@@ -11,8 +11,10 @@ import Help from "@/components/views/help/help"
 
 Vue.use(Router)
 
+
 export default new Router({
-  mode:"history",
+  linkExactActiveClass: "sidebarlink-active",
+  // mode:"history",
   routes: [
    
     {

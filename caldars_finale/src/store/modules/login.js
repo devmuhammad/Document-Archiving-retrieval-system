@@ -32,14 +32,14 @@ const mutations = {
         .catch((err) => { reject(err) })
       })
       .then((res) => { 
-        if (res.message == "Login Succcessfull") 
+        if (res.message == "Success") 
         {
           state.login_status = false
 
-          jwt.sign({data: res.users}, secret, { expiresIn: '1h' }, (err, token) => {
+          jwt.sign({data: res.users}, secret, { expiresIn: '12h' }, (err, token) => {
             if(!err){
               localStore.setItem("darsxlxl", token)
-              state.loggedInUser = res.users;
+              state.loggedInUser = res.data;
               state.isLoggedIn = true;
             }else { state.isLoggedIn = false; }  
           });

@@ -98,7 +98,7 @@ export default {
     ...mapGetters(["isSearchResultReady", "loggedInUser"]),
 
     companyName() {
-      return this.loggedInUser.institutionid.name
+      return this.loggedInUser.institution.name
     }
   },
 

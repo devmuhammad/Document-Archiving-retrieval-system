@@ -1,4 +1,4 @@
-import { HTTP } from './http'
+import { userHTTP } from './http'
 
 
 export default {
@@ -6,7 +6,8 @@ export default {
   LOGIN: async (user) => {
     const res = () => {
       return new Promise((resolve, reject) => {
-        HTTP.get(`userprofile/authenticate`, { params: { username: user.username, password: user.passw } })
+        userHTTP.post(`entrance/entrance`,user)
+        // HTTP.get(`userprofile/authenticate`, { params: { username: user.username, password: user.passw } })
           .then(response => { resolve(response.data) })
           .catch(e => { reject(e) })
       })

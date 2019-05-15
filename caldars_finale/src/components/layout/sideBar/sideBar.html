@@ -25,31 +25,36 @@
       <strong><p class="help is-danger" v-if="error">{{error}}</p></strong>
     </div>
   </div>
-  <router-link to="/" :class="{'routeIsActive':activeRoute.dashActive}">
+  <router-link to="/" tag="a" exact>
+  <!-- :class="{'routeIsActive':activeRoute.dashActive}" -->
     <div class="route-name">
       <span><i class="fa fa-tachometer"></i></span>
       <span>Dashboard</span>
     </div>
   </router-link>
-  <router-link to="/documents" :class="{'routeIsActive':activeRoute.documentActive}">
+  <router-link to="/documents" tag="a" exact>
+  <!-- :class="{'routeIsActive':activeRoute.documentActive}" -->
     <div class="route-name">
       <span><i class="fa fa-folder-open"></i></span>
       <span>Documents</span>
     </div>
   </router-link>
-  <router-link to="/users" :class="{'routeIsActive':activeRoute.usersActive}">
+  <router-link v-if="isAdmin == true" to="/users" tag="a" exact >
+    <!-- :class="{'routeIsActive':activeRoute.usersActive}"> -->
     <div class="route-name">
       <span><i class="fa fa-user"></i></span>
       <span>Users</span>
     </div>
   </router-link>
-  <router-link to="/settings" :class="{'routeIsActive':activeRoute.settingsActive}">
+  <router-link v-if="isAdmin == true" to="/settings" tag="a" exact >
+    <!-- :class="{'routeIsActive':activeRoute.settingsActive}"> -->
     <div class="route-name">
       <span><i class="fa fa-gear"></i></span>
       <span>Settings</span>
     </div>
   </router-link>
-  <router-link to="/help" :class="{'routeIsActive':activeRoute.helpActive}">
+  <router-link to="/help" tag="a" exact >
+    <!-- :class="{'routeIsActive':activeRoute.helpActive}"> -->
     <div class="route-name">
       <span><i class="fa fa-question-circle"></i></span>
       <span>Help</span>

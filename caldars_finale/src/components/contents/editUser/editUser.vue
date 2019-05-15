@@ -23,18 +23,23 @@ export default {
       pass: "",
       cpass: "",
       error:"",
+      selected:"",
       newUser: {
-        userName: "",
+       username: "",
         password: "",
-        firstName: "",
-        middleName: "",
-        lastName: "",
-        contactMobile: "",
-        contactEmail: "",
+        fullname:"",
+        status:true,
+        roletypes:"Initiator",
+        phone: "",
+        supervisor: 0,
+        contactemail: "",
         dateCreated: Date.now(),
-        enteredbyid: "",
+        groups: [],
         institutionid: {
+          id:"",
           name: "",
+          licenceid: "",
+          logoname: "",
           contactperson: "",
           contactemail: "",
           contactphone: "",
@@ -51,34 +56,54 @@ export default {
     ...mapGetters([
       "loggedInUser",
       "create_usererror",
-      "create_userstatus"
+      "create_userstatus",
+      "create_updatestatus",
+      "usergroups"
     ]),
   },
-
+ mounted(){
+    this.getUsergroups()
+    this.setDetails();
+  },
   methods: {
     ...mapActions([
-      "createNewUser"
+      "createNewUser",
+      "getUsergroups",
+      "updateoldUser"
     ]),
 
-    createUser() {
+    setDetails(){
+      this.newUser.fullname = this.user.fullname,
+      this.newUser.username = this.user.username,
+      this.newUser.contactemail = this.user.contactemail
+      this.newUser.phone = this.user.phone
+      // this.selected = this.user.groups[0]
+    },
+    async updateUser() {
       if(this.pass === this.cpass && this.pass !== "" && this.cpass !== "")
       {
         let nUser = this.newUser
         let instid = nUser.institutionid
         let binessid = instid.businesstypeid
-        nUser.firstName = this.fullname.split(" ", 3)[0]
-        nUser.middleName = this.fullname.split(" ", 3)[1]
-        nUser.lastName = this.fullname.split(" ", 3)[2]
+        nUser.fullname = this.fullname
         nUser.password = this.pass
-        nUser.enteredbyid = this.loggedInUser.enteredbyid
-        instid.name = this.loggedInUser.institutionid.name
-        instid.contactperson = this.loggedInUser.institutionid.contactperson
-        instid.contactemail = this.loggedInUser.institutionid.contactemail
-        instid.contactphone = this.newUser.contactMobile
-        instid.weburl = this.loggedInUser.institutionid.contactemail
-        binessid.id = this.loggedInUser.institutionid.businesstypeid.id
+        nUser.groups.push(this.selected)
+        // nUser.supervisor = this.loggedInUser.id
+        // instid.name = this.loggedInUser.institution.name
+        // instid.contactperson = this.loggedInUser.institution.contactperson
+        // instid.contactemail = this.loggedInUser.institution.contactemail
+        // instid.contactphone = this.loggedInUser.institution.contactphone
+        // instid.weburl = this.loggedInUser.institution.weburl
+        // binessid.id = this.loggedInUser.institution.businesstypeid.id
         //console.log(nUser)
-        return this.createNewUser(this.newUser)
+       await this.updateoldUser(this.newUser)
+       if (this.create_updatestatus) {
+          new Toast({
+        message: "Success, Updated User!",
+        type: 'success',
+            })
+         this.closeEditUserModal();
+       }else this.error = "Unable to update User, please try again !"
       }else {
         this.error = "Passwords do not match!"
       }

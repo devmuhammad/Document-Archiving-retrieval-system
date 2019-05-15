@@ -17,13 +17,13 @@
           <div class="new-user-content" v-if="loading === false">
           <form v-on:submit.prevent>  
             <div class="field">
-              <label class="label">{{fullName}}</label>
+              <label class="label">Fullname</label>
               <div class="control has-icons-left">
                 <input 
                   class="input" 
                   type="text" 
                   placeholder="firstname middlename lastname"
-                  v-model="newName"
+                  v-model="newUser.fullname"
                   required
                 />
       
@@ -35,13 +35,13 @@
     
     
             <div class="field">
-              <label class="label">{{user.userName}}</label>
+              <label class="label">Username</label>
               <div class="control has-icons-left">
                 <input 
                   class="input" 
                   type="text" 
                   placeholder="Username"
-                  v-model="newUser.userName"
+                  v-model="newUser.username"
                   required
                 />
       
@@ -86,13 +86,13 @@
             </div>
     
             <div class="field">
-              <label class="label">{{user.contactEmail}}</label>
+              <label class="label">Email</label>
               <div class="control has-icons-left">
                 <input 
                   class="input" 
                   type="email"
                   placeholder="abc@example.com" 
-                  v-model= "newUser.contactEmail"
+                  v-model= "newUser.contactemail"
                   required
                 />
       
@@ -103,14 +103,14 @@
             </div>
     
             <div class="field">
-              <label class="label">{{user.contactMobile}}</label>
+              <label class="label">Phone</label>
               <div class="control has-icons-left">
                 <input 
                   class="input" 
                   type="tel"
                   placeholder="08011111111" 
                   minlength= "11"
-                  v-model= "newUser.contactMobile"
+                  v-model= "newUser.phone"
                   required
                 />
       
@@ -123,15 +123,11 @@
                     <label class="label">User Group</label>
                     <div class="control has-icons-left">
                       <span class="select is-fullwidth">
-                        <!-- <select v-on:change="getSelected" v-model="selected"> -->
+                        <select v-model="selected">
                            <!-- <option selected> Admin </option>  -->
-                          <!-- <option v-for="user in userslist" :value="userslist.id" v-model="share.touserid">{{user.userName}}</option> -->
-                        <select>
-                          <option>Manager</option>
-                          <option>Administrator</option>
-                          <option>User</option>
-                        </select>
-                      </span>
+                           <option v-for="groups in usergroups" :value="groups.id" >{{groups.name}}</option>                         
+                          </select>
+                          </span>
                       <span class="icon is-small is-left">
                         <i class="fa fa-users"></i>
                       </span>
@@ -141,9 +137,9 @@
               <div class="control">
                 <button 
                   type="submit" 
-                  :class="{'button':true, 'is-secondary':true, 'is-fullwidth':true,}" 
-                  @click="">
-                  Add
+                  :class="{'button':true, 'is-secondary':true, 'is-fullwidth':true,'is-loading':create_updatestatus}" 
+                  @click="updateUser">
+                  Update
                 </button>
               </div>
             </div>

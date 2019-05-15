@@ -1,5 +1,5 @@
 <div :class="{'modal':true,'is-active':isNewUserModalActive}">
-    <div class="modal-content new-user-modal is-centered">
+    <div class="modal-content new-user-modal is-centered" :key="addComp">
       <div class="new-user-title is-pulled-left">
         <h1 class="subtitle is-6">
           <small><i class="fa fa-user-plus"></i>
@@ -41,7 +41,7 @@
               class="input" 
               type="text" 
               placeholder="Username"
-              v-model="newUser.userName"
+              v-model="newUser.username"
               required
             />
   
@@ -92,7 +92,7 @@
               class="input" 
               type="email"
               placeholder="abc@example.com" 
-              v-model= "newUser.contactEmail"
+              v-model= "newUser.contactemail"
               required
             />
   
@@ -110,7 +110,7 @@
               type="tel"
               placeholder="08011111111" 
               minlength= "11"
-              v-model= "newUser.contactMobile"
+              v-model= "newUser.phone"
               required
             />
   
@@ -123,13 +123,24 @@
             <label class="label">User Group</label>
             <div class="control has-icons-left">
               <span class="select is-fullwidth">
-                <!-- <select v-on:change="getSelected" v-model="selected"> -->
+                <select v-model="groupselected">
                    <!-- <option selected> Admin </option>  -->
-                  <!-- <option v-for="user in userslist" :value="userslist.id" v-model="share.touserid">{{user.userName}}</option> -->
-                <select>
-                  <option>Manager</option>
-                  <option>Administrator</option>
-                  <option>User</option>
+                   <option v-for="groups in usergroups" :value="groups.id" >{{groups.name}}</option> 
+                </select>
+              </span>
+              <span class="icon is-small is-left">
+                <i class="fa fa-users"></i>
+              </span>
+              </div>
+              </div>
+        <div class="field">
+            <label class="label">Role Type</label>
+            <div class="control has-icons-left">
+              <span class="select is-fullwidth">
+                <select v-model="newUser.roletypes">
+                   <option value="Initiator" selected> Initiator </option> 
+                   <option value="Authorizer"> Authorizer </option> 
+                   <!-- <option v-for="groups in usergroups" :value="groups.id" >{{groups.name}}</option>  -->
                 </select>
               </span>
               <span class="icon is-small is-left">

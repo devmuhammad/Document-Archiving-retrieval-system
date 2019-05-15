@@ -70,7 +70,7 @@ Toast.prototype._open = function() {
 
     this.toastEl.classList.add(this.options.type);
     this.toastContainerEl.setAttribute('aria-hidden', false); 
-
+    setTimeout(() => resolve(), 5000);
     let customButtons = '';
     if ( this.options.customButtons ) {
         customButtons = this.options.customButtons.map( (customButton, index) => {

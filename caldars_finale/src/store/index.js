@@ -6,6 +6,7 @@ import Usermanagement from './modules/usermanagement'
 import documentCategory from "./modules/documentCategory"
 import login from "./modules/login"
 import share from "./modules/share"
+import userGroup from "./modules/userGroups"
 
 Vue.use(Vuex)
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     Usermanagement,
     login,
     share,
+    userGroup,
     documentCategory
   }
 })  
