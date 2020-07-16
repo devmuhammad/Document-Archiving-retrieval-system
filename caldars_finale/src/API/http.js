@@ -1,6 +1,6 @@
 import axios from 'axios'
-const production_url = 'http://comsoftltd.net:8080/cabsoldarapi/v1/documents'
-const newAPI  = 'http://comsoftltd.net:9090/cabsoldars/api/v1'
+const production_url = 'http://comsoftltd.net:9090/cabsoldarapi/v1/documents'
+const newAPI  = 'http://comsoftltd.net:9090/cabsoldarapi/api/v1'
 
 export const HTTP = axios.create({
   baseURL: production_url,

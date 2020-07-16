@@ -21,6 +21,18 @@ const webpackConfig = merge(baseWebpackConfig, {
       usePostCSS: true
     })
   },
+//   optimization: {
+//     runtimeChunk: "single", // enable "runtime" chunk
+//     splitChunks: {
+//         cacheGroups: {
+//             vendor: {
+//                 test: /[\\/]node_modules[\\/]/,
+//                 name: "vendor",
+//                 chunks: "all"
+//             }
+//         }
+//     }
+// },
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
     path: config.build.assetsRoot,
@@ -78,6 +90,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // enable scope hoisting
     new webpack.optimize.ModuleConcatenationPlugin(),
     // split vendor js into its own file
+    
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks (module) {
@@ -108,13 +121,15 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
 
     // copy custom static assets
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../static'),
-        to: config.build.assetsSubDirectory,
-        ignore: ['.*']
-      }
-    ])
+    new CopyWebpackPlugin(
+        [
+        { from: path.resolve(__dirname, '../static'),
+         to: config.build.assetsSubDirectory,
+         globOptions: {
+          ignore: ['.*'] 
+         }
+        }
+        ])
   ]
 })
 
